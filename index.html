@@ -835,13 +835,10 @@ html[data-theme=dark] .pk .pkn{color:#fff}html[data-theme=dark] .pk .pkd{color:#
   <div class="card g">
     <div class="pav"><div class="pimg" id="pimg"></div><button class="chg" id="pbtn" type="button">📷 Changer la photo</button><input type="file" id="pfile" accept="image/*" hidden></div>
     <label for="pville">Ville</label>
-    <select id="pville"><option>Agadez</option><option>Niamey</option><option>Zinder</option><option>Maradi</option><option>Tahoua</option><option>Dosso</option><option>Tillabéri</option><option>Diffa</option></select>
+    <select id="pville"><option>Agadez</option><option>Arlit</option><option>Tchirozérine</option><option>Bilma</option><option>Niamey</option><option>Zinder</option><option>Maradi</option><option>Tahoua</option><option>Birni N'Konni</option><option>Dosso</option><option>Gaya</option><option>Tillabéri</option><option>Diffa</option><option>Tessaoua</option><option>Dogondoutchi</option><option>Madaoua</option><option>Mirriah</option><option>Magaria</option><option>Illéla</option><option>Say</option><option>Filingué</option><option>Ouallam</option><option>Téra</option></select>
     <button class="btn" id="sv">Enregistrer</button>
     <div id="ok">✅ Profil enregistré</div>
   </div>
-  <div class="card g" id="apr"><label>🎨 Apparence</label>
-    <div class="seg" id="seg"><button type="button" data-th="clair">☀️ Clair</button><button type="button" data-th="sombre">🌙 Sombre</button><button type="button" data-th="auto">📱 Auto</button></div>
-    <p class="sub2" style="margin-top:8px">« Auto » suit le thème de ton téléphone.</p></div>
   <button class="btn pub" id="pub" type="button">📢 Contacter ODA SHOP pour publier un produit</button>
   <button class="out" id="out" type="button">Se déconnecter</button>
 </div>
@@ -905,7 +902,7 @@ html[data-theme=dark] .pk .pkn{color:#fff}html[data-theme=dark] .pk .pkd{color:#
     <input id="anom" placeholder="Ex: Ibrahim Zakarie" autocomplete="name">
     <label for="aville">Dans quelle ville es-tu ?</label>
     <div class="avw"><span><svg viewBox="0 0 24 24" fill="none" stroke="#9a9a9a" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></span><input id="aville" list="avl" placeholder="Dans quelle ville es-tu ?" autocomplete="off" value="Agadez"></div>
-    <datalist id="avl"><option>Agadez</option><option>Niamey</option><option>Zinder</option><option>Maradi</option><option>Tahoua</option><option>Dosso</option><option>Tillabéri</option><option>Diffa</option></datalist>
+    <datalist id="avl"><option>Agadez</option><option>Arlit</option><option>Tchirozérine</option><option>Bilma</option><option>Niamey</option><option>Zinder</option><option>Maradi</option><option>Tahoua</option><option>Birni N'Konni</option><option>Dosso</option><option>Gaya</option><option>Tillabéri</option><option>Diffa</option><option>Tessaoua</option><option>Dogondoutchi</option><option>Madaoua</option><option>Mirriah</option><option>Magaria</option><option>Illéla</option><option>Say</option><option>Filingué</option><option>Ouallam</option><option>Téra</option></datalist>
     <div id="aerr" role="alert"></div>
     <button class="btn" id="aok" type="button">COMMENCER</button>
   </div>
@@ -1327,7 +1324,15 @@ function appliquer(){
 }
 function authMode(){}
 function authOpen(){auth.hidden=false;document.body.style.overflow='hidden';if(getL('oda_nom')){$('anom').value=getL('oda_nom');if(getL('oda_ville'))$('aville').value=getL('oda_ville')}}
-$('alang').onclick=()=>toast('Langue : Français');
+const REGIONS=["Agadez", "Arlit", "Tchirozérine", "Bilma", "Niamey", "Zinder", "Maradi", "Tahoua", "Birni N'Konni", "Dosso", "Gaya", "Tillabéri", "Diffa", "Tessaoua", "Dogondoutchi", "Madaoua", "Mirriah", "Magaria", "Illéla", "Say", "Filingué", "Ouallam", "Téra"];
+(function(){
+const st=document.createElement('style');st.textContent='#rgs{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.5);display:none;align-items:flex-end;justify-content:center}#rgs.on{display:flex}#rgs .bx{background:#fff;width:100%;max-width:420px;max-height:75vh;border-radius:20px 20px 0 0;padding:14px;overflow:auto}#rgs h3{margin:0 0 10px;font-size:16px;color:#111}#rgs button{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #eee;background:none;padding:13px 6px;font-size:15px;font-weight:700;color:#111}';document.head.appendChild(st);
+const d=document.createElement('div');d.id='rgs';d.innerHTML='<div class="bx"><h3>Choisis ta région / ville</h3>'+REGIONS.map(r=>'<button type="button">'+r+'</button>').join('')+'</div>';document.body.appendChild(d);
+d.onclick=e=>{if(e.target===d){d.classList.remove('on');return}const b=e.target.closest('button');if(b){$('aville').value=b.textContent;d.classList.remove('on')}};
+$('alang').onclick=()=>d.classList.add('on');
+const al=$('alang');const tn=[...al.childNodes].reverse().find(n=>n.nodeType===3&&n.textContent.trim());if(tn)tn.textContent=' Région';else{const sp=al.querySelector('span');if(sp)sp.textContent='Région'}
+document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();toast('Appel : +227 77 17 49 50');try{location.href='tel:+22777174950'}catch(x){}}));
+})();
 $('aok').onclick=()=>{
   const nomv=$('anom').value.trim(),villev=$('aville').value.trim(),err=s=>{$('aerr').innerText=s};
   if(nomv.length<2){err('Entre ton nom (2 lettres minimum).');return}
@@ -1373,12 +1378,11 @@ function themeAppliquer(m){
   const d=m==='sombre'||(m==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
   document.documentElement.dataset.theme=d?'dark':'light';
   const mt=document.querySelector('meta[name=theme-color]');if(mt)mt.content=d?'#0b0b0b':'#D9A21A';
-  document.querySelectorAll('#seg button').forEach(b=>b.classList.toggle('on',b.dataset.th===m));
+  
 }
 const themeMode=()=>{try{return localStorage.getItem('oda_theme')||'clair'}catch(e){return 'auto'}};
-$('seg').onclick=e=>{const b=e.target.closest('[data-th]');if(!b)return;try{localStorage.setItem('oda_theme',b.dataset.th)}catch(x){}themeAppliquer(b.dataset.th)};
-if(matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{if(themeMode()==='auto')themeAppliquer('auto')});
-themeAppliquer(themeMode());
+if(matchMedia)matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{0});
+themeAppliquer('clair');
 // ===== Fiche immobilier : vidéo + photos en grand =====
 function openImm(k){
   const p=allItems().find(x=>x.i===k);if(!p)return;
