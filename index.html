@@ -1085,13 +1085,19 @@ async function chargerBoutique(){
 const DB_URL='https://bjapfgvqkuoaqsjtzqbz.supabase.co';
 const DB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYXBmZ3Zxa3VvYXFzanR6cWJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2MTU0NjUsImV4cCI6MjEwODE5MTQ2NX0.u4c3TFvk46nXXn4fQf2sUG-ZejAQHefXH1UmQ38ZJTI'; // clé publique (anon)
 const DB_SEC={boutique:[NEUFS,'🛍️'],marketplace:[OCCAS,'♻️'],vivrier:[VIVRIERS,'🌾'],immobilier:[IMMO,'🏢'],travaux:[TRAVAUX,'🛠️'],colis:[COLIS,'📦'],transport:[TRANSP,'🚚']};
+const DEFB={};
 function appliquerBase(rows){
   const par={};
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
       i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':''),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:r.section==='vivrier'?1:0})});
-  Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];a.length=0;a.push(...par[k])});  // une section qui a de vrais produits remplace les exemples
+  Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
+    if(k==='travaux'||k==='transport'){ // catalogue de base : une fiche de la base (même code) remplace celle de l'application ; la photo de base reste si aucune n'a été changée
+      DEFB[k]=DEFB[k]||a.slice();const byC={};par[k].forEach(r=>{if(r.code)byC[r.code]=r});const used={};
+      const m=DEFB[k].map(d=>{const r=byC[d.code];if(!r)return d;used[d.code]=1;return Object.assign({},d,r,{img:r.img||d.img,imgs:r.imgs&&r.imgs.length?r.imgs:[],sub:r.sub||d.sub})});
+      a.length=0;a.push(...m,...par[k].filter(r=>!used[r.code]))}
+    else{a.length=0;a.push(...par[k])}});  // une section qui a de vrais produits remplace les exemples
   showService(cur);bnames(si);if($('q').value.trim())chercher();
 }
 async function chargerBase(){
