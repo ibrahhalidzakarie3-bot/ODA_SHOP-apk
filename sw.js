@@ -1,5 +1,5 @@
 // ODA SHOP : service worker (installation + ouverture même sans réseau)
-const V='oda-v31';
+const V='oda-v37';
 const FILES=['./','index.html','manifest.json','icon-192.png','icon-512.png','icon-maskable-512.png'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>Promise.allSettled(FILES.map(f=>c.add(f)))).then(()=>self.skipWaiting()));
