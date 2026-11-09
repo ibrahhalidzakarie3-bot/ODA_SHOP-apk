@@ -1019,7 +1019,7 @@ const placeCard=p=>`<a class="pc pla g${p.photo?' ph':''}" href="${p.view?'#'+p.
 function listHTML(s){
   if(s.acts&&s.subs&&immoSub&&s.subs[immoSub]){const u=s.subs[immoSub];
     return '<button class="btn-v" type="button" data-subback style="width:100%">← Retour · '+(SUBT[immoSub]||'')+'</button>'+
-      u.acts.map((a,k)=>'<div class="imc nop actc" data-sact="'+immoSub+':'+k+'"><span class="imcg">'+a.e+'</span><div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>').join('')+
+      u.acts.map((a,k)=>(immoSub==='gaz'&&u.items.length&&/^GAZ /.test(a.n))?'':'<div class="imc nop actc" data-sact="'+immoSub+':'+k+'"><span class="imcg">'+a.e+'</span><div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>').join('')+
       (u.items.length?u.items.map(p=>card(p,immoSub==='gaz'?'GAZ':'GÂTEAU')).join(''):(u.acts.length?'':'<div class="vide" style="padding:30px 10px">'+u.e+'<br>Aucun produit pour le moment.</div>'))}
   if(s.acts)return s.acts.map((a,k)=>'<div class="imc nop actc" '+(a.sub?'data-sub="'+a.sub+'"':'data-act="'+k+'"')+'><span class="imcg">'+a.e+'</span><div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>').join('')+
     '<div class="actb"><a class="btn" href="tel:+22777174950">📞 Appeler le service</a><a class="btn-v" data-actwa="1">🟢 WhatsApp</a></div>'+(s.items&&s.items.length?s.items.map(p=>card(p,s.b)).join(''):'');
