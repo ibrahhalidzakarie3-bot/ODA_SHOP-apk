@@ -6,6 +6,8 @@
 <title>ODA SHOP</title>
 <meta name="theme-color" content="#D9A21A">
 <link rel="manifest" href="manifest.json">
+<script>try{if(localStorage.getItem("oda_session")!=="1")document.documentElement.className+=" noauth"}catch(e){document.documentElement.className+=" noauth"}</script>
+<style>html.noauth body{background:#000}html.noauth body>*:not(#auth):not(script):not(style){visibility:hidden!important}html.noauth #auth[hidden]{display:flex!important}</style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ODA SHOP">
@@ -1560,7 +1562,7 @@ $('aok').onclick=()=>{
   setL('oda_nom',nomv);setL('oda_ville',villev||'Agadez');
   setL('oda_session','1');
   if(changerRegion(villev||'Agadez'))return;
-  auth.hidden=true;document.body.style.overflow='';
+  auth.hidden=true;document.documentElement.classList.remove('noauth');document.body.style.overflow='';
   appliquer();drawAv();show('accueil');
   try{history.replaceState(null,'','#accueil')}catch(x){}
 };
