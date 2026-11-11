@@ -2,11 +2,11 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1, interactive-widget=overlays-content">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover, interactive-widget=overlays-content">
 <title>ODA SHOP</title>
 <meta name="theme-color" content="#D9A21A">
 <link rel="manifest" href="manifest.json">
-<script>try{if(localStorage.getItem("oda_session")!=="1")document.documentElement.className+=" noauth"}catch(e){document.documentElement.className+=" noauth"}</script>
+<script>document.documentElement.className+=" boot";setTimeout(function(){document.documentElement.classList.remove("boot")},3500);try{if(localStorage.getItem("oda_session")!=="1")document.documentElement.className+=" noauth"}catch(e){document.documentElement.className+=" noauth"}</script>
 <style>html.noauth body{background:#000}html.noauth body>*:not(#auth):not(script):not(style){visibility:hidden!important}html.noauth #auth[hidden]{display:flex!important}</style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -815,6 +815,15 @@ html[data-theme=dark] .pk .pkn{color:#fff}html[data-theme=dark] .pk .pkd{color:#
 .imcw .pk{aspect-ratio:16/11!important}.fitc{background:#e9e9ea!important}.fitc .pki img{object-position:center 30%!important}
 .pla.ph .tx{display:none!important}
 body.indispo #car,body.indispo #dots,body.indispo #sh,body.indispo .srow{display:none!important}.indispo b{font-size:15px}
+/* écran de démarrage (plus de page vide qui clignote) + zones sûres des téléphones (encoche, barre de gestes) */
+html.boot body>*:not(script):not(style){visibility:hidden!important}
+html.boot::after{content:"";position:fixed;inset:0;z-index:99999;background:#fff url(logo.png) center/110px no-repeat}
+body{padding-top:env(safe-area-inset-top)}
+.nav{bottom:calc(12px + env(safe-area-inset-bottom))!important}
+body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+#v-accueil:not([hidden]){height:calc(100dvh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}
+@supports not (height:100dvh){#v-accueil:not([hidden]){height:calc(100vh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}}
+.sheet,.auth,#auth{padding-top:env(safe-area-inset-top)}
 </style>
 </head>
 <body class="lock">
@@ -979,11 +988,11 @@ const prix=p=>p.p>0?fmt(p.p).replace(' FCFA','<small> FCFA</small>'):''+(p.devis
 const ICO_CHAT='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>';
 const ICO_SHARE='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
 const cardImmo=p=>{const c=(p.imgs&&p.imgs[0])||p.img||'',nb=(p.imgs||[]).length;
-  return `<div class="imr" data-imm="${esc(p.i)}"><div class="imrp">${c?'<img src="'+esc(c)+'" alt="" loading="lazy" decoding="async">':'<span>'+(p.sub==='terrain'?'🏞️':/boutique/.test(p.sub||'')?'🏪':'🏠')+'</span>'}${p.vid?'<i class="imrv">▶</i>':''}${nb>1?'<i class="imrn">📷 '+nb+'</i>':''}</div>
-  <div class="imrt"><div class="imrh"><span class="imrk">${SUBK[p.sub]||'ANNONCE'}</span>${p.code?'<span class="imrc">'+esc(p.code)+'</span>':''}</div>
+  return `<div class="imr" data-imm="${esc(p.i)}"><div class="imrp">${c?'<img src="'+esc(c)+'" alt="" loading="lazy" decoding="async">':'<span>'+(p.sec==='automobile'?'🚗':p.sub==='terrain'?'🏞️':/boutique/.test(p.sub||'')?'🏪':'🏠')+'</span>'}${p.vid?'<i class="imrv">▶</i>':''}${nb>1?'<i class="imrn">📷 '+nb+'</i>':''}</div>
+  <div class="imrt"><div class="imrh"><span class="imrk">${p.sec==='automobile'?'AUTO':(SUBK[p.sub]||'ANNONCE')}</span>${p.code?'<span class="imrc">'+esc(p.code)+'</span>':''}</div>
   <b>${esc(p.n)}</b><span class="imrd">${esc(p.d||'')}</span><span class="imrx">${prix(p)}</span></div>
   <button class="imrs" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div>`};
-const card=(p,b)=>{if(p.sec==='immobilier')return cardImmo(p);const s=imgOf(p);
+const card=(p,b)=>{if(p.sec==='immobilier'||p.sec==='automobile')return cardImmo(p);const s=imgOf(p);
   return `<div class="pk${p.sub==='moto'?' fitc':''}"><div class="pki">${p.imgs&&p.imgs.length>1&&!p.vid?'<div class="sl">'+p.imgs.map(u=>'<img src="'+esc(u)+'" alt="" loading="lazy" decoding="async" data-zoom="'+esc(p.i)+'" data-e="'+(p.e||'🛍️')+'">').join('')+'</div><span class="pn">1/'+p.imgs.length+'</span>':p.vid?'<video src="'+esc(p.vid)+'"'+(s?' poster="'+esc(s)+'"':'')+' controls playsinline preload="metadata"></video>':s?'<img src="'+esc(s)+'" alt="" loading="lazy" decoding="async" data-zoom="'+esc(p.i)+'" data-e="'+(p.e||'🛍️')+'">':'<div class="pe2">'+(p.e||'🛍️')+'</div>'}${p.code?'<span class="pcode">'+esc(p.code)+'</span>':''}${b?'<span class="ptag">'+esc(b)+'</span>':''}${p.vid||(p.imgs&&p.imgs.length>1)?'':'<span class="pzm">🔍</span>'}</div>
   <div class="pkb"><div class="pkn">${esc(p.n)}</div><div class="pkp">${prix(p)}</div><div class="pkd">${esc(p.d||p.resto||'')}</div>
   <div class="pkr">${p.v?'<button class="pkc" type="button" data-add="'+esc(p.i)+'">🛒 Ajouter</button>':'<button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Commander</button>'}<button class="pks" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div></div></div>`};
@@ -1611,7 +1620,7 @@ function openImm(k){
   const im=(p.imgs&&p.imgs.length?p.imgs:[p.img]).filter(Boolean);
   $('immc').innerHTML=(p.vid?'<video class="immv" src="'+esc(p.vid)+'" '+(im[0]?'poster="'+esc(im[0])+'" ':'')+'controls playsinline preload="metadata"></video>':'')+
     (im.length?'<div class="imms">'+im.map(u=>'<img src="'+esc(u)+'" alt="" decoding="async">').join('')+'</div>'+(im.length>1?'<div class="immn">← glisse pour voir les '+im.length+' photos →</div>':''):'')+
-    '<div class="immt"><span class="pcode" style="position:static">'+esc(p.code||'')+'</span> <span class="ptag" style="position:static">'+(SUBTAG[p.sub]||'ANNONCE')+'</span></div>'+
+    '<div class="immt"><span class="pcode" style="position:static">'+esc(p.code||'')+'</span> <span class="ptag" style="position:static">'+(p.sec==='automobile'?'VÉHICULE':(SUBTAG[p.sub]||'ANNONCE'))+'</span></div>'+
     '<h3>'+esc(p.n)+'</h3><div class="pkp">'+prix(p)+'</div>'+(p.d?'<p>'+esc(p.d)+'</p>':'')+
     '<div class="pkr"><button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Contacter ODA SHOP</button><button class="pks" type="button" data-share="'+esc(p.i)+'" aria-label="Partager">'+ICO_SHARE+'</button></div>';
   $('imm').hidden=false;$('immc').parentNode.scrollTop=0;
@@ -1674,6 +1683,7 @@ document.addEventListener('click',e=>{
 });
 show(VUES.includes(location.hash.slice(1))?location.hash.slice(1):'accueil');
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+document.documentElement.classList.remove('boot');
 </script>
 </body>
 </html>
