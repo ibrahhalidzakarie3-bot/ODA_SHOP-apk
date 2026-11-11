@@ -1,7 +1,7 @@
 // ODA SHOP : service worker (installation + ouverture même sans réseau)
-const V='oda-v57';
+const V='oda-v60';
 const FILES=['./','index.html','manifest.json','icon-192.png','icon-512.png','icon-maskable-512.png',
-'oda-p01.jpg','oda-p02.jpg','oda-p03.png','oda-p04.png','oda-p05.png','oda-p06.png','oda-p07.png','oda-p08.png','oda-p09.png','oda-p10.png','oda-p11.jpg','oda-p12.jpg','oda-p13.jpg','oda-p14.jpg','oda-p15.jpg','oda-p16.jpg','oda-p17.jpg','oda-p18.jpg','oda-p19.jpg','oda-p20.jpg','oda-p21.jpg','oda-p22.jpg','oda-p23.jpg','oda-p24.jpg','oda-p25.jpg','oda-p26.jpg','oda-p27.jpg','oda-p28.jpg','oda-p29.jpg','oda-p30.jpg','oda-p31.jpg','oda-p32.jpg','oda-p33.jpg','oda-p34.jpg','oda-p35.jpg','oda-p36.jpg','oda-p37.jpg','oda-p38.jpg','oda-p39.jpg','oda-p40.png'];
+'oda-p01.jpg','oda-p02.jpg','oda-p03.png','oda-p04.png','oda-p05.png','oda-p06.png','oda-p07.png','oda-p08.png','oda-p09.png','oda-p10.png','oda-p11.jpg','oda-p12.jpg','oda-p13.jpg','oda-p14.jpg','oda-p15.jpg','oda-p16.jpg','oda-p17.jpg','oda-p18.jpg','oda-p19.jpg','oda-p20.jpg','oda-p21.jpg','oda-p22.jpg','oda-p23.jpg','oda-p24.jpg','oda-p25.jpg','oda-p26.jpg','oda-p27.jpg','oda-p28.jpg','oda-p29.jpg','oda-p30.jpg','oda-p31.jpg','oda-p32.jpg','oda-p33.jpg','oda-p34.jpg','oda-p35.jpg','oda-p36.jpg','oda-p37.jpg','oda-p38.jpg','oda-p39.jpg','oda-p40.png','oda-p41.jpg','oda-p42.jpg','oda-p43.jpg','oda-p44.jpg','oda-p45.jpg','oda-p46.jpg'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>Promise.allSettled(FILES.map(f=>c.add(f)))).then(()=>self.skipWaiting()));
 });
