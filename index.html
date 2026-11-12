@@ -1218,8 +1218,8 @@ const SVC_TXT={'PRODUITS NEUFS':['Habits, chaussures, accessoires, meubles - tou
  'SERVICE COLIS ODA':['Gaz, gâteaux, eau, colis - livreur ODA aller-retour','Envoyer un colis →']};
 const car=$('car'),dotsEl=$('dots');let autoUntil=0;
 const PHOTO_BANDEAU={'PRODUITS NEUFS':'oda-p38.jpg','SERVICE COLIS ODA':'oda-p39.jpg',
- 'LIVRAISON NOURRITURE':'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','PHARMACIE':'oda-p46.jpg','IMMOBILIER':'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80','TRANSPORT':'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80','TRAVAUX À DOMICILE':'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80'};
-const PHOTO_ENTIERE={'PRODUITS NEUFS':1,'SERVICE COLIS ODA':1,'PHARMACIE':1};
+ 'LIVRAISON NOURRITURE':'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','PHARMACIE':'https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=800&q=80','IMMOBILIER':'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80','TRANSPORT':'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80','TRAVAUX À DOMICILE':'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80'};
+const PHOTO_ENTIERE={'PRODUITS NEUFS':1,'SERVICE COLIS ODA':1};
 car.innerHTML='<div class="trk" id="trk">'+SERVICES.slice(0,NSV).map((s,k)=>{const t=SVC_TXT[s.t]||[s.h,'Voir →'];
   const ph=PHOTO_BANDEAU[s.t]||s.photo,full=PHOTO_ENTIERE[s.t];
   return '<div class="slide'+(full?' full':'')+'" data-k="'+k+'">'+(ph?(full?'<div class="bgb" style="background-image:url(\''+ph+'\')"></div>':'')+'<img class="main" src="'+esc(ph)+'" alt="'+esc(s.h)+'">':'<div class="sph0"><span>'+s.e+'</span></div>')+
