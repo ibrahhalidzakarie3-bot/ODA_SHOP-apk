@@ -836,7 +836,6 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 .pubt{position:absolute;left:10px;top:10px;z-index:2;background:rgba(0,0,0,.65);color:#F5B800;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:10px}
 .pubc{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(to top,rgba(0,0,0,.82),transparent);pointer-events:none}
 .pubc b{display:block;color:#F5B800;font-size:15px;font-weight:900}.pubc span{color:#fff;font-size:12px}
-.pubx video~.pubc{display:none}
 .cth{font-size:15px;font-weight:800;margin:4px 2px 10px}.cth span{color:#8a8a8a;font-weight:600}
 .itg{display:inline-block;background:#F5B800;color:#111;font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:8px;margin-bottom:3px}
 #v-panier{padding-bottom:20px}
@@ -855,6 +854,11 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 .cartnone{text-align:center;color:#8a8a8a;padding:26px 10px;font-size:14px}
 .it.cr .stp .plus{position:static!important;inset:auto!important;transform:none!important;margin:0!important;height:36px!important;width:auto!important;padding:0 14px!important;font-size:13px!important;flex:none}
 .it.cr .stp .sb{position:static!important}
+.pubs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}.pubs::-webkit-scrollbar{display:none}
+.pubi{flex:none;width:100%;scroll-snap-align:start;position:relative;background:#111}
+.pubi video{width:100%;height:190px;object-fit:contain;background:#000;display:block}
+.pubc2{padding:8px 14px 12px;color:#fff}.pubc2 b{display:block;color:#F5B800;font-size:14px;font-weight:900}.pubc2 span{font-size:12px}
+.pubd{position:absolute;right:12px;top:14px;display:flex;gap:5px;z-index:2}.pubd i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5)}.pubd i.on{background:#F5B800}
 </style>
 </head>
 <body class="lock">
@@ -1003,7 +1007,7 @@ const TRAVAUX=[{n:"Électricien",d:"Dépannage et installation électrique.",img
 {n:"Peintre",d:"Peinture et décoration maison.",img:'oda-p15.jpg',i:'tv5',e:'🔧',code:'ODA-T05',devis:1,sec:'travaux'},
 {n:"Maçon",d:"Construction et carrelage.",img:'oda-p16.jpg',i:'tv6',e:'🔧',code:'ODA-T06',devis:1,sec:'travaux'}];
 // Service colis et Transport : exemples à compléter, prix sur devis
-const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[],PHARMA_ITEMS=[];
+const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[],PHARMA_ITEMS=[],ANNONCES=[];
 const TRANSP=[{n:"Citerne d'eau",d:"Livraison d'eau en citerne pour maison, chantier ou jardin.",img:'oda-p17.jpg',i:'tr1',e:'🚚',code:'ODA-C01',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion de sable",d:"Sable de construction livré directement sur votre chantier.",img:'oda-p18.jpg',i:'tr2',e:'🚚',code:'ODA-C02',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion d'argile",d:"Argile et terre rouge pour banco, briques et remblai.",img:'oda-p19.jpg',i:'tr3',e:'🚚',code:'ODA-C03',devis:1,sec:'transport',sub:'camion'},
@@ -1159,7 +1163,7 @@ async function chargerBoutique(){
 // ===== Produits ajoutés depuis la page de gestion (admin.html) : base Supabase, lecture seule =====
 const DB_URL='https://bjapfgvqkuoaqsjtzqbz.supabase.co';
 const DB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYXBmZ3Zxa3VvYXFzanR6cWJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2MTU0NjUsImV4cCI6MjEwODE5MTQ2NX0.u4c3TFvk46nXXn4fQf2sUG-ZejAQHefXH1UmQ38ZJTI'; // clé publique (anon)
-const DB_SEC={boutique:[NEUFS,'🛍️'],marketplace:[OCCAS,'♻️'],automobile:[AUTOS,'🚗'],vivrier:[VIVRIERS,'🌾'],immobilier:[IMMO,'🏢'],travaux:[TRAVAUX,'🛠️'],colis:[COLIS,'📦'],longrich:[LONGRICH,'🌿'],gaz:[GAZ,'🔥'],patisserie:[PATIS,'🎂'],transport:[TRANSP,'🚚']};
+const DB_SEC={boutique:[NEUFS,'🛍️'],marketplace:[OCCAS,'♻️'],automobile:[AUTOS,'🚗'],vivrier:[VIVRIERS,'🌾'],immobilier:[IMMO,'🏢'],travaux:[TRAVAUX,'🛠️'],colis:[COLIS,'📦'],longrich:[LONGRICH,'🌿'],annonce:[ANNONCES,'📢'],gaz:[GAZ,'🔥'],patisserie:[PATIS,'🎂'],transport:[TRANSP,'🚚']};
 const DEFB={};
 function appliquerBase(rows,info){
   if(info&&info.whatsapp){const d=String(info.whatsapp).replace(/\D/g,'');if(d.length>=8)NUM=d}
@@ -1385,8 +1389,11 @@ const saveP=()=>{try{localStorage.setItem('oda_panier',JSON.stringify(P))}catch(
 // Écran de publicité en haut du panier : une vidéo (lien) ou, à défaut, une photo. À changer ici : video = lien d'une vidéo, img = photo.
 const PUB={video:'',img:'oda-p38.jpg',t:'NOS NOUVEAUTÉS',d:'Découvre ce qui est nouveau chez ODA SHOP'};
 function drawPub(){
-  const m=PUB.video?'<video src="'+esc(PUB.video)+'" poster="'+esc(PUB.img)+'" controls playsinline preload="none"></video>':'<img src="'+esc(PUB.img)+'" alt="">';
-  $('pub').innerHTML='<div class="pubx g"><span class="pubt">▶ PUBLICITÉ</span>'+m+'<div class="pubc"><b>'+esc(PUB.t)+'</b><span>'+esc(PUB.d)+'</span></div></div>';
+  const l=ANNONCES.length?ANNONCES:[{n:PUB.t,d:PUB.d,img:PUB.img,vid:PUB.video}];
+  $('pub').innerHTML='<div class="pubx g"><span class="pubt">▶ PUBLICITÉ</span><div class="pubs">'+l.map(a=>{const im=a.img||a.imgs&&a.imgs[0]||'';
+    return '<div class="pubi">'+(a.vid?'<video src="'+esc(a.vid)+'"'+(im?' poster="'+esc(im)+'"':'')+' controls playsinline preload="metadata"></video><div class="pubc2"><b>'+esc(a.n)+'</b>'+(a.d?'<span>'+esc(a.d)+'</span>':'')+'</div>':
+      (im?'<img src="'+esc(im)+'" alt="">':'')+'<div class="pubc"><b>'+esc(a.n)+'</b>'+(a.d?'<span>'+esc(a.d)+'</span>':'')+'</div>')+'</div>'}).join('')+'</div>'+(l.length>1?'<div class="pubd">'+l.map((_,i)=>'<i'+(i?'':' class="on"')+'></i>').join('')+'</div>':'')+'</div>';
+  const sc=$('pub').querySelector('.pubs');if(sc&&l.length>1)sc.onscroll=()=>{const i=Math.round(sc.scrollLeft/sc.clientWidth);$('pub').querySelectorAll('.pubd i').forEach((d,k)=>d.classList.toggle('on',k===i))};
 }
 let catF='';
 const CATS=[['','Tout'],['vivrier','Vivriers'],['gaz','Gaz'],['patisserie','Pâtisserie'],['longrich','Longrich']];
