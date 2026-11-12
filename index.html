@@ -829,6 +829,29 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 #v-accueil:not([hidden]){height:calc(100dvh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}
 @supports not (height:100dvh){#v-accueil:not([hidden]){height:calc(100vh - 104px - env(safe-area-inset-top) - env(safe-area-inset-bottom))!important}}
 .sheet,.auth,#auth{padding-top:env(safe-area-inset-top)}
+
+/* panier : publicité en haut, liste, total fixe en bas */
+.pubx{position:relative;border-radius:22px;overflow:hidden;margin-bottom:14px;background:#111;border:1.5px solid rgba(245,184,0,.55)}
+.pubx img,.pubx video{display:block;width:100%;height:168px;object-fit:cover}
+.pubt{position:absolute;left:10px;top:10px;z-index:2;background:rgba(0,0,0,.65);color:#F5B800;font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:10px}
+.pubc{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;background:linear-gradient(to top,rgba(0,0,0,.82),transparent);pointer-events:none}
+.pubc b{display:block;color:#F5B800;font-size:15px;font-weight:900}.pubc span{color:#fff;font-size:12px}
+.pubx video~.pubc{display:none}
+.cth{font-size:15px;font-weight:800;margin:4px 2px 10px}.cth span{color:#8a8a8a;font-weight:600}
+.itg{display:inline-block;background:#F5B800;color:#111;font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:8px;margin-bottom:3px}
+#v-panier{padding-bottom:20px}
+#bas{position:sticky;bottom:96px;z-index:30;margin-top:12px;padding:6px 0 2px;background:linear-gradient(to top,var(--bg,#fff) 70%,transparent)}
+#bas .tot{margin:0 0 8px}
+.stp{display:flex;align-items:center;gap:8px;flex:1;min-width:0}
+.stp .plus{width:100%}
+.stp .sb{width:34px;height:34px;border-radius:50%;border:0;background:linear-gradient(180deg,var(--y2),var(--y));font-weight:900;font-size:19px;color:#161616;box-shadow:0 3px 8px rgba(245,184,0,.4)}
+.stp b{min-width:22px;text-align:center;font-size:15px}
+
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1.5px solid rgba(217,162,26,.6);background:transparent;color:inherit;font-weight:700;font-size:13px;padding:7px 14px;border-radius:18px}
+.chip.on{background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;border-color:transparent}
+.it.cr .stp{flex:none;width:auto}.it.cr .stp .plus{width:auto;padding:8px 14px;font-size:13px}
+#cat{margin-top:18px;padding-bottom:6px}
 </style>
 </head>
 <body class="lock">
@@ -862,7 +885,9 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 
 <div id="v-panier" hidden>
   <h1>🛒 Mon panier</h1>
+  <div id="pub"></div>
   <div id="liste"></div>
+  <div id="cat"></div>
   <div id="bas"></div>
 </div>
 
@@ -975,7 +1000,7 @@ const TRAVAUX=[{n:"Électricien",d:"Dépannage et installation électrique.",img
 {n:"Peintre",d:"Peinture et décoration maison.",img:'oda-p15.jpg',i:'tv5',e:'🔧',code:'ODA-T05',devis:1,sec:'travaux'},
 {n:"Maçon",d:"Construction et carrelage.",img:'oda-p16.jpg',i:'tv6',e:'🔧',code:'ODA-T06',devis:1,sec:'travaux'}];
 // Service colis et Transport : exemples à compléter, prix sur devis
-const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[];
+const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[],PHARMA_ITEMS=[];
 const TRANSP=[{n:"Citerne d'eau",d:"Livraison d'eau en citerne pour maison, chantier ou jardin.",img:'oda-p17.jpg',i:'tr1',e:'🚚',code:'ODA-C01',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion de sable",d:"Sable de construction livré directement sur votre chantier.",img:'oda-p18.jpg',i:'tr2',e:'🚚',code:'ODA-C02',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion d'argile",d:"Argile et terre rouge pour banco, briques et remblai.",img:'oda-p19.jpg',i:'tr3',e:'🚚',code:'ODA-C03',devis:1,sec:'transport',sub:'camion'},
@@ -997,23 +1022,26 @@ const cardImmo=p=>{const c=(p.imgs&&p.imgs[0])||p.img||'',nb=(p.imgs||[]).length
   <div class="imrt"><div class="imrh"><span class="imrk">${p.sec==='automobile'?'AUTO':(SUBK[p.sub]||'ANNONCE')}</span>${p.code?'<span class="imrc">'+esc(p.code)+'</span>':''}</div>
   <b>${esc(p.n)}</b><span class="imrd">${esc(p.d||'')}</span><span class="imrx">${prix(p)}</span></div>
   <button class="imrs" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div>`};
+const cartQty=k=>{try{const l=JSON.parse(localStorage.getItem('oda_panier')||'[]').find(x=>x.id===k);return l?l.q:0}catch(e){return 0}};
+const stepHTML=k=>{const q=cartQty(k);return q?'<button class="sb" type="button" data-a2="-" data-k="'+esc(k)+'" aria-label="Moins">−</button><b>'+q+'</b><button class="sb" type="button" data-a2="+" data-k="'+esc(k)+'" aria-label="Plus">+</button>':'<button class="pkc plus" type="button" data-a2="+" data-k="'+esc(k)+'">＋ Ajouter</button>'};
 const card=(p,b)=>{if(p.sec==='immobilier'||p.sec==='automobile')return cardImmo(p);const s=imgOf(p);
   return `<div class="pk${p.sub==='moto'?' fitc':''}"><div class="pki">${p.imgs&&p.imgs.length>1&&!p.vid?'<div class="sl">'+p.imgs.map(u=>'<img src="'+esc(u)+'" alt="" loading="lazy" decoding="async" data-zoom="'+esc(p.i)+'" data-e="'+(p.e||'🛍️')+'">').join('')+'</div><span class="pn">1/'+p.imgs.length+'</span>':p.vid?'<video src="'+esc(p.vid)+'"'+(s?' poster="'+esc(s)+'"':'')+' controls playsinline preload="metadata"></video>':s?'<img src="'+esc(s)+'" alt="" loading="lazy" decoding="async" data-zoom="'+esc(p.i)+'" data-e="'+(p.e||'🛍️')+'">':'<div class="pe2">'+(p.e||'🛍️')+'</div>'}${p.code?'<span class="pcode">'+esc(p.code)+'</span>':''}${b?'<span class="ptag">'+esc(b)+'</span>':''}${p.vid||(p.imgs&&p.imgs.length>1)?'':'<span class="pzm">🔍</span>'}</div>
   <div class="pkb"><div class="pkn">${esc(p.n)}</div><div class="pkp">${prix(p)}</div><div class="pkd">${esc(p.d||p.resto||'')}</div>
-  <div class="pkr">${p.v?'<button class="pkc" type="button" data-add="'+esc(p.i)+'">🛒 Ajouter</button>':'<button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Commander</button>'}<button class="pks" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div></div></div>`};
+  <div class="pkr">${p.v?'<div class="stp" data-stp="'+esc(p.i)+'">'+stepHTML(p.i)+'</div>':'<button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Commander</button>'}<button class="pks" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div></div></div>`};
 
 // Services qui défilent toutes les 2 secondes. Le client touche un service pour voir SES produits
 const BT={'PRODUITS NEUFS':'Habits, chaussures, accessoires, meubles - tout neuf, bientôt à Agadez.',"PRODUITS D'OCCASION":'Motos, voitures, meubles, téléphones - comme au marché.','PRODUITS VIVRIERS':"Riz, mil, haricots, légumes - frais d'Agadez.",'LIVRAISON NOURRITURE':'Riz + sauce, grillade, brochettes - livré sur moto à Agadez.','PHARMACIE':'Médicaments et livraison rapide à Agadez.','IMMOBILIER':'Maisons à vendre, chambres à louer, terrains à Agadez.','TRANSPORT':'Camion sable, camion vidange, engrais, 10 tonnes.','TRAVAUX À DOMICILE':'Soudeur, maçon, menuisier, plombier du quartier.','SERVICE COLIS ODA':'Gaz, gâteaux, eau, colis - Livreur ODA qui fait aller-retour pour toi à Agadez.'};
 const bientot=sv=>'<div class="bt-box"><h3>BIENTÔT 🚀</h3><p>'+esc(BT[sv.t]||sv.h)+'</p><a class="bt-wa" data-wasvc="'+esc(sv.t)+'">Demander sur WhatsApp →</a></div>';
 const SOON='Aucun produit pour le moment.';
 // Pour mettre une photo à un service : remplace photo:'' par photo:'nom-du-fichier.jpg' (fichier déposé à côté de index.html)
+PHARMA_ITEMS.push(...LONGRICH);
 const SERVICES=[
  {t:'PRODUITS NEUFS',h:'Boutique neuve',b:'NEUF',items:NEUFS,e:'🛍️',photo:'oda-p27.jpg'},
  {t:"PRODUITS D'OCCASION",h:'Marché occasion',b:'OCCASION',items:OCCAS,e:'♻️',photo:'oda-p28.jpg'},
  {t:'AUTOMOBILE',h:'Automobile',b:'AUTO',items:AUTOS,e:'🚗',photo:'oda-p29.jpg'},
  {t:'PRODUITS VIVRIERS',h:'Produits vivriers',b:'VIVRIER',items:VIVRIERS,e:'🌾',photo:'oda-p30.jpg'},
  {t:'LIVRAISON NOURRITURE',h:'Livraison nourriture',cta:{e:'🍽️',t:'Commande ton repas',d:"Dis-nous ton restaurant et tes plats : ODA achète et te livre chez toi à Agadez.",b:'Commander un repas',view:'food'},e:'🍔',photo:'oda-p31.jpg'},
- {t:'PHARMACIE',h:'Pharmacie',b:'LONGRICH',items:LONGRICH,e:'💊',photo:'oda-p32.jpg',places:[
+ {t:'PHARMACIE',h:'Pharmacie',b:'LONGRICH',items:PHARMA_ITEMS,e:'💊',photo:'oda-p32.jpg',places:[
    {n:'Pharmacie Agadez',d:'Envoie ton ordonnance, on livre discrètement',e:'💊',view:'pharma',photo:'oda-p45.jpg',lab:1},
    {n:'Maison Longrich',d:'Produits Longrich · Toutes les régions',e:'🌿',sub:'longrich',photo:'oda-p33.jpg'}]},
  {t:'IMMOBILIER',h:'Immobilier',immo:1,places:[{n:'Maisons à vendre',d:'Acheter une maison à Agadez.',e:'🏠',sub:'vente',photo:'oda-p47.jpg',lab:1},{n:'Maisons à louer',d:'Trouver une maison à louer.',e:'🏠',sub:'location',photo:'oda-p48.jpg',lab:1},{n:'Boutiques à vendre',d:'Acheter un local commercial.',e:'🏪',sub:'boutique_vente',photo:'oda-p49.jpg',lab:1},{n:'Boutiques à louer',d:'Louer un local commercial.',e:'🏪',sub:'boutique_location',photo:'oda-p50.jpg',lab:1},{n:'Acheter un terrain',d:'Terrains à vendre à Agadez.',e:'🏞️',sub:'terrain',photo:'oda-p51.jpg',lab:1}],items:IMMO,e:'🏢',photo:'oda-p34.jpg'},
@@ -1139,15 +1167,19 @@ function appliquerBase(rows,info){
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
-      i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:r.section==='vivrier'?1:0})});
+      i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
+  Object.keys(dbSeen).forEach(k=>{if(!par[k]&&DB_SEC[k]&&!(REGION==='agadez'&&(k==='travaux'||k==='transport')))DB_SEC[k][0].length=0});
+  Object.keys(par).forEach(k=>dbSeen[k]=1);
   Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
     if(REGION==='agadez'&&(k==='travaux'||k==='transport')){ // catalogue de base : une fiche de la base (même code) remplace celle de l'application ; la photo de base reste si aucune n'a été changée
       DEFB[k]=DEFB[k]||a.slice();const byC={};par[k].forEach(r=>{if(r.code)byC[r.code]=r});const used={};
       const m=DEFB[k].map(d=>{const r=byC[d.code];if(!r)return d;used[d.code]=1;return Object.assign({},d,r,{img:r.img||d.img,imgs:r.imgs&&r.imgs.length?r.imgs:[],sub:r.sub||d.sub})});
       a.length=0;a.push(...m,...par[k].filter(r=>!used[r.code]))}
     else{a.length=0;a.push(...par[k])}});  // une section qui a de vrais produits remplace les exemples
+  PHARMA_ITEMS.length=0;PHARMA_ITEMS.push(...LONGRICH);
   showService(cur);bnames(si);if($('q').value.trim())chercher();
 }
+let lastSig='',dbSeen={};
 async function chargerBase(){
   try{
     const hd={headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY}};
@@ -1155,12 +1187,17 @@ async function chargerBase(){
       fetch(DB_URL+'/rest/v1/regions?select=slug,name,whatsapp,active&slug=eq.'+REGION,hd).catch(()=>null)]);
     if(!r.ok)throw new Error('HTTP '+r.status);
     const rows=await r.json();let info=null;try{if(ri&&ri.ok){const a=await ri.json();info=a[0]||null}}catch(e){}
-    try{localStorage.setItem('oda_db_'+REGION,JSON.stringify({rows,info}))}catch(e){}
+    const sig=JSON.stringify([rows,info]);if(sig===lastSig)return; // rien n'a changé : on ne redessine pas
+    lastSig=sig;try{localStorage.setItem('oda_db_'+REGION,JSON.stringify({rows,info}))}catch(e){}
     appliquerBase(rows,info);
   }catch(e){let c=null;try{c=JSON.parse(localStorage.getItem('oda_db_'+REGION)||'null')}catch(x){}
     if(c)appliquerBase(c.rows||[],c.info||null);else appliquerBase([],null)}   // hors ligne : derniers produits connus   // hors ligne : derniers produits connus
 }
 chargerBase().finally(()=>{neufEtat='ok';if(cur===0)showService(0);bnames(si)});
+// mises à jour en direct : ce que l'admin change apparaît quand l'appli revient au premier plan, puis toutes les 45 s
+let dernRaf=Date.now();
+function rafraichir(){if(document.hidden||navigator.onLine===false||getL('oda_session')!=='1'||Date.now()-dernRaf<15000)return;dernRaf=Date.now();chargerBase()}
+document.addEventListener('visibilitychange',rafraichir);window.addEventListener('online',rafraichir);setInterval(rafraichir,45000);
 // ===== CARROUSEL DES SERVICES (style du site de référence) : on glisse ou on touche une carte pour voir ses produits =====
 const SVC_TXT={'PRODUITS NEUFS':['Habits, chaussures, accessoires, meubles - tout neuf','Voir la boutique →'],
  "PRODUITS D'OCCASION":['Téléphones, meubles, électroménager - comme au marché','Voir les occasions →'],
@@ -1234,21 +1271,27 @@ document.addEventListener('click',async e=>{
 });
 // Produit vivrier : le bouton + l'ajoute au panier
 
-const allItems=()=>SERVICES.flatMap(s=>s.items||[]);
-function ajouter(k){
-  const p=allItems().find(x=>x.i===k);if(!p)return;
-  let P=[];try{P=JSON.parse(localStorage.getItem('oda_panier')||'[]')}catch(e){}
-  const l=P.find(x=>x.id===k);
-  if(l)l.q++;else P.push({id:k,n:p.n,p:p.p,q:1,img:imgOf(p),e:p.e,code:p.code||''});
+const CONSO=()=>[...VIVRIERS,...GAZ,...PATIS,...LONGRICH].filter(p=>p.v);
+const allItems=()=>[...SERVICES.flatMap(s=>s.items||[]),...GAZ,...PATIS];
+const SECLAB={boutique:'BOUTIQUE NEUVE',marketplace:'OCCASION',automobile:'AUTOMOBILE',vivrier:'VIVRIER',longrich:'LONGRICH',gaz:'GAZ',patisserie:'PÂTISSERIE',immobilier:'IMMOBILIER',transport:'TRANSPORT',travaux:'TRAVAUX',colis:'COLIS'};
+function changerPanier(k,d){
+  const p=allItems().find(x=>x.i===k);let P=[];try{P=JSON.parse(localStorage.getItem('oda_panier')||'[]')}catch(e){}
+  let l=P.find(x=>x.id===k);
+  if(!l){if(d<0||!p)return;l={id:k,n:p.n,p:p.p,q:0,img:imgOf(p),e:p.e,code:p.code||'',tag:SECLAB[p.sec]||''};P.push(l)}
+  l.q+=d;if(l.q<1)P=P.filter(x=>x!==l);
   try{localStorage.setItem('oda_panier',JSON.stringify(P))}catch(e){}
-  const n=P.reduce((a,x)=>a+x.q,0);
-  const tt=$('toast');tt.innerText='🛒 Ajouté au panier ('+n+')';tt.style.opacity=1;setTimeout(()=>tt.style.opacity=0,1800);
+  document.querySelectorAll('[data-stp]').forEach(el=>{if(el.dataset.stp===k)el.innerHTML=stepHTML(k)});
+  if(!$('v-panier').hidden)drawPanier(true);
+  if(d>0){const n=P.reduce((a,x)=>a+x.q,0);const tt=$('toast');tt.innerText='🛒 Ajouté au panier ('+n+')';tt.style.opacity=1;setTimeout(()=>tt.style.opacity=0,1200)}
 }
+const ajouter=k=>changerPanier(k,1);
 
 // Menu et pages pas encore prêtes
 document.addEventListener('click',e=>{
   const o=e.target.closest('[data-cmd]');if(o){commander(o.dataset.cmd);return}
   const c=e.target.closest('[data-add]');if(c)ajouter(c.dataset.add);
+  const cc=e.target.closest('[data-cat]');if(cc){catF=cc.dataset.cat;drawCatalogue();return}
+  const c2=e.target.closest('[data-a2]');if(c2){changerPanier(c2.dataset.k,c2.dataset.a2==='+'?1:-1);return}
   const s=e.target.closest('[data-soon]');
   if(s){e.preventDefault();const t=$('toast');t.innerText='Bientôt disponible';t.style.opacity=1;setTimeout(()=>t.style.opacity=0,1800);}
 });
@@ -1336,19 +1379,36 @@ async function envoyerCommande(corps,num,photo){
 let P=[];
 const loadP=()=>{try{P=JSON.parse(localStorage.getItem('oda_panier')||'[]')}catch(e){P=[]}};
 const saveP=()=>{try{localStorage.setItem('oda_panier',JSON.stringify(P))}catch(e){}};
-function drawPanier(){
-  loadP();
+// Écran de publicité en haut du panier : une vidéo (lien) ou, à défaut, une photo. À changer ici : video = lien d'une vidéo, img = photo.
+const PUB={video:'',img:'oda-p38.jpg',t:'NOS NOUVEAUTÉS',d:'Découvre ce qui est nouveau chez ODA SHOP'};
+function drawPub(){
+  const m=PUB.video?'<video src="'+esc(PUB.video)+'" poster="'+esc(PUB.img)+'" controls playsinline preload="none"></video>':'<img src="'+esc(PUB.img)+'" alt="">';
+  $('pub').innerHTML='<div class="pubx g"><span class="pubt">▶ PUBLICITÉ</span>'+m+'<div class="pubc"><b>'+esc(PUB.t)+'</b><span>'+esc(PUB.d)+'</span></div></div>';
+}
+let catF='';
+const CATS=[['','Tout'],['vivrier','Vivriers'],['gaz','Gaz'],['patisserie','Pâtisserie'],['longrich','Longrich']];
+function drawCatalogue(){
+  const l=CONSO(),el=$('cat');if(!el)return;
+  if(!l.length){el.innerHTML='';return}
+  const pres=CATS.filter(c=>!c[0]||l.some(p=>p.sec===c[0]));if(!pres.some(c=>c[0]===catF))catF='';
+  const vis=l.filter(p=>!catF||p.sec===catF);
+  el.innerHTML='<div class="cth">Ajouter des produits</div><div class="chips">'+pres.map(c=>'<button type="button" class="chip'+(c[0]===catF?' on':'')+'" data-cat="'+c[0]+'">'+c[1]+'</button>').join('')+'</div>'+
+    vis.map(p=>{const im=imgOf(p);return '<div class="it g cr">'+(im?'<img src="'+esc(im)+'" alt="" loading="lazy">':'<div class="ee">'+(p.e||'🛒')+'</div>')+'<div class="in"><span class="itg">'+esc(SECLAB[p.sec]||'')+'</span><div class="n">'+esc(p.n)+'</div><div class="p">'+(p.p>0?fmt(p.p):'Sur devis')+'</div></div><div class="stp" data-stp="'+esc(p.i)+'">'+stepHTML(p.i)+'</div></div>'}).join('');
+}
+function drawPanier(leger){
+  loadP();if(!leger){drawPub();drawCatalogue()}
   if(!P.length){
     $('liste').innerHTML='<div class="bt-box cartvide"><svg viewBox="0 0 24 24" width="56" height="56" fill="none" stroke="#3b82c4" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 3.5h2.7l2.2 11.2a1.5 1.5 0 0 0 1.5 1.2h8.3a1.5 1.5 0 0 0 1.5-1.1L20.5 8H6"/><circle cx="9.5" cy="20" r="1.4"/><circle cx="17" cy="20" r="1.4"/></svg><h4>Aucun produit ajouté</h4><p>Tu n\'as encore rien ajouté.<br>C\'est vide pour le moment.</p><a class="bt-back" href="#accueil" data-v="accueil">← Retour à l\'Accueil</a></div>';
     $('bas').innerHTML='';return;
   }
-  $('liste').innerHTML=P.map((p,i)=>`<div class="it g">${p.img?`<img src="${esc(p.img)}" alt="">`:(p.e?`<div class="ee">${p.e}</div>`:'')}<div class="in"><div class="n">${esc(p.n)}</div><div class="p">${fmt(p.p*p.q)}</div></div><div class="q"><button data-a="-" data-i="${i}">−</button><b>${p.q}</b><button data-a="+" data-i="${i}">+</button></div><button class="rm" data-a="x" data-i="${i}" aria-label="Retirer">✕</button></div>`).join('');
-  const total=P.reduce((a,p)=>a+p.p*p.q,0);
-  $('bas').innerHTML=`<div class="tot"><span>Total</span><span>${fmt(total)}</span></div><button class="cmd" id="cmd">🟢 Commander sur WhatsApp</button>`;
+  const nb=P.reduce((a,p)=>a+p.q,0);
+  $('liste').innerHTML='<div class="cth">Mon panier <span>('+nb+' article'+(nb>1?'s':'')+')</span></div>'+P.map((p,i)=>`<div class="it g">${p.img?`<img src="${esc(p.img)}" alt="">`:(p.e?`<div class="ee">${p.e}</div>`:'')}<div class="in">${p.tag?`<span class="itg">${esc(p.tag)}</span>`:''}<div class="n">${esc(p.n)}</div><div class="p">${p.p>0?fmt(p.p*p.q):'Sur devis'}</div></div><div class="q"><button data-a="-" data-i="${i}">−</button><b>${p.q}</b><button data-a="+" data-i="${i}">+</button></div><button class="rm" data-a="x" data-i="${i}" aria-label="Retirer">✕</button></div>`).join('');
+  const total=P.reduce((a,p)=>a+(p.p>0?p.p*p.q:0),0),devis=P.some(p=>!(p.p>0));
+  $('bas').innerHTML=`<div class="tot"><span>Total</span><span>${fmt(total)}${devis?' <small>+ devis</small>':''}</span></div><button class="cmd" id="cmd">🟢 Commander sur WhatsApp</button>`;
   $('cmd').onclick=()=>{
     const g=k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}};
-    const lignes=P.map(p=>`- ${p.q} x ${p.n}${p.code?' ['+p.code+']':''} (${fmt(p.p*p.q)})`).join('\n');
-    const msg=`Salam ODA SHOP, je veux commander :\n${lignes}\nTotal : ${fmt(total)}\nNom : ${g('oda_nom')}\nTéléphone : ${g('oda_tel')}\nVille : ${g('oda_ville')||'Agadez'}`;
+    const lignes=P.map(p=>`- ${p.q} x ${p.n}${p.code?' ['+p.code+']':''} (${p.p>0?fmt(p.p*p.q):'sur devis'})`).join('\n');
+    const msg=`Salam ODA SHOP, je veux commander :\n${lignes}\n\nTotal : ${fmt(total)}${devis?' (+ articles sur devis)':''}\nNom : ${g('oda_nom')}\nTéléphone : ${g('oda_tel')}\nVille : ${g('oda_ville')||'Agadez'}`;
     envoyerCommande(msg);
   };
 }
@@ -1497,7 +1557,7 @@ const TR={
 'JE VEUX ENVOYER UN COLIS':['I WANT TO SEND A PARCEL','أريد إرسال طرد','INA SON IN AIKA KUNSHI'],'JE VEUX RÉCUPÉRER UN COLIS':['I WANT TO PICK UP A PARCEL','أريد استلام طرد','INA SON IN KARBI KUNSHI'],'CHOISIR MA COMPAGNIE':['CHOOSE MY COMPANY','اختيار شركتي','ZAɓI KAMFANINA'],
 "Tu as une marchandise à déposer. Donne-nous les détails, on s'en occupe.":['You have goods to drop off. Give us the details, we handle it.','لديك بضاعة لإيداعها. أعطنا التفاصيل ونحن نتكفل بها.','Kana da kaya da za a kai. Ba mu bayani, mu yi maka.'],
 "On t'a envoyé un colis ? Envoie-nous ta carte, on part le récupérer et on te livre.":['Someone sent you a parcel? Send us your card, we pick it up and deliver it.','أُرسل لك طرد؟ أرسل لنا بطاقتك، نستلمه ونوصله إليك.','An aiko maka kunshi? Aiko mana katinka, mu karɓo mu kai maka.'],
-'Sonef, Rimbo, et autres. Dis-nous la compagnie et on fait le dépôt ou le retrait.':['Sonef, Rimbo, and others. Tell us the company and we do the drop-off or pick-up.','سونيف، ريمبو، وغيرهما. أخبرنا بالشركة ونقوم بالإيداع أو الاستلام.','Sonef, Rimbo, da sauransu. Faɗa mana kamfanin, mu kai ko mu karɓo.'],
+'Ajouter des produits':['Add products','أضف منتجات','Ƙara kaya'],'Tout':['All','الكل','Duka'],'Vivriers':['Food','غذائية','Abinci'],'Pharmacie':['Pharmacy','صيدلية','Kantin magani'],'Gaz':['Gas','غاز','Gas'],'Pâtisserie':['Pastry','حلويات','Waina'],'Longrich':['Longrich','Longrich','Longrich'],'Produits pharmaceutiques':['Pharmaceutical products','منتجات صيدلانية','Kayan magani'],'Médicaments et produits de santé, livrés chez toi.':['Medicines and health products delivered to you.','أدوية ومنتجات صحية تصلك إلى بابك.','Ana kai maka magunguna har gida.'],'＋ Ajouter':['＋ Add','＋ أضف','＋ Ƙara'],'▶ PUBLICITÉ':['▶ ADVERTISEMENT','▶ إعلان','▶ TALLA'],'NOS NOUVEAUTÉS':['WHAT\'S NEW','جديدنا','SABBIN KAYAYYAKI'],'Découvre ce qui est nouveau chez ODA SHOP':['Discover what\'s new at ODA SHOP','اكتشف الجديد في ODA SHOP','Gano sabbin kayayyaki a ODA SHOP'],'Mon panier':['My cart','سلتي','Kwandona'],'Total':['Total','المجموع','Jimla'],'Envoyer ou récupérer un colis.':['Send or pick up a parcel.','إرسال طرد أو استلامه.','Aika ko karɓar kunshi.'],'On fait tes courses au marché.':['We do your market shopping.','نتسوق لك من السوق.','Muna yi maka sayayya a kasuwa.'],'Bouteilles de gaz livrées chez toi.':['Gas bottles delivered to your door.','أسطوانات الغاز تصلك إلى بابك.','Ana kai maka kwalbar gas har gida.'],'Gâteaux frais livrés chez toi.':['Fresh cakes delivered to your door.','حلويات طازجة تصلك إلى بابك.','Ana kai maka waina sabuwa har gida.'],'Sonef, Rimbo, et autres. Dis-nous la compagnie et on fait le dépôt ou le retrait.':['Sonef, Rimbo, and others. Tell us the company and we do the drop-off or pick-up.','سونيف، ريمبو، وغيرهما. أخبرنا بالشركة ونقوم بالإيداع أو الاستلام.','Sonef, Rimbo, da sauransu. Faɗa mana kamfanin, mu kai ko mu karɓo.'],
 '📞 Appeler le service':['📞 Call the service','📞 اتصل بالخدمة','📞 Kira sabis'],'🟢 WhatsApp':['🟢 WhatsApp','🟢 واتساب','🟢 WhatsApp'],
 '📍 Autre ville':['📍 Other city','📍 مدينة أخرى','📍 Wani gari'],'Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],'commander ?':['order?','؟','?'],'Recherche ta ville dans la liste A-Z.':['Search your city in the A-Z list.','ابحث عن مدينتك في القائمة أ-ي.','Nemi garinka a jerin A-Z.'],'Aucune ville trouvée':['No city found','لم يتم العثور على مدينة','Ba a sami gari ba'],'@Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],
 'Électricien':['Electrician','كهربائي','Ma\'aikacin lantarki'],'Plombier':['Plumber','سباك','Mai famfo'],'Soudeur':['Welder','لحام','Maƙeri'],'Menuisier':['Carpenter','نجار','Kafinta'],'Peintre':['Painter','دهان','Mai fenti'],'Maçon':['Mason','بنّاء','Magini'],
