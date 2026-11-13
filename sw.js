@@ -1,7 +1,7 @@
 // ODA SHOP : service worker (installation + ouverture même sans réseau)
-const V='oda-v70';
+const V='oda-v72';
 const FILES=['./','index.html','manifest.json','icon-192.png','icon-512.png','icon-maskable-512.png',
-'oda-p01.jpg','oda-p02.jpg','oda-p03.png','oda-p04.png','oda-p05.png','oda-p06.png','oda-p07.png','oda-p08.png','oda-p09.png','oda-p10.png','oda-p11.jpg','oda-p12.jpg','oda-p13.jpg','oda-p14.jpg','oda-p15.jpg','oda-p16.jpg','oda-p17.jpg','oda-p18.jpg','oda-p19.jpg','oda-p20.jpg','oda-p21.jpg','oda-p22.jpg','oda-p23.jpg','oda-p24.jpg','oda-p25.jpg','oda-p26.jpg','oda-p27.jpg','oda-p28.jpg','oda-p29.jpg','oda-p30.jpg','oda-p31.jpg','oda-p32.jpg','oda-p33.jpg','oda-p34.jpg','oda-p35.jpg','oda-p36.jpg','oda-p37.jpg','oda-p38.jpg','oda-p39.jpg','oda-p40.png','oda-p41.jpg','oda-p42.jpg','oda-p43.jpg','oda-p44.jpg','oda-p45.jpg','oda-p46.jpg','oda-p47.jpg','oda-p48.jpg','oda-p49.jpg','oda-p50.jpg','oda-p51.jpg','oda-p52.jpg','oda-p53.jpg','oda-p54.jpg'];
+'oda-p01.jpg','oda-p02.jpg','oda-p03.png','oda-p04.png','oda-p05.png','oda-p06.png','oda-p07.png','oda-p08.png','oda-p09.png','oda-p10.png','oda-p11.jpg','oda-p12.jpg','oda-p13.jpg','oda-p14.jpg','oda-p15.jpg','oda-p16.jpg','oda-p17.jpg','oda-p18.jpg','oda-p19.jpg','oda-p20.jpg','oda-p21.jpg','oda-p22.jpg','oda-p23.jpg','oda-p24.jpg','oda-p25.jpg','oda-p26.jpg','oda-p27.jpg','oda-p28.jpg','oda-p29.jpg','oda-p30.jpg','oda-p31.jpg','oda-p32.jpg','oda-p33.jpg','oda-p34.jpg','oda-p35.jpg','oda-p36.jpg','oda-p37.jpg','oda-p38.jpg','oda-p39.jpg','oda-p40.png','oda-p41.jpg','oda-p42.jpg','oda-p43.jpg','oda-p44.jpg','oda-p45.jpg','oda-p46.jpg','oda-p47.jpg','oda-p48.jpg','oda-p49.jpg','oda-p50.jpg','oda-p51.jpg','oda-p52.jpg','oda-p53.jpg','oda-p54.jpg','oda-p55.jpg'];
 self.addEventListener('install',e=>{
   e.waitUntil(caches.open(V).then(c=>Promise.allSettled(FILES.map(f=>c.add(f)))).then(()=>self.skipWaiting()));
 });
@@ -14,4 +14,16 @@ self.addEventListener('fetch',e=>{
   // réseau d'abord (les mises à jour arrivent tout de suite), cache si pas de réseau
   e.respondWith(fetch(e.request).then(r=>{const c=r.clone();caches.open(V).then(x=>x.put(e.request,c));return r})
     .catch(()=>caches.match(e.request).then(r=>r||caches.match('index.html'))));
+});
+
+self.addEventListener('push',e=>{
+  let d={};try{d=e.data?e.data.json():{}}catch(x){d={title:'ODA SHOP',body:e.data?e.data.text():''}}
+  e.waitUntil(self.registration.showNotification(d.title||'ODA SHOP',{body:d.body||'',icon:'icon-192.png',badge:'icon-192.png',data:{url:d.url||'./'}}));
+});
+self.addEventListener('notificationclick',e=>{
+  e.notification.close();
+  e.waitUntil(self.clients.matchAll({type:'window',includeUncontrolled:true}).then(l=>{
+    for(const c of l){if('focus' in c)return c.focus()}
+    return self.clients.openWindow((e.notification.data&&e.notification.data.url)||'./');
+  }));
 });

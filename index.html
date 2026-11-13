@@ -909,6 +909,8 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
     <button class="btn" id="sv">Enregistrer</button>
     <div id="ok">✅ Profil enregistré</div>
   </div>
+  <button class="btn" id="notif" type="button" hidden>🔔 Activer les notifications</button>
+  <div id="notifmsg" style="font-size:12px;color:#888;text-align:center;margin:6px 0"></div>
   <button class="btn pub" id="pub" type="button">📢 Contacter ODA SHOP pour publier un produit</button>
   <button class="out" id="out" type="button">Se déconnecter</button>
 </div>
@@ -1037,7 +1039,7 @@ const card=(p,b)=>{if(p.sec==='immobilier'||p.sec==='automobile')return cardImmo
   <div class="pkr">${p.v?'<div class="stp" data-stp="'+esc(p.i)+'">'+stepHTML(p.i)+'</div>':'<button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Commander</button>'}<button class="pks" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div></div></div>`};
 
 // Services qui défilent toutes les 2 secondes. Le client touche un service pour voir SES produits
-const BT={'PRODUITS NEUFS':'Habits, chaussures, accessoires, meubles - tout neuf, bientôt à Agadez.',"PRODUITS D'OCCASION":'Motos, voitures, meubles, téléphones - comme au marché.','PRODUITS VIVRIERS':"Riz, mil, haricots, légumes - frais d'Agadez.",'LIVRAISON NOURRITURE':'Riz + sauce, grillade, brochettes - livré sur moto à Agadez.','PHARMACIE':'Médicaments et livraison rapide à Agadez.','IMMOBILIER':'Maisons à vendre, chambres à louer, terrains à Agadez.','TRANSPORT':'Camion sable, camion vidange, engrais, 10 tonnes.','TRAVAUX À DOMICILE':'Soudeur, maçon, menuisier, plombier du quartier.','SERVICE COLIS ODA':'Gaz, gâteaux, eau, colis - Livreur ODA qui fait aller-retour pour toi à Agadez.'};
+const BT={'PRODUITS NEUFS':'Habits, chaussures, accessoires, meubles - tout neuf, bientôt à Agadez.',"PRODUITS D'OCCASION":'Motos, voitures, meubles, téléphones - comme au marché.','ALIMENTATION':"Riz, mil, haricots, légumes - frais d'Agadez.",'LIVRAISON NOURRITURE':'Riz + sauce, grillade, brochettes - livré sur moto à Agadez.','PHARMACIE':'Médicaments et livraison rapide à Agadez.','IMMOBILIER':'Maisons à vendre, chambres à louer, terrains à Agadez.','TRANSPORT':'Camion sable, camion vidange, engrais, 10 tonnes.','TRAVAUX À DOMICILE':'Soudeur, maçon, menuisier, plombier du quartier.','SERVICE COLIS ODA':'Gaz, gâteaux, eau, colis - Livreur ODA qui fait aller-retour pour toi à Agadez.'};
 const bientot=sv=>'<div class="bt-box"><h3>BIENTÔT 🚀</h3><p>'+esc(BT[sv.t]||sv.h)+'</p><a class="bt-wa" data-wasvc="'+esc(sv.t)+'">Demander sur WhatsApp →</a></div>';
 const SOON='Aucun produit pour le moment.';
 // Pour mettre une photo à un service : remplace photo:'' par photo:'nom-du-fichier.jpg' (fichier déposé à côté de index.html)
@@ -1046,7 +1048,7 @@ const SERVICES=[
  {t:'PRODUITS NEUFS',h:'Boutique neuve',b:'NEUF',items:NEUFS,e:'🛍️',photo:'oda-p27.jpg'},
  {t:"PRODUITS D'OCCASION",h:'Marché occasion',b:'OCCASION',items:OCCAS,e:'♻️',photo:'oda-p28.jpg'},
  {t:'AUTOMOBILE',h:'Automobile',b:'AUTO',items:AUTOS,e:'🚗',photo:'oda-p29.jpg'},
- {t:'PRODUITS VIVRIERS',h:'Produits vivriers',b:'VIVRIER',items:VIVRIERS,e:'🌾',photo:'oda-p30.jpg'},
+ {t:'ALIMENTATION',h:'Alimentation',b:'VIVRIER',items:VIVRIERS,e:'🌾',photo:'oda-p30.jpg'},
  {t:'LIVRAISON NOURRITURE',h:'Livraison nourriture',cta:{e:'🍽️',t:'Commande ton repas',d:"Dis-nous ton restaurant et tes plats : ODA achète et te livre chez toi à Agadez.",b:'Commander un repas',view:'food'},e:'🍔',photo:'oda-p31.jpg'},
  {t:'PHARMACIE',h:'Pharmacie',b:'LONGRICH',items:PHARMA_ITEMS,e:'💊',photo:'oda-p32.jpg',places:[
    {n:'Pharmacie Agadez',d:'Envoie ton ordonnance, on livre discrètement',e:'💊',view:'pharma',photo:'oda-p45.jpg',lab:1},
@@ -1209,7 +1211,7 @@ document.addEventListener('visibilitychange',rafraichir);window.addEventListener
 const SVC_TXT={'PRODUITS NEUFS':['Habits, chaussures, accessoires, meubles - tout neuf','Voir la boutique →'],
  "PRODUITS D'OCCASION":['Téléphones, meubles, électroménager - comme au marché','Voir les occasions →'],
  'AUTOMOBILE':['Voitures, motos, camions - à vendre','Voir les véhicules →'],
- 'PRODUITS VIVRIERS':["Riz, mil, haricots, légumes - frais d'Agadez",'Voir les produits →'],
+ 'ALIMENTATION':["Riz, mil, haricots, légumes - frais d'Agadez",'Voir les produits →'],
  'LIVRAISON NOURRITURE':['Riz, sauce, grillade - livré sur moto à Agadez','Commander à manger →'],
  'PHARMACIE':["Médicaments d'ici, paracétamol, sirop",'Demander →'],
  'IMMOBILIER':['Maisons, villas, chambres à louer + terrains','Voir les annonces →'],
@@ -1217,7 +1219,7 @@ const SVC_TXT={'PRODUITS NEUFS':['Habits, chaussures, accessoires, meubles - tou
  'TRAVAUX À DOMICILE':['Soudeur, maçon, menuisier, plombier du quartier','Trouver un travailleur →'],
  'SERVICE COLIS ODA':['Gaz, gâteaux, eau, colis - livreur ODA aller-retour','Envoyer un colis →']};
 const car=$('car'),dotsEl=$('dots');let autoUntil=0;
-const PHOTO_BANDEAU={'PRODUITS NEUFS':'oda-p38.jpg','SERVICE COLIS ODA':'oda-p39.jpg',
+const PHOTO_BANDEAU={'ALIMENTATION':'oda-p55.jpg','PRODUITS NEUFS':'oda-p38.jpg','SERVICE COLIS ODA':'oda-p39.jpg',
  'LIVRAISON NOURRITURE':'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80','PHARMACIE':'oda-p54.jpg','IMMOBILIER':'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80','TRANSPORT':'https://images.unsplash.com/photo-1519003722824-194d4455a60c?w=800&q=80','TRAVAUX À DOMICILE':'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80'};
 const PHOTO_ENTIERE={'PRODUITS NEUFS':1,'SERVICE COLIS ODA':1};
 car.innerHTML='<div class="trk" id="trk">'+SERVICES.slice(0,NSV).map((s,k)=>{const t=SVC_TXT[s.t]||[s.h,'Voir →'];
@@ -1498,7 +1500,7 @@ const TR={
 "PRODUITS D'OCCASION":['USED PRODUCTS','منتجات مستعملة','KAYAYYAKI NA AMFANI'],'AUTOMOBILE':['AUTOMOBILE','سيارات','MOTOCI'],'Voitures, motos, camions - à vendre':['Cars, motorbikes, trucks - for sale','سيارات ودراجات وشاحنات - للبيع','Motoci, babura, manyan motoci - na siyarwa'],'Voir les véhicules →':['See vehicles →','شاهد المركبات →','Duba ababen hawa →'],'Téléphones, meubles, électroménager - comme au marché':['Phones, furniture, appliances - like at the market','هواتف وأثاث وأجهزة - مثل السوق','Waya, kayan daki, na lantarki - kamar kasuwa'],
 'Motos, téléphones, meubles - comme au marché':['Motorbikes, phones, furniture - like at the market','دراجات، هواتف، أثاث - مثل السوق','Babura, waya, kujeru - kamar a kasuwa'],
 'Voir les occasions →':['See used items →','شاهد المستعمل →','Duba na amfani →'],
-'PRODUITS VIVRIERS':['FOOD PRODUCTS','منتجات غذائية','KAYAN ABINCI'],
+'ALIMENTATION':['FOOD','مواد غذائية','ABINCI'],
 "Riz, mil, haricots, légumes - frais d'Agadez":['Rice, millet, beans, vegetables - fresh from Agadez','أرز، دخن، فاصوليا، خضار - طازجة من أغاديز','Shinkafa, gero, wake, kayan lambu - sabo daga Agadez'],
 'Voir les produits →':['See products →','شاهد المنتجات →','Duba kayayyaki →'],
 'LIVRAISON NOURRITURE':['FOOD DELIVERY','توصيل الطعام','KAI ABINCI'],
@@ -1758,6 +1760,34 @@ document.addEventListener('click',e=>{
 });
 show(VUES.includes(location.hash.slice(1))?location.hash.slice(1):'accueil');
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
+// ===== Notifications push : le client s'abonne, l'admin envoie les suggestions =====
+const VAPID='BNMyZnbu-dyO8o9feTo0mttYXzAC-oTUS_bJ3lmUkyZsWGg_uTnKmtMz4Hs7FWiOglScDlWmtq-L3cdoCgwINvA';
+const u8=b=>{const p='='.repeat((4-b.length%4)%4),r=atob((b+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
+const pushOK=()=>'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window&&/^https?:/.test(location.protocol);
+async function majNotifBtn(){
+  const b=$('notif');if(!b)return;
+  if(!pushOK()){b.hidden=true;return}
+  b.hidden=false;
+  let on=false;try{const r=await navigator.serviceWorker.ready;on=!!(await r.pushManager.getSubscription())&&Notification.permission==='granted'}catch(e){}
+  b.textContent=on?'🔔 Notifications activées ✓':'🔔 Activer les notifications';
+  $('notifmsg').textContent=Notification.permission==='denied'?"Notifications bloquées : autorise-les dans les réglages du navigateur.":'';
+}
+async function activerNotif(){
+  try{
+    if(Notification.permission==='denied'){majNotifBtn();return}
+    const perm=await Notification.requestPermission();if(perm!=='granted'){majNotifBtn();return}
+    const reg=await navigator.serviceWorker.ready;
+    let sub=await reg.pushManager.getSubscription();
+    if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VAPID)});
+    const j=sub.toJSON();
+    await fetch(DB_URL+'/rest/v1/push_subs',{method:'POST',headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY,'Content-Type':'application/json',Prefer:'resolution=ignore-duplicates,return=minimal'},body:JSON.stringify({endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,ville:localStorage.getItem('oda_ville')||null})});
+    $('notifmsg').textContent='✅ Tu recevras nos nouveautés.';
+    try{localStorage.setItem('oda_push','1')}catch(e){}
+  }catch(e){$('notifmsg').textContent="Impossible d'activer pour le moment."}
+  majNotifBtn();
+}
+if($('notif')){$('notif').onclick=activerNotif;majNotifBtn()}
+
 document.documentElement.classList.remove('boot');
 </script>
 </body>
