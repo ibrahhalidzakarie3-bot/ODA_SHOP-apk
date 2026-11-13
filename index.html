@@ -1039,7 +1039,7 @@ const card=(p,b)=>{if(p.sec==='immobilier'||p.sec==='automobile')return cardImmo
   <div class="pkr">${p.v?'<div class="stp" data-stp="'+esc(p.i)+'">'+stepHTML(p.i)+'</div>':'<button class="pkc" type="button" data-cmd="'+esc(p.i)+'">'+ICO_CHAT+' Commander</button>'}<button class="pks" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div></div></div>`};
 
 // Services qui défilent toutes les 2 secondes. Le client touche un service pour voir SES produits
-const BT={'PRODUITS NEUFS':'Habits, chaussures, accessoires, meubles - tout neuf, bientôt à Agadez.',"PRODUITS D'OCCASION":'Motos, voitures, meubles, téléphones - comme au marché.','ALIMENTATION':"Riz, mil, haricots, légumes - frais d'Agadez.",'LIVRAISON NOURRITURE':'Riz + sauce, grillade, brochettes - livré sur moto à Agadez.','PHARMACIE':'Médicaments et livraison rapide à Agadez.','IMMOBILIER':'Maisons à vendre, chambres à louer, terrains à Agadez.','TRANSPORT':'Camion sable, camion vidange, engrais, 10 tonnes.','TRAVAUX À DOMICILE':'Soudeur, maçon, menuisier, plombier du quartier.','SERVICE COLIS ODA':'Gaz, gâteaux, eau, colis - Livreur ODA qui fait aller-retour pour toi à Agadez.'};
+const BT={'PRODUITS NEUFS':'Habits, chaussures, accessoires, meubles - tout neuf, bientôt à Agadez.',"PRODUITS D'OCCASION":'Motos, voitures, meubles, téléphones - comme au marché.','ALIMENTATION':"Riz, chocolat, biscuits, boissons...",'LIVRAISON NOURRITURE':'Riz + sauce, grillade, brochettes - livré sur moto à Agadez.','PHARMACIE':'Médicaments et livraison rapide à Agadez.','IMMOBILIER':'Maisons à vendre, chambres à louer, terrains à Agadez.','TRANSPORT':'Camion sable, camion vidange, engrais, 10 tonnes.','TRAVAUX À DOMICILE':'Soudeur, maçon, menuisier, plombier du quartier.','SERVICE COLIS ODA':'Gaz, gâteaux, eau, colis - Livreur ODA qui fait aller-retour pour toi à Agadez.'};
 const bientot=sv=>'<div class="bt-box"><h3>BIENTÔT 🚀</h3><p>'+esc(BT[sv.t]||sv.h)+'</p><a class="bt-wa" data-wasvc="'+esc(sv.t)+'">Demander sur WhatsApp →</a></div>';
 const SOON='Aucun produit pour le moment.';
 // Pour mettre une photo à un service : remplace photo:'' par photo:'nom-du-fichier.jpg' (fichier déposé à côté de index.html)
@@ -1211,7 +1211,7 @@ document.addEventListener('visibilitychange',rafraichir);window.addEventListener
 const SVC_TXT={'PRODUITS NEUFS':['Habits, chaussures, accessoires, meubles - tout neuf','Voir la boutique →'],
  "PRODUITS D'OCCASION":['Téléphones, meubles, électroménager - comme au marché','Voir les occasions →'],
  'AUTOMOBILE':['Voitures, motos, camions - à vendre','Voir les véhicules →'],
- 'ALIMENTATION':["Riz, mil, haricots, légumes - frais d'Agadez",'Voir les produits →'],
+ 'ALIMENTATION':["Riz, chocolat, biscuits, boissons...",'Voir les produits →'],
  'LIVRAISON NOURRITURE':['Riz, sauce, grillade - livré sur moto à Agadez','Commander à manger →'],
  'PHARMACIE':["Médicaments d'ici, paracétamol, sirop",'Demander →'],
  'IMMOBILIER':['Maisons, villas, chambres à louer + terrains','Voir les annonces →'],
@@ -1501,7 +1501,7 @@ const TR={
 'Motos, téléphones, meubles - comme au marché':['Motorbikes, phones, furniture - like at the market','دراجات، هواتف، أثاث - مثل السوق','Babura, waya, kujeru - kamar a kasuwa'],
 'Voir les occasions →':['See used items →','شاهد المستعمل →','Duba na amfani →'],
 'ALIMENTATION':['FOOD','مواد غذائية','ABINCI'],
-"Riz, mil, haricots, légumes - frais d'Agadez":['Rice, millet, beans, vegetables - fresh from Agadez','أرز، دخن، فاصوليا، خضار - طازجة من أغاديز','Shinkafa, gero, wake, kayan lambu - sabo daga Agadez'],
+"Riz, chocolat, biscuits, boissons...":['Rice, chocolate, biscuits, drinks...','أرز، شوكولاتة، بسكويت، مشروبات...','Shinkafa, cakulan, biskit, abin sha...'],
 'Voir les produits →':['See products →','شاهد المنتجات →','Duba kayayyaki →'],
 'LIVRAISON NOURRITURE':['FOOD DELIVERY','توصيل الطعام','KAI ABINCI'],
 'Riz, sauce, grillade - livré sur moto à Agadez':['Rice, sauce, grilled meat - delivered by motorbike in Agadez','أرز، صلصة، مشويات - توصيل بالدراجة في أغاديز','Shinkafa, miya, suya - ana kai da babur a Agadez'],
