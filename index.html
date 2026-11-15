@@ -859,6 +859,44 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 .pubi video{width:100%;height:190px;object-fit:contain;background:#000;display:block}
 .pubc2{padding:8px 14px 12px;color:#fff}.pubc2 b{display:block;color:#F5B800;font-size:14px;font-weight:900}.pubc2 span{font-size:12px}
 .pubd{position:absolute;right:12px;top:14px;display:flex;gap:5px;z-index:2}.pubd i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.5)}.pubd i.on{background:#F5B800}
+
+/* ===== Tifa : assistante ODA SHOP ===== */
+#tifa{position:fixed;right:12px;bottom:calc(104px + env(safe-area-inset-bottom));z-index:40;width:68px;height:68px;border:0;background:none;padding:0;cursor:pointer;filter:drop-shadow(0 6px 10px rgba(0,0,0,.28));animation:tfly 3.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+#tifa img{width:100%;height:100%;object-fit:contain;display:block}
+#tifa:active{transform:scale(.92)}
+@keyframes tfly{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-8px) rotate(3deg)}}
+html.noauth #tifa,body.lock #tifa[data-hide]{display:none}
+#tf{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.55);display:flex;align-items:flex-end;justify-content:center}
+#tf[hidden]{display:none}
+.tfp{width:100%;max-width:480px;height:min(82vh,720px);height:min(82dvh,720px);background:#fff;color:#161616;border-radius:24px 24px 0 0;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 -10px 40px rgba(0,0,0,.3)}
+.tfh{display:flex;align-items:center;gap:10px;padding:12px 14px;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616}
+.tfh img{width:42px;height:42px;object-fit:contain}
+.tfh b{display:block;font-size:16px;font-weight:900}.tfh small{font-size:11.5px;font-weight:700;opacity:.75}
+.tfh .tfx{margin-left:auto;width:36px;height:36px;border-radius:50%;border:0;background:rgba(0,0,0,.14);font-size:20px;font-weight:900;color:#161616;line-height:1}
+.tfb{flex:1;overflow-y:auto;padding:14px 12px;display:flex;flex-direction:column;gap:10px;background:#faf7ef}
+.tfm{max-width:86%;padding:10px 13px;border-radius:18px;font-size:14px;line-height:1.4;word-wrap:break-word;white-space:pre-line}
+.tfm.bot{align-self:flex-start;background:#fff;border:1px solid #eee;border-bottom-left-radius:6px}
+.tfm.me{align-self:flex-end;background:linear-gradient(180deg,var(--y2),var(--y));font-weight:700;border-bottom-right-radius:6px}
+.tfl{align-self:stretch;display:flex;flex-direction:column;gap:8px}
+.tfc{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #eee;border-radius:16px;padding:8px;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.tfc img,.tfc .tfe{width:58px;height:58px;border-radius:12px;object-fit:cover;flex:none;background:#f2f2f2;display:flex;align-items:center;justify-content:center;font-size:28px}
+.tfc .tfi{flex:1;min-width:0}.tfc .tfi b{display:block;font-size:13.5px;line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.tfc .tfi span{display:block;font-size:12.5px;color:#a87400;font-weight:800;margin-top:2px}
+.tfc .tfi small{display:block;font-size:11px;color:#888;margin-top:1px}
+.tfc button,.tfq button,.tfs button{border:0;border-radius:16px;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;font-weight:800;font-size:12px;padding:9px 12px;flex:none}
+.tfq{display:flex;flex-wrap:wrap;gap:6px}
+.tfq button,.tfs button{background:#fff;border:1.5px solid var(--y);padding:7px 12px;font-size:12.5px}
+.tfs{display:flex;gap:6px;padding:8px 12px 0;overflow-x:auto;background:#fff;scrollbar-width:none}
+.tfs::-webkit-scrollbar{display:none}.tfs button{white-space:nowrap}
+.tff{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:#fff}
+.tff input{flex:1;min-width:0;border:1.5px solid #e5e5e5;border-radius:22px;padding:11px 15px;font-size:15px;outline:0;background:#fff;color:#161616}
+.tff input:focus{border-color:var(--y)}
+.tff button{width:44px;height:44px;border-radius:50%;border:0;background:linear-gradient(180deg,var(--y2),var(--y));font-size:20px;font-weight:900;color:#161616}
+html[data-theme=dark] .tfp,html[data-theme=dark] .tfs,html[data-theme=dark] .tff{background:#181818;color:#eee}
+html[data-theme=dark] .tfb{background:#101010}
+html[data-theme=dark] .tfm.bot,html[data-theme=dark] .tfc{background:#1f1f1f;border-color:#333;color:#eee}
+html[data-theme=dark] .tfq button,html[data-theme=dark] .tfs button{background:#1f1f1f;color:#eee}
+html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee}
 </style>
 </head>
 <body class="lock">
@@ -987,6 +1025,13 @@ body{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
 </div>
 <div id="toast"></div>
 
+<button id="tifa" type="button" aria-label="Parler à Tifa"><img src="oda-p56.png" alt="Tifa"></button>
+<div id="tf" hidden><div class="tfp" role="dialog" aria-label="Tifa, assistante ODA SHOP">
+<div class="tfh"><img src="oda-p56.png" alt=""><div><b>Tifa</b><small>Assistante ODA SHOP</small></div><button class="tfx" id="tfx" type="button" aria-label="Fermer">×</button></div>
+<div class="tfb" id="tfb"></div>
+<div class="tfs" id="tfs"></div>
+<form class="tff" id="tff" autocomplete="off"><input id="tfi" type="text" placeholder="Que cherches-tu ?" maxlength="120" enterkeyhint="send"><button type="submit" aria-label="Envoyer">➤</button></form>
+</div></div>
 <script>
 const IMG={"bouteille": "oda-p04.png", "kettle": "oda-p05.png", "ecouteurs": "oda-p06.png", "lampe": "oda-p07.png", "sac": "oda-p08.png", "iphone": "oda-p09.png", "mixeur": "oda-p10.png"};
 // ===== DONNÉES TEMPORAIRES : à remplacer par Supabase plus tard =====
@@ -1789,6 +1834,111 @@ async function activerNotif(){
 if($('notif')){$('notif').onclick=activerNotif;majNotifBtn()}
 
 document.documentElement.classList.remove('boot');
+
+// ===== Tifa : assistante de recherche ODA SHOP (locale, gratuite) =====
+(function(){
+  const norm=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,' ').trim();
+  const STOP=new Set('je tu il elle on nous vous ils de du des le la les un une et ou pour a au aux en que qui quoi veux voudrais voulez cherche chercher cherches besoin avoir acheter achete trouver trouve avez ya y est sont moi mon ma mes svp stp s il plait ce cet cette quel quels quelle quelles dans sur avec sans pas plus moins max maximum min minimum budget fcfa cfa f franc francs mille k de d l j t m n c qu bonjour salut salam bonsoir hello merci comment ou est ca va bien'.split(' '));
+  const SYN={tel:'telephone',phone:'telephone',portable:'telephone',smartphone:'telephone',mobile:'telephone',
+    moto:'moto motos',motos:'moto',scooter:'moto',voiture:'automobile',auto:'automobile',vehicule:'automobile',
+    manger:'vivrier alimentation riz',nourriture:'vivrier alimentation',aliment:'vivrier alimentation',alimentation:'vivrier riz',repas:'vivrier',
+    medicament:'pharmacie longrich',medicaments:'pharmacie longrich',medecine:'pharmacie',sirop:'pharmacie',paracetamol:'pharmacie',sante:'pharmacie longrich',
+    maison:'immobilier',villa:'immobilier',louer:'immobilier location',location:'immobilier',terrain:'immobilier',chambre:'immobilier',appartement:'immobilier',
+    bouteille:'gaz',gateau:'patisserie',gateaux:'patisserie',pain:'patisserie',
+    envoi:'colis',envoyer:'colis',livraison:'colis',
+    plombier:'travaux',electricien:'travaux',macon:'travaux',artisan:'travaux',menuisier:'travaux',peintre:'travaux',
+    camion:'transport',taxi:'transport',habit:'boutique neuf',habits:'boutique neuf',chaussure:'boutique neuf',chaussures:'boutique neuf',vetement:'boutique neuf',vetements:'boutique neuf',neuf:'boutique neuve',neuve:'boutique neuve',occasion:'marketplace occasion'};
+  const SECX={boutique:'boutique neuf neuve',marketplace:'occasion marketplace',automobile:'automobile voiture auto',vivrier:'vivrier alimentation manger',longrich:'longrich sante pharmacie',gaz:'gaz bouteille',patisserie:'patisserie gateau',immobilier:'immobilier maison location',transport:'transport camion moto',travaux:'travaux artisan domicile',colis:'colis envoi'};
+  const stem=w=>w.length>3&&w.endsWith('s')?w.slice(0,-1):w;
+  const toks=q=>{const out=[];norm(q).split(' ').forEach(w=>{if(!w||STOP.has(w)||/^\d+$/.test(w))return;out.push(stem(w));(SYN[w]||SYN[stem(w)]||'').split(' ').forEach(x=>{if(x)out.push(stem(x))})});return [...new Set(out)]};
+  function budget(q){
+    const n=norm(q).replace(/(\d)\s+(\d{3})\b/g,'$1$2');let max=0,min=0;
+    const m=n.match(/(\d+)\s*(k|mille)?\b/);
+    if(m){let v=+m[1];if(m[2])v*=1000;if(v>=100){if(/\b(plus de|minimum|min|au moins)\b/.test(n))min=v;else max=v}}
+    return {max,min,cheap:/\b(pas cher|bon marche|economique|moins cher|petit prix)\b/.test(n)};
+  }
+  const secLab=p=>(SECLAB[p.sec]||'')+' '+(SECX[p.sec]||'');
+  function score(p,T){
+    const nm=norm(p.n),ds=norm(p.d||''),sc=norm(secLab(p));let s=0;
+    T.forEach(t=>{const re=new RegExp('(^| )'+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'));
+      if(re.test(nm))s+=4;else if(nm.includes(t))s+=2;
+      if(re.test(sc))s+=2;
+      if(re.test(ds))s+=1.5;});
+    return s;
+  }
+  function services(T){
+    const out=[];SERVICES.forEach((sv,k)=>{
+      const h=norm([sv.t,sv.h,(sv.places||[]).map(x=>x.n).join(' ')].join(' '));
+      if(T.some(t=>t.length>=3&&h.includes(t)))out.push(k)});
+    return out.slice(0,3);
+  }
+  const body=()=>$('tfb');
+  const scroll=()=>{const b=body();b.scrollTop=b.scrollHeight};
+  const bot=t=>{const d=document.createElement('div');d.className='tfm bot';d.textContent=t;body().appendChild(d);scroll();return d};
+  const me=t=>{const d=document.createElement('div');d.className='tfm me';d.textContent=t;body().appendChild(d);scroll()};
+  const chips=(arr,cls)=>{const d=document.createElement('div');d.className='tfq';d.innerHTML=arr.map(a=>'<button type="button" data-tq="'+esc(a[1])+'">'+esc(a[0])+'</button>').join('');body().appendChild(d);scroll()};
+  const SUG=[['🌾 Riz','riz'],['🔥 Gaz','gaz'],['💊 Pharmacie','pharmacie'],['🏍️ Moto','moto'],['🏠 Immobilier','immobilier'],['🥐 Pâtisserie','patisserie']];
+  function cards(list){
+    const d=document.createElement('div');d.className='tfl';
+    d.innerHTML=list.map(p=>{const im=imgOf(p);
+      return '<div class="tfc">'+(im?'<img src="'+esc(im)+'" alt="" loading="lazy">':'<div class="tfe">'+esc(p.e||'🛒')+'</div>')+
+      '<div class="tfi"><b>'+esc(p.n)+'</b><span>'+(p.p>0?esc(fmt(p.p)):'Sur devis')+'</span><small>'+esc(SECLAB[p.sec]||'')+'</small></div>'+
+      '<button type="button" data-cmd="'+esc(p.i)+'">Commander</button></div>'}).join('');
+    body().appendChild(d);scroll();
+  }
+  function svcBtns(ks){
+    const d=document.createElement('div');d.className='tfq';
+    d.innerHTML=ks.map(k=>'<button type="button" data-tsv="'+k+'">'+esc(SERVICES[k].e||'')+' Ouvrir '+esc(SERVICES[k].t)+'</button>').join('');
+    body().appendChild(d);scroll();
+  }
+  function wa(){const d=document.createElement('div');d.className='tfq';d.innerHTML='<button type="button" data-twa="1">🟢 Écrire à ODA SHOP</button>';body().appendChild(d);scroll()}
+  function repondre(q){
+    const n=norm(q);
+    if(/\b(bonjour|salut|salam|bonsoir|hello|coucou)\b/.test(n)&&n.split(' ').length<=3){bot('Salam ! 🧚 Que cherches-tu aujourd’hui ?');chips(SUG);return}
+    if(/\b(merci|thanks|barka)\b/.test(n)){bot('Avec plaisir ! 🧚 Je suis là si tu as besoin d’autre chose.');return}
+    if(/\b(comment (commander|acheter|passer)|passer commande|commander comment|comment ca marche)\b/.test(n)){bot('C’est simple : choisis un produit et appuie sur « Commander ». Ton message part sur WhatsApp avec ton nom, ton téléphone et ta ville. Tu peux aussi remplir ton panier puis commander le tout d’un coup.');return}
+    if(/\b(contact|numero|whatsapp|appeler|joindre|telephone de)\b/.test(n)&&!/\bacheter\b/.test(n)){bot('Tu peux joindre ODA SHOP sur WhatsApp au +'+String(NUM).replace(/^(\d{3})(\d{2})(\d{2})(\d{2})(\d{2})$/,'$1 $2 $3 $4 $5')+'.');wa();return}
+    if(/\b(livr|delai|paiement|payer|payement)\b/.test(n)){bot('Pour la livraison et le paiement, ODA SHOP te confirme tout sur WhatsApp au moment de ta commande.');wa();return}
+    if(/\b(panier)\b/.test(n)){bot('Voici ton panier 🛒');fermer();show('panier');return}
+    if(/\b(vendre|publier|annonce)\b/.test(n)){bot('Pour publier un produit, va dans ton Profil puis contacte ODA SHOP : l’équipe s’occupe de la publication.');return}
+    const T=toks(q),B=budget(q);
+    if(!T.length){bot('Je peux t’aider uniquement pour ODA SHOP : produits, services et commandes. Dis-moi ce que tu cherches 🧚');chips(SUG);return}
+    let r=allItems().map(p=>({p,s:score(p,T)})).filter(x=>x.s>0);
+    if(B.max)r=r.filter(x=>x.p.p>0&&x.p.p<=B.max);
+    if(B.min)r=r.filter(x=>x.p.p>=B.min);
+    r.sort((a,b)=>b.s-a.s||(B.cheap?(a.p.p||1e12)-(b.p.p||1e12):0));
+    if(B.cheap&&r.length){const top=r[0].s;r=r.filter(x=>x.s>=top/2).sort((a,b)=>(a.p.p||1e12)-(b.p.p||1e12))}
+    const ks=services(T);
+    if(r.length){
+      const L=r.slice(0,4).map(x=>x.p);
+      bot(r.length>4?'J’ai trouvé '+r.length+' résultats. Voici les plus proches :':(r.length===1?'Voilà ce que j’ai trouvé :':'Voilà ce que j’ai trouvé :'));
+      cards(L);if(ks.length)svcBtns(ks);
+    }else if(ks.length){
+      bot('Je n’ai pas de produit exact pour ça, mais tu peux voir cette rubrique :');svcBtns(ks);
+    }else{
+      bot('Je n’ai rien trouvé pour « '+q.trim().slice(0,40)+' » pour le moment. Essaie un autre mot, ou demande directement à ODA SHOP.');wa();chips(SUG);
+    }
+  }
+  let ouvert=false;
+  function ouvrir(){
+    $('tf').hidden=false;ouvert=true;
+    if(!body().children.length){bot('Salam ! Je suis Tifa 🧚, l’assistante d’ODA SHOP. Dis-moi ce que tu cherches : un produit, un service, un prix…');chips(SUG)}
+    setTimeout(()=>{try{$('tfi').focus({preventScroll:true})}catch(e){}},250);
+  }
+  function fermer(){$('tf').hidden=true;ouvert=false}
+  function envoyer(q){q=String(q||'').trim().slice(0,120);if(!q)return;me(q);$('tfi').value='';setTimeout(()=>repondre(q),250)}
+  $('tifa').onclick=ouvrir;$('tfx').onclick=fermer;
+  $('tf').addEventListener('click',e=>{
+    if(e.target.id==='tf'){fermer();return}
+    const q=e.target.closest('[data-tq]');if(q){envoyer(q.dataset.tq);return}
+    const sv=e.target.closest('[data-tsv]');if(sv){fermer();show('accueil');activer(+sv.dataset.tsv,true);return}
+    if(e.target.closest('[data-twa]')){window.open('https://wa.me/'+NUM,'_blank');return}
+    if(e.target.closest('[data-cmd]'))fermer();
+  });
+  $('tff').onsubmit=e=>{e.preventDefault();envoyer($('tfi').value)};
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ouvert)fermer()});
+  window.tifaOuvrir=ouvrir;window.tifaRepondre=envoyer;
+})();
 </script>
 </body>
 </html>
