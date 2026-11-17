@@ -2077,18 +2077,18 @@ document.documentElement.classList.remove('boot');
   const dev=()=>{let d='';try{d=localStorage.getItem('oda_dev');if(!d){d='d'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('oda_dev',d)}}catch(e){d='anon'}return d};
   async function ia(q){
     if(Date.now()<iaOff)return null;
-    const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),15000);
+    const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),25000);
     try{
       const r=await fetch(DB_URL+'/functions/v1/tifa-chat',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',apikey:DB_KEY,Authorization:'Bearer '+DB_KEY},body:JSON.stringify({message:q,device:dev(),history:hist.slice(-6)})});
       const j=await r.json().catch(()=>({}));
       if(r.ok&&j.reply)return j;
       if(j.error==='device_limit'||j.error==='global_limit')return {limit:j.error};
-      iaOff=Date.now()+5*60000;return null;
-    }catch(e){iaOff=Date.now()+2*60000;return null}finally{clearTimeout(to)}
+      iaOff=Date.now()+20000;return null;
+    }catch(e){iaOff=Date.now()+20000;return null}finally{clearTimeout(to)}
   }
   async function envoyer(q){
     q=String(q||'').trim().slice(0,120);if(!q)return;me(q);$('tfi').value='';
-    if(FAQ.test(norm(q))){setTimeout(()=>repondre(q),250);return}
+    if(FAQ.test(norm(q))&&norm(q).split(/\s+/).length<=2){setTimeout(()=>repondre(q),250);return}
     const typ=bot('…');
     const j=await ia(q);
     typ.remove();
