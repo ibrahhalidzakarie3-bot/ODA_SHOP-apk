@@ -897,6 +897,131 @@ html[data-theme=dark] .tfb{background:#101010}
 html[data-theme=dark] .tfm.bot,html[data-theme=dark] .tfc{background:#1f1f1f;border-color:#333;color:#eee}
 html[data-theme=dark] .tfq button,html[data-theme=dark] .tfs button{background:#1f1f1f;color:#eee}
 html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee}
+
+/* ===== Onglet Vidéos (bientôt) ===== */
+.vsoon{min-height:calc(100vh - 230px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:24px 18px 120px;gap:14px}
+.vsb{width:104px;height:104px;border-radius:30px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#161616,#2b2b2b);color:var(--y2);box-shadow:0 0 0 3px var(--y),0 18px 40px rgba(245,184,0,.35);animation:vglow 2.6s ease-in-out infinite}
+.vsb svg{width:58px;height:58px}
+@keyframes vglow{0%,100%{box-shadow:0 0 0 3px var(--y),0 14px 30px rgba(245,184,0,.25)}50%{box-shadow:0 0 0 3px var(--y2),0 18px 46px rgba(245,184,0,.55)}}
+.vsoon h1{margin:6px 0 0;font-size:24px}
+.vpill{background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;font-weight:900;font-size:13px;border-radius:20px;padding:8px 18px;letter-spacing:.3px}
+.vsoon p{max-width:290px;font-size:14.5px;line-height:1.5;color:#666;margin:0}
+.vfe{display:flex;gap:10px;margin-top:8px}
+.vfe span{display:flex;flex-direction:column;align-items:center;gap:4px;width:68px;padding:12px 0 9px;border-radius:18px;background:#fff;border:1px solid #eee;font-size:22px;box-shadow:0 4px 12px rgba(0,0,0,.05)}
+.vfe small{font-size:10.5px;font-weight:800;color:#777}
+html[data-theme=dark] .vsoon p,html[data-theme=dark] .vfe small{color:#aaa}
+html[data-theme=dark] .vfe span{background:#1d1d1d;border-color:#333}
+
+.tff .tfmic{background:#fff;border:2px solid var(--y);color:#161616;display:flex;align-items:center;justify-content:center;flex:none;position:relative}
+.tff .tfmic svg{width:22px;height:22px}
+.tff .tfmic.on{background:#e53935;border-color:#e53935;color:#fff;animation:tmic 1.1s ease-in-out infinite}
+@keyframes tmic{0%{box-shadow:0 0 0 0 rgba(229,57,53,.55)}100%{box-shadow:0 0 0 14px rgba(229,57,53,0)}}
+html[data-theme=dark] .tff .tfmic{background:#1f1f1f;color:#eee}
+html[data-theme=dark] .tff .tfmic.on{background:#e53935;color:#fff}
+
+.tfp{position:relative}
+.tfh,.tfs,.tff{position:relative;z-index:3}
+.tfv{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:70px 24px 90px;background:rgba(250,247,239,.96);cursor:pointer}
+.tfv[hidden]{display:none}
+.tfo{position:relative;width:170px;height:170px;display:flex;align-items:center;justify-content:center}
+.tfo img{position:relative;width:150px;height:150px;object-fit:contain;filter:drop-shadow(0 8px 14px rgba(0,0,0,.25));animation:tbreath 1.6s ease-in-out infinite}
+.tfo i{position:absolute;inset:14px;border-radius:50%;background:radial-gradient(circle,rgba(245,184,0,.55),rgba(245,184,0,0) 70%);animation:tring 1.8s ease-out infinite}
+.tfo i:nth-child(2){animation-delay:.9s}
+@keyframes tbreath{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+@keyframes tring{0%{transform:scale(.7);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.tft{font-size:18px;font-weight:800;text-align:center;max-width:300px;min-height:48px;line-height:1.35}
+.tfv small{font-size:12px;color:#888;font-weight:700}
+html[data-theme=dark] .tfv{background:rgba(12,12,12,.96)}
+
+#tifa{width:86px;height:86px;right:8px}
+.tff .tfmic{width:58px;height:58px;background:none!important;border:0!important;padding:0;margin:-6px 0 -6px -4px;border-radius:50%;animation:none}
+.tff .tfmic img{width:58px;height:58px;object-fit:contain;filter:drop-shadow(0 3px 5px rgba(0,0,0,.25));transition:transform .15s}
+.tff .tfmic.on{animation:tmic 1.1s ease-in-out infinite;background:rgba(229,57,53,.14)!important}
+.tff .tfmic.on img{transform:scale(1.12)}
+
+.tfp{height:min(90vh,760px);height:min(90dvh,760px)}
+.tfv{position:relative;inset:auto;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:4px 12px 6px;background:#faf7ef;cursor:default;border-top:1px solid #f0e8cf}
+.tfv[hidden]{display:flex}
+.tfo{width:132px;height:132px;border:0;background:none;padding:0;position:relative;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+.tfo img{width:122px;height:122px;object-fit:contain;animation:tfly 3.2s ease-in-out infinite}
+.tfo i{opacity:0;animation:none}
+.tfo.on i{opacity:1;animation:tring 1.8s ease-out infinite}.tfo.on i:nth-child(2){animation-delay:.9s}
+.tfo.on img{animation:tbreath 1.4s ease-in-out infinite}
+.tfo:active img{transform:scale(.94)}
+.tft{font-size:14px;font-weight:800;min-height:20px;max-width:320px;text-align:center;line-height:1.3;color:#161616}
+html[data-theme=dark] .tfv{background:#101010;border-color:#2a2a2a}html[data-theme=dark] .tft{color:#eee}
+
+/* ===== Vidéos style TikTok ===== */
+body.onvid #tifa{display:none}
+body.onvid .nav{z-index:60;background:rgba(20,20,20,.72);border-color:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+body.onvid .nav a{color:#bbb}body.onvid .nav a.on{color:#161616}
+.vf{position:fixed;inset:0;z-index:20;background:#000;overflow-y:scroll;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.vf::-webkit-scrollbar{display:none}.vf[hidden]{display:none}
+.vs{position:relative;height:100vh;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden;background:#000;color:#fff}
+.vs video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#111}
+.vs .vsh{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 22%,rgba(0,0,0,0) 48%,rgba(0,0,0,.78) 100%);pointer-events:none}
+.vs .vplay{position:absolute;left:50%;top:46%;transform:translate(-50%,-50%) scale(.8);width:84px;height:84px;border-radius:50%;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;font-size:38px;opacity:0;transition:.18s;pointer-events:none}
+.vs.paused .vplay{opacity:1;transform:translate(-50%,-50%) scale(1)}
+.vtop{position:absolute;top:calc(14px + env(safe-area-inset-top));left:0;right:0;display:flex;justify-content:center;gap:22px;font-size:15px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.6);pointer-events:none}
+.vtop span{opacity:.65}.vtop b{opacity:1;border-bottom:3px solid #fff;padding-bottom:3px}
+.vrail{position:absolute;right:10px;bottom:196px;display:flex;flex-direction:column;align-items:center;gap:16px;z-index:3}
+.vrail button{border:0;background:none;color:#fff;display:flex;flex-direction:column;align-items:center;gap:3px;font-size:11px;font-weight:800;text-shadow:0 1px 4px rgba(0,0,0,.7);padding:0}
+.vrail svg{width:36px;height:36px;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55))}
+.vrail .vav{position:relative;margin-bottom:6px}
+.vrail .vav img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:2.5px solid var(--y2);background:#fff}
+.vrail .vav i{position:absolute;left:50%;bottom:-9px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--y);color:#161616;font-style:normal;font-weight:900;font-size:15px;line-height:20px;text-align:center}
+.vrail .vlk.on svg{fill:#ff2d55;color:#ff2d55;animation:vpop .35s}
+@keyframes vpop{0%{transform:scale(.6)}60%{transform:scale(1.25)}100%{transform:scale(1)}}
+.vinfo{position:absolute;left:14px;right:84px;bottom:166px;z-index:3;text-shadow:0 1px 5px rgba(0,0,0,.75)}
+.vinfo b{font-size:15px;display:block;margin-bottom:3px}
+.vinfo h3{margin:0 0 3px;font-size:16px;line-height:1.25}
+.vinfo p{margin:0;font-size:13.5px;line-height:1.35;opacity:.92;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vcmd{position:absolute;left:14px;right:14px;bottom:100px;z-index:3;height:52px;border:0;border-radius:26px;background:linear-gradient(180deg,#34d058,#16a34a);color:#fff;font-size:16px;font-weight:900;box-shadow:0 8px 22px rgba(22,163,74,.45);display:flex;align-items:center;justify-content:center;gap:8px;padding:0 16px}
+.vcmd span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vacc{position:fixed;inset:0;z-index:30;background:#fff;color:#161616;overflow-y:auto;padding-bottom:130px}
+.vacc[hidden]{display:none}
+.vabar{display:flex;align-items:center;gap:10px;padding:calc(12px + env(safe-area-inset-top)) 14px 8px}
+.vabar button{width:38px;height:38px;border-radius:50%;border:0;background:#f1f1f1;font-size:20px;font-weight:900}
+.vabar b{font-size:17px}
+.vah{display:flex;flex-direction:column;align-items:center;text-align:center;padding:6px 20px 14px;gap:6px}
+.vah img{width:98px;height:98px;border-radius:50%;object-fit:cover;border:3px solid var(--y);padding:2px;background:#fff}
+.vah h2{margin:4px 0 0;font-size:20px}.vah small{color:#888;font-weight:700}
+.vah p{margin:2px 0 0;font-size:13.5px;line-height:1.45;color:#555;max-width:300px}
+.vst{display:flex;gap:26px;margin:6px 0}
+.vst div b{display:block;font-size:19px}.vst div small{font-size:11.5px;color:#888}
+.vbt{display:flex;gap:8px;margin-top:4px}
+.vbt button{border:0;border-radius:12px;padding:11px 18px;font-weight:900;font-size:14px}
+.vbt .g{background:linear-gradient(180deg,#34d058,#16a34a);color:#fff}.vbt .o{background:#f1f1f1;color:#161616}
+.vtabs{display:flex;border-bottom:1px solid #eee;position:sticky;top:0;background:#fff;z-index:2}
+.vtabs button{flex:1;border:0;background:none;padding:12px 0;font-size:14px;font-weight:800;color:#999;border-bottom:3px solid transparent}
+.vtabs button.on{color:#161616;border-color:#161616}
+.vgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.vgrid button{position:relative;aspect-ratio:3/4;border:0;padding:0;background:#222;overflow:hidden}
+.vgrid img,.vgrid video{width:100%;height:100%;object-fit:cover;display:block}
+.vgrid span{position:absolute;left:5px;right:5px;bottom:5px;color:#fff;font-size:11px;font-weight:800;text-align:left;text-shadow:0 1px 4px rgba(0,0,0,.8);line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vgn{padding:44px 20px;text-align:center;color:#888;font-size:14px;grid-column:1/-1}
+html[data-theme=dark] .vacc{background:#0e0e0e;color:#eee}
+html[data-theme=dark] .vabar button,html[data-theme=dark] .vbt .o{background:#222;color:#eee}
+html[data-theme=dark] .vtabs{background:#0e0e0e;border-color:#2a2a2a}html[data-theme=dark] .vtabs button.on{color:#fff;border-color:#fff}
+html[data-theme=dark] .vah p{color:#aaa}
+
+.vsf{padding:4px 18px 30px;display:flex;flex-direction:column;gap:10px}
+.vsf h2{margin:6px 0 0;font-size:20px}.vsf p{margin:0;color:#666;font-size:13.5px;line-height:1.45}
+.vsf label{font-size:12.5px;font-weight:800;margin-top:4px}
+.vsf input[type=text],.vsf input[type=tel],.vsf textarea{width:100%;border:1.5px solid #e3e3e3;border-radius:12px;padding:12px 13px;font-size:15px;background:#fff;color:#161616;outline:0;box-sizing:border-box}
+.vsf textarea{min-height:76px;resize:vertical}.vsf input:focus,.vsf textarea:focus{border-color:var(--y)}
+.vsf .ck{display:flex;gap:10px;align-items:flex-start;background:#fff8e1;border:1px solid #f1dc9a;border-radius:12px;padding:11px 12px;font-size:13px;line-height:1.4;font-weight:700}
+.vsf .ck input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:#16a34a}
+.vsf .go{height:54px;border:0;border-radius:27px;background:linear-gradient(180deg,#34d058,#16a34a);color:#fff;font-size:16px;font-weight:900;margin-top:6px}
+.vsf .go:disabled{background:#cfcfcf;color:#fff}
+.vsf .nt{font-size:12px;color:#888}
+.vok{background:#e9f9ee;border:1px solid #b8e6c4;color:#166534;border-radius:12px;padding:10px 14px;font-size:13px;font-weight:800;text-align:center}
+.vbt .y{background:linear-gradient(180deg,var(--y2),var(--y));color:#161616}
+html[data-theme=dark] .vsf p{color:#aaa}html[data-theme=dark] .vsf input[type=text],html[data-theme=dark] .vsf input[type=tel],html[data-theme=dark] .vsf textarea{background:#1d1d1d;border-color:#333;color:#eee}
+html[data-theme=dark] .vsf .ck{background:#2a2410;border-color:#554a1c}
+#vsel{z-index:70}
+.btn.vend{margin-top:10px;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616}
+#pvmsg{font-size:12.5px;color:#166534;font-weight:800;text-align:center;margin:6px 0}
 </style>
 </head>
 <body class="lock">
@@ -928,6 +1053,17 @@ html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee
 </div>
 </div>
 
+<div id="v-video" hidden>
+  <div class="vf" id="vf" hidden></div>
+  <div class="vacc" id="vacc" hidden></div>
+  <div class="vsoon" id="vsoon">
+    <div class="vsb"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm3.2 5.2v7.6a.6.6 0 0 0 .9.5l6-3.8a.6.6 0 0 0 0-1l-6-3.8a.6.6 0 0 0-.9.5z"/></svg></div>
+    <h1>Vidéos ODA SHOP</h1>
+    <span class="vpill">✨ Bientôt disponible</span>
+    <p>Découvre bientôt nos produits en vidéo : fais défiler, aime, partage et commande en un geste.</p>
+    <div class="vfe"><span>❤️<small>J'aime</small></span><span>💬<small>Commenter</small></span><span>↗️<small>Partager</small></span><span>👤<small>Profil</small></span></div>
+  </div>
+</div>
 <div id="v-panier" hidden>
   <h1>🛒 Mon panier</h1>
   <div id="pub"></div>
@@ -949,7 +1085,9 @@ html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee
   </div>
   <button class="btn" id="notif" type="button" hidden>🔔 Activer les notifications</button>
   <div id="notifmsg" style="font-size:12px;color:#888;text-align:center;margin:6px 0"></div>
-  <button class="btn pub" id="pub" type="button">📢 Contacter ODA SHOP pour publier un produit</button>
+  <button class="btn vend" id="pvend" type="button">🏪 Devenir vendeur (publier mes vidéos)</button>
+  <div id="pvmsg"></div>
+  <button class="btn pub" id="pubbtn" type="button">📢 Contacter ODA SHOP pour publier un produit</button>
   <button class="out" id="out" type="button">Se déconnecter</button>
 </div>
 
@@ -1007,6 +1145,7 @@ html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee
 <div class="nav">
   <a href="#accueil" data-v="accueil" class="on"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.8 2.5 11h2.7v9.2h5v-6h3.6v6h5V11h2.7z"/></svg></span><small>Accueil</small></a>
   <a href="#panier" data-v="panier"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h3l.6 2H21l-2.3 8.2a1.6 1.6 0 0 1-1.5 1.2H8.2L8.5 16H18v2H7.2L4.1 5H2z"/><circle cx="9" cy="20.5" r="1.7"/><circle cx="17" cy="20.5" r="1.7"/></svg></span><small>Panier</small></a>
+  <a href="#video" data-v="video"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm3.2 5.2v7.6a.6.6 0 0 0 .9.5l6-3.8a.6.6 0 0 0 0-1l-6-3.8a.6.6 0 0 0-.9.5z"/></svg></span><small>Vidéos</small></a>
   <a href="#profil" data-v="profil"><span class="ico"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="7.5" r="4.3"/><path d="M3.5 21c0-4.6 3.8-7 8.5-7s8.5 2.4 8.5 7z"/></svg></span><small>Profil</small></a>
 </div>
 <div id="auth" hidden>
@@ -1025,10 +1164,12 @@ html[data-theme=dark] .tff input{background:#1f1f1f;border-color:#333;color:#eee
 </div>
 <div id="toast"></div>
 
+<div class="vacc" id="vsel" hidden></div>
 <button id="tifa" type="button" aria-label="Parler à Tifa"><img src="oda-p56.png" alt="Tifa"></button>
 <div id="tf" hidden><div class="tfp" role="dialog" aria-label="Tifa, assistante ODA SHOP">
 <div class="tfh"><img src="oda-p56.png" alt=""><div><b>Tifa</b><small>Assistante ODA SHOP</small></div><button class="tfx" id="tfx" type="button" aria-label="Fermer">×</button></div>
 <div class="tfb" id="tfb"></div>
+<div class="tfv" id="tfv"><button type="button" id="tfm" class="tfo" aria-label="Parler à Tifa"><i></i><i></i><img src="oda-p56.png" alt="Tifa"></button><div class="tft" id="tft">Touche-moi pour parler</div></div>
 <div class="tfs" id="tfs"></div>
 <form class="tff" id="tff" autocomplete="off"><input id="tfi" type="text" placeholder="Que cherches-tu ?" maxlength="120" enterkeyhint="send"><button type="submit" aria-label="Envoyer">➤</button></form>
 </div></div>
@@ -1054,7 +1195,7 @@ const TRAVAUX=[{n:"Électricien",d:"Dépannage et installation électrique.",img
 {n:"Peintre",d:"Peinture et décoration maison.",img:'oda-p15.jpg',i:'tv5',e:'🔧',code:'ODA-T05',devis:1,sec:'travaux'},
 {n:"Maçon",d:"Construction et carrelage.",img:'oda-p16.jpg',i:'tv6',e:'🔧',code:'ODA-T06',devis:1,sec:'travaux'}];
 // Service colis et Transport : exemples à compléter, prix sur devis
-const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[],PHARMA_ITEMS=[],ANNONCES=[];
+const COLIS=[],LONGRICH=[],GAZ=[],PATIS=[],PHARMA_ITEMS=[],ANNONCES=[],VIDEOS=[],VENDEURS=[];
 const TRANSP=[{n:"Citerne d'eau",d:"Livraison d'eau en citerne pour maison, chantier ou jardin.",img:'oda-p17.jpg',i:'tr1',e:'🚚',code:'ODA-C01',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion de sable",d:"Sable de construction livré directement sur votre chantier.",img:'oda-p18.jpg',i:'tr2',e:'🚚',code:'ODA-C02',devis:1,sec:'transport',sub:'camion'},
 {n:"Camion d'argile",d:"Argile et terre rouge pour banco, briques et remblai.",img:'oda-p19.jpg',i:'tr3',e:'🚚',code:'ODA-C03',devis:1,sec:'transport',sub:'camion'},
@@ -1210,7 +1351,7 @@ async function chargerBoutique(){
 // ===== Produits ajoutés depuis la page de gestion (admin.html) : base Supabase, lecture seule =====
 const DB_URL='https://bjapfgvqkuoaqsjtzqbz.supabase.co';
 const DB_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYXBmZ3Zxa3VvYXFzanR6cWJ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTI2MTU0NjUsImV4cCI6MjEwODE5MTQ2NX0.u4c3TFvk46nXXn4fQf2sUG-ZejAQHefXH1UmQ38ZJTI'; // clé publique (anon)
-const DB_SEC={boutique:[NEUFS,'🛍️'],marketplace:[OCCAS,'♻️'],automobile:[AUTOS,'🚗'],vivrier:[VIVRIERS,'🌾'],immobilier:[IMMO,'🏢'],travaux:[TRAVAUX,'🛠️'],colis:[COLIS,'📦'],longrich:[LONGRICH,'🌿'],annonce:[ANNONCES,'📢'],gaz:[GAZ,'🔥'],patisserie:[PATIS,'🎂'],transport:[TRANSP,'🚚']};
+const DB_SEC={boutique:[NEUFS,'🛍️'],marketplace:[OCCAS,'♻️'],automobile:[AUTOS,'🚗'],vivrier:[VIVRIERS,'🌾'],immobilier:[IMMO,'🏢'],travaux:[TRAVAUX,'🛠️'],colis:[COLIS,'📦'],longrich:[LONGRICH,'🌿'],annonce:[ANNONCES,'📢'],video:[VIDEOS,'🎬'],vendeur:[VENDEURS,'🏪'],gaz:[GAZ,'🔥'],patisserie:[PATIS,'🎂'],transport:[TRANSP,'🚚']};
 const DEFB={};
 function appliquerBase(rows,info){
   if(info&&info.whatsapp){const d=String(info.whatsapp).replace(/\D/g,'');if(d.length>=8)NUM=d}
@@ -1221,7 +1362,7 @@ function appliquerBase(rows,info){
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
-      i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
+      i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
   Object.keys(dbSeen).forEach(k=>{if(!par[k]&&DB_SEC[k]&&!(REGION==='agadez'&&(k==='travaux'||k==='transport')))DB_SEC[k][0].length=0});
   Object.keys(par).forEach(k=>dbSeen[k]=1);
   Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
@@ -1232,12 +1373,13 @@ function appliquerBase(rows,info){
     else{a.length=0;a.push(...par[k])}});  // une section qui a de vrais produits remplace les exemples
   PHARMA_ITEMS.length=0;PHARMA_ITEMS.push(...LONGRICH);
   showService(cur);bnames(si);if($('q').value.trim())chercher();
+  if(window.majVideos)majVideos();
 }
 let lastSig='',dbSeen={};
 async function chargerBase(){
   try{
     const hd={headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY}};
-    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
+    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
       fetch(DB_URL+'/rest/v1/regions?select=slug,name,whatsapp,active&slug=eq.'+REGION,hd).catch(()=>null)]);
     if(!r.ok)throw new Error('HTTP '+r.status);
     const rows=await r.json();let info=null;try{if(ri&&ri.ok){const a=await ri.json();info=a[0]||null}}catch(e){}
@@ -1599,6 +1741,7 @@ const TR={
 'Accueil':['Home','الرئيسية','Gida'],
 'Panier':['Cart','السلة','Kwando'],
 'Profil':['Profile','الملف','Bayani'],
+'Vidéos':['Videos','فيديو','Bidiyo'],'Vidéos ODA SHOP':['ODA SHOP Videos','فيديوهات ODA SHOP','Bidiyon ODA SHOP'],'✨ Bientôt disponible':['✨ Coming soon','✨ قريبًا','✨ Nan ba da jimawa ba'],'Découvre bientôt nos produits en vidéo : fais défiler, aime, partage et commande en un geste.':['Soon discover our products in video: scroll, like, share and order in one tap.','قريبًا ستكتشف منتجاتنا بالفيديو: مرّر وأعجب وشارك واطلب بلمسة واحدة.','Nan ba da jimawa za ka ga kayanmu a bidiyo: zazzaga, so, raba, ka yi oda da taɓa ɗaya.'],
 'Agadez · Niger':['Agadez · Niger','أغاديز · النيجر','Agadez · Nijar'],
 'Langue':['Language','اللغة','Harshe'],'Région':['Language','اللغة','Harshe'],
 'Bienvenue sur':['Welcome to','مرحبًا بك في','Barka da zuwa'],
@@ -1698,7 +1841,7 @@ $('aok').onclick=()=>{
   try{history.replaceState(null,'','#accueil')}catch(x){}
 };
 document.addEventListener('click',e=>{const a=e.target.closest('[data-wasvc]');if(a){e.preventDefault();envoyerCommande('Bonjour ODA SHOP, je suis intéressé par : '+a.dataset.wasvc+'\n\nNom : '+(getL('oda_nom')||'-')+'\nVille : '+(getL('oda_ville')||'Agadez'))}});
-$('pub').onclick=()=>envoyerCommande('Bonjour ODA SHOP, je veux publier un produit.\n\nNom : '+(getL('oda_nom')||'-')+'\nTél : '+(getL('oda_tel')||'non renseigné')+'\nVille : '+(getL('oda_ville')||'Agadez')+'\n\nProduit à publier : ');
+$('pubbtn').onclick=()=>envoyerCommande('Bonjour ODA SHOP, je veux publier un produit.\n\nNom : '+(getL('oda_nom')||'-')+'\nTél : '+(getL('oda_tel')||'non renseigné')+'\nVille : '+(getL('oda_ville')||'Agadez')+'\n\nProduit à publier : ');
 $('out').onclick=()=>{delL('oda_session');authOpen()};
 if(getL('oda_session')!=='1')authOpen();else initGeo();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&getL('oda_session')==='1'&&!document.body.classList.contains('geo-on'))startGeo()});
@@ -1774,7 +1917,7 @@ document.addEventListener('click',e=>{
 });
 
 // ===== NAVIGATION ENTRE LES 3 VUES (Accueil / Panier / Profil) =====
-const VUES=['accueil','panier','profil','food','pharma','ville'];
+const VUES=['accueil','panier','video','profil','food','pharma','ville'];
 const VILLES_NE=['Agadez','Aguié','Abalak','Aderbissinat','Arlit','Ayorou','Balleyara','Bilma','Birni N\'Konni','Dakoro','Diffa','Dogondoutchi','Dosso','Filingué','Gaya','Gouré','Guidan Roumdji','Illéla','Keita','Loga','Madaoua','Madarounfa','Magaria','Maradi','Mayahi','Mirriah','N\'Guigmi','Niamey','Ouallam','Say','Tahoua','Tanout','Téra','Tchirozérine','Tessaoua','Tillabéri','Zinder'];
 function drawVilles(){const q=norm($('vq').value.trim());const cur=getL('oda_ville')||'Agadez';
   $('vls').innerHTML=VILLES_NE.slice().sort((a,b)=>a==='Agadez'?-1:b==='Agadez'?1:a.localeCompare(b,'fr')).filter(v=>norm(v).includes(q)).map(v=>'<button type="button" class="vit'+(v===cur?' on':'')+'" data-vil="'+esc(v)+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D9A21A" stroke-width="2" stroke-linecap="round"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>'+esc(v)+'</button>').join('')||'<div class="vide" style="padding:24px">🔍<br>Aucune ville trouvée</div>'}
@@ -1791,6 +1934,8 @@ function show(v){
   if(v==='pharma')position().then(p=>{pharmaPos=p});
   if(v==='food'){if(!$('fnom').value)$('fnom').value=getL('oda_nom')||'';if(!$('ftel').value)$('ftel').value=getL('oda_tel')||'';position()}
   document.body.classList.toggle('lock',v==='accueil');
+  if(v==='profil'&&window.majPV)majPV();
+  document.body.classList.toggle('onvid',v==='video');if(window.vidVue)vidVue(v==='video');
   window.scrollTo(0,0);
 }
 document.addEventListener('click',e=>{
@@ -1920,14 +2065,41 @@ document.documentElement.classList.remove('boot');
     }
   }
   let ouvert=false;
-  function ouvrir(){
+  function ouvrir(voix){
     $('tf').hidden=false;ouvert=true;
     if(!body().children.length){bot('Salam ! Je suis Tifa 🧚, l’assistante d’ODA SHOP. Dis-moi ce que tu cherches : un produit, un service, un prix…');chips(SUG)}
-    setTimeout(()=>{try{$('tfi').focus({preventScroll:true})}catch(e){}},250);
+    if(voix&&SR){micOn()}else setTimeout(()=>{try{$('tfi').focus({preventScroll:true})}catch(e){}},250);
   }
-  function fermer(){$('tf').hidden=true;ouvert=false}
-  function envoyer(q){q=String(q||'').trim().slice(0,120);if(!q)return;me(q);$('tfi').value='';setTimeout(()=>repondre(q),250)}
-  $('tifa').onclick=ouvrir;$('tfx').onclick=fermer;
+  function fermer(){$('tf').hidden=true;ouvert=false;if(typeof stopMic==='function')stopMic(1)}
+  // --- Vraie IA (Gemini via Supabase) avec repli sur la recherche locale ---
+  const FAQ=/\b(bonjour|salut|salam|bonsoir|hello|coucou|merci|thanks|barka|panier|comment (commander|acheter|passer)|passer commande|contact|numero|whatsapp|appeler|joindre)\b/;
+  let iaOff=0;const hist=[];
+  const dev=()=>{let d='';try{d=localStorage.getItem('oda_dev');if(!d){d='d'+Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('oda_dev',d)}}catch(e){d='anon'}return d};
+  async function ia(q){
+    if(Date.now()<iaOff)return null;
+    const ctl=new AbortController(),to=setTimeout(()=>ctl.abort(),15000);
+    try{
+      const r=await fetch(DB_URL+'/functions/v1/tifa-chat',{method:'POST',signal:ctl.signal,headers:{'Content-Type':'application/json',apikey:DB_KEY,Authorization:'Bearer '+DB_KEY},body:JSON.stringify({message:q,device:dev(),history:hist.slice(-6)})});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok&&j.reply)return j;
+      if(j.error==='device_limit'||j.error==='global_limit')return {limit:j.error};
+      iaOff=Date.now()+5*60000;return null;
+    }catch(e){iaOff=Date.now()+2*60000;return null}finally{clearTimeout(to)}
+  }
+  async function envoyer(q){
+    q=String(q||'').trim().slice(0,120);if(!q)return;me(q);$('tfi').value='';
+    if(FAQ.test(norm(q))){setTimeout(()=>repondre(q),250);return}
+    const typ=bot('…');
+    const j=await ia(q);
+    typ.remove();
+    if(j&&j.reply){
+      bot(j.reply);hist.push({r:'u',t:q},{r:'t',t:j.reply});
+      const L=(j.codes||[]).map(c=>allItems().find(x=>x.code===c)).filter(Boolean);if(L.length)cards(L);
+      return}
+    if(j&&j.limit)bot(j.limit==='device_limit'?'Tu as atteint ta limite de messages avec moi pour aujourd’hui. Voici ce que je peux encore te montrer :':'Je suis très sollicitée en ce moment. Voici ce que j’ai trouvé :');
+    repondre(q);
+  }
+  $('tifa').onclick=()=>ouvrir(true);$('tfx').onclick=fermer;
   $('tf').addEventListener('click',e=>{
     if(e.target.id==='tf'){fermer();return}
     const q=e.target.closest('[data-tq]');if(q){envoyer(q.dataset.tq);return}
@@ -1936,8 +2108,156 @@ document.documentElement.classList.remove('boot');
     if(e.target.closest('[data-cmd]'))fermer();
   });
   $('tff').onsubmit=e=>{e.preventDefault();envoyer($('tfi').value)};
+  // --- Micro : le client parle à Tifa ---
+  const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+  let rec=null,ecoute=false,erreur=false,annule=false;
+  const LMAP={fr:'fr-FR',en:'en-US',ar:'ar-SA',ha:'fr-FR'};
+  function stopMic(a){if(a)annule=true;try{ecoute&&rec&&rec.abort()}catch(e){}ecoute=false;$('tfm').classList.remove('on');$('tft').textContent='Touche-moi pour parler';$('tfi').placeholder='Que cherches-tu ?'}
+  function micOn(){
+    if(!SR){bot('Le micro n’est pas disponible sur ce téléphone ou ce navigateur. Écris-moi ton message 🧚');return}
+    if(ecoute){try{rec.stop()}catch(e){}return}
+    let texte='',fini=false;erreur=false;annule=false;
+    try{rec=new SR();let lg='fr';try{lg=localStorage.getItem('oda_lang')||'fr'}catch(x){}rec.lang=LMAP[lg]||'fr-FR';rec.interimResults=true;rec.maxAlternatives=1;rec.continuous=false}catch(e){bot('Impossible d’activer le micro pour le moment. Écris-moi ton message 🧚');return}
+    rec.onstart=()=>{ecoute=true;$('tft').textContent='Je t’écoute…';$('tfm').classList.add('on');$('tfi').placeholder='🎙️ Je t’écoute…'};
+    rec.onresult=e=>{texte='';for(let i=e.resultIndex;i<e.results.length;i++)texte+=e.results[i][0].transcript;$('tfi').value=texte;if(texte)$('tft').textContent=texte;if(e.results[e.results.length-1].isFinal)fini=true};
+    rec.onerror=e=>{const c=e.error;erreur=true;fini=true;texte='';
+      if(c==='not-allowed'||c==='service-not-allowed')bot('Le micro est bloqué. Autorise-le dans les réglages du navigateur, puis réessaie 🧚');
+      else if(c==='no-speech')bot('Je n’ai rien entendu. Appuie sur le micro et parle près du téléphone 🧚');
+      else if(c==='network')bot('Il faut une connexion internet pour utiliser le micro.');
+      else if(c!=='aborted')bot('Je n’ai pas pu t’entendre. Réessaie ou écris-moi 🧚')};
+    rec.onend=()=>{const t=($('tfi').value||texte||'').trim();rec.onend=null;rec.onresult=null;rec.onerror=null;ecoute=false;stopMic();if(t&&!erreur&&!annule)envoyer(t);else if(erreur||annule)$('tfi').value=''};
+    $('tft').textContent='Je t’écoute…';$('tfm').classList.add('on');
+    try{rec.start()}catch(e){stopMic()}
+  }
+  $('tfm').onclick=micOn;
+
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&ouvert)fermer()});
   window.tifaOuvrir=ouvrir;window.tifaRepondre=envoyer;
+})();
+
+// ===== Vidéos style TikTok : fil vertical + comptes (ODA SHOP et vendeurs) =====
+(function(){
+  const ICO={
+    heart:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.2 3 4.5 6.7 4.5c2 0 3.7 1.1 5.3 3 1.6-1.9 3.3-3 5.3-3 3.7 0 5.8 3.7 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>',
+    share:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 4.5v4.2C8.6 9 5 12.3 4 18c2.2-2.6 5.1-3.8 10-3.9v4.3l7-7.2-7-6.7z"/></svg>',
+    snd:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4H4zm11.5 2.5a3.5 3.5 0 0 0-2-3.1v6.2a3.5 3.5 0 0 0 2-3.1zM13.5 4.2v2.1a6 6 0 0 1 0 11.4v2.1a8 8 0 0 0 0-15.6z"/></svg>',
+    mut:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4H4zm12.3 .6l-1.4 1.4 1.9 1.9-1.9 1.9 1.4 1.4 1.9-1.9 1.9 1.9 1.4-1.4-1.9-1.9 1.9-1.9-1.4-1.4-1.9 1.9-1.9-1.9z"/></svg>'};
+  let muted=true,io=null,sig='',actif=0,tab='v',cur='',LV=[];
+  const lg=()=>{try{return JSON.parse(localStorage.getItem('oda_vlikes')||'[]')}catch(e){return[]}};
+  let likes=lg();
+  const svl=()=>{try{localStorage.setItem('oda_vlikes',JSON.stringify(likes))}catch(e){}};
+  const odaImg=()=>($('hlogo')&&$('hlogo').src)||'icon-192.png';
+  const today=()=>new Date().toISOString().slice(0,10);
+  const selr=c=>c?VENDEURS.find(x=>x.code===c):null;
+  const selActif=c=>{const v=selr(c);return !!v&&(!v.abo||v.abo>=today())};
+  const slug=n=>'@'+(String(n||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'vendeur');
+  const prof=c=>{const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0}};
+  const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc))};
+  const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
+  const vids=()=>[...document.querySelectorAll('#vf video')];
+  function slide(v,k){
+    const lk=lien(v),pf=prof(v.sc),poster=v.img?' poster="'+esc(v.img)+'"':'';
+    const btn=lk?'<button class="vcmd" type="button" data-cmd="'+esc(lk.i)+'"><span>🟢 Commander · '+esc(lk.n)+(lk.p>0?' · '+esc(fmt(lk.p)):'')+'</span></button>'
+      :'<button class="vcmd" type="button" data-vwa="'+k+'"><span>🟢 Écrire à ODA SHOP</span></button>';
+    return '<section class="vs" data-i="'+k+'"><video playsinline loop muted preload="none" webkit-playsinline'+poster+' data-src="'+esc(v.vid)+'"></video><div class="vsh"></div><div class="vplay">▶</div>'+
+      '<div class="vtop"><b>Vidéos ODA SHOP</b></div>'+
+      '<div class="vrail"><button class="vav" type="button" data-vacc="'+esc(v.sc||'')+'" aria-label="Compte '+esc(pf.n)+'"><img src="'+esc(pf.img)+'" alt=""></button>'+
+      '<button class="vlk'+(likes.includes(v.i)?' on':'')+'" type="button" data-vlike="'+k+'">'+ICO.heart+'<small>J’aime</small></button>'+
+      '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
+      '<button type="button" data-vmute>'+(muted?ICO.mut:ICO.snd)+'<small>Son</small></button></div>'+
+      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+btn+'</section>';
+  }
+  function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
+  function observer(){
+    if(io)io.disconnect();
+    io=new IntersectionObserver(es=>es.forEach(en=>{
+      const sl=en.target,vd=sl.querySelector('video');
+      if(en.isIntersecting&&en.intersectionRatio>=.6){charger(sl);charger(sl.nextElementSibling,1);vd.muted=muted;sl.classList.remove('paused');actif=+sl.dataset.i;
+        if(!$('v-video').hidden&&$('vacc').hidden&&$('vsel').hidden){const p=vd.play();if(p&&p.catch)p.catch(()=>{})}}
+      else vd.pause()}),{root:$('vf'),threshold:[0,.6,1]});
+    $('vf').querySelectorAll('.vs').forEach(x=>io.observe(x));
+  }
+  function rendre(force){
+    maj();
+    const sg=LV.map(v=>v.i+'|'+v.vid+'|'+v.n+'|'+v.sub+'|'+v.sc).join(',')+'#'+VENDEURS.map(x=>x.code+x.n+x.img).join(',');
+    $('vsoon').hidden=LV.length>0;$('vf').hidden=!LV.length;
+    if(!LV.length){sig='';return}
+    if(sg===sig&&!force)return;sig=sg;
+    $('vf').innerHTML=LV.map(slide).join('');observer();
+  }
+  const rejouer=()=>{const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&$('vacc').hidden&&$('vsel').hidden&&!$('v-video').hidden)v.play().catch(()=>{})};
+  window.majVideos=()=>{if(!$('v-video').hidden){rendre();if(!$('vacc').hidden)compte()}else sig=''};
+  window.vidVue=on=>{
+    if(on){rendre();const sl=$('vf').children[actif]||$('vf').firstElementChild;if(sl){$('vf').scrollTop=sl.offsetTop;const v=sl.querySelector('video');if(v){charger(sl);v.muted=muted;const p=v.play();if(p&&p.catch)p.catch(()=>{})}}}
+    else{vids().forEach(v=>v.pause());$('vacc').hidden=true;$('vsel').hidden=true}
+  };
+  document.addEventListener('visibilitychange',()=>{if(document.hidden)vids().forEach(v=>v.pause());else rejouer()});
+  function aller(v){$('vacc').hidden=true;const k=LV.indexOf(v),sl=$('vf').children[k];if(sl){$('vf').scrollTo({top:sl.offsetTop})}}
+  function compte(){
+    const pf=prof(cur),own=LV.filter(v=>(v.sc||'')===cur),mine=LV.filter(v=>likes.includes(v.i)),G=tab==='v'?own:mine;
+    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<span>'+esc(v.n)+'</span></button>').join('')
+      :'<div class="vgn">'+(tab==='v'?'Aucune vidéo pour le moment.':'Tu n’as encore aimé aucune vidéo. Touche le ❤️ sur une vidéo.')+'</div>';
+    $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.h)+'</b></div>'+
+      '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>'+esc(pf.h)+' · Agadez</small>'+
+      '<div class="vst"><div><b>'+own.length+'</b><small>Vidéos</small></div><div><b>'+mine.length+'</b><small>Tes J’aime</small></div></div>'+
+      (pf.bio?'<p>'+esc(pf.bio)+'</p>':'')+
+      '<div class="vbt"><button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button><button class="o" type="button" data-vshare="-1">Partager</button></div>'+
+      '</div>'+
+      '<div class="vtabs"><button type="button" data-vtab="v" class="'+(tab==='v'?'on':'')+'">▦ Vidéos</button><button type="button" data-vtab="l" class="'+(tab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
+      '<div class="vgrid">'+grid+'</div>';
+  }
+  function formVendeur(){
+    $('vsel').innerHTML='<div class="vabar"><button type="button" data-vsback aria-label="Retour">‹</button><b>Devenir vendeur</b></div>'+
+      '<div class="vsf"><h2>🏪 Demande de compte vendeur</h2><p>Remplis ces informations puis contacte ODA SHOP sur WhatsApp. Après vérification et abonnement, tes vidéos seront publiées sur ton profil.</p>'+
+      '<label>Nom de ta boutique ou ton nom *</label><input type="text" id="vs-nom" maxlength="60" value="'+esc(getL('oda_nom')||'')+'">'+
+      '<label>Téléphone *</label><input type="tel" id="vs-tel" maxlength="20" inputmode="tel" value="'+esc(getL('oda_tel')||'')+'">'+
+      '<label>Ville</label><input type="text" id="vs-ville" maxlength="40" value="'+esc(getL('oda_ville')||'Agadez')+'">'+
+      '<label>Quartier *</label><input type="text" id="vs-quartier" maxlength="50">'+
+      '<label>Ce que tu vends *</label><textarea id="vs-vend" maxlength="200" placeholder="Ex : habits, téléphones, riz…"></textarea>'+
+      '<label class="ck"><input type="checkbox" id="vs-id"><span>Je vais envoyer sur WhatsApp la photo de ma <b>pièce d’identité</b> et ma photo de profil juste après ce message. *</span></label>'+
+      '<button class="go" type="button" id="vs-go" disabled>🟢 Contacter ODA SHOP</button>'+
+      '<div class="nt">La demande s’envoie uniquement par WhatsApp. L’abonnement vendeur te sera expliqué par ODA SHOP.</div></div>';
+  }
+  const okForm=()=>{const g=i=>($(i)&&$(i).value||'').trim();const ok=g('vs-nom')&&g('vs-tel').replace(/\D/g,'').length>=8&&g('vs-quartier')&&g('vs-vend')&&$('vs-id').checked;$('vs-go').disabled=!ok}
+  function envoyerDemande(){
+    const g=i=>$(i).value.trim();
+    const msg='Bonjour ODA SHOP, je veux devenir VENDEUR et publier mes vidéos.\n\n🏪 Nom : '+g('vs-nom')+'\n📞 Téléphone : '+g('vs-tel')+'\n📍 Ville : '+(g('vs-ville')||'Agadez')+'\n🏘️ Quartier : '+g('vs-quartier')+'\n🛍️ Je vends : '+g('vs-vend')+'\n\n🪪 J’envoie ma pièce d’identité et ma photo de profil juste après sur cette conversation.\n\nMerci de m’indiquer le prix de l’abonnement vendeur.';
+    try{localStorage.setItem('oda_vdemande',JSON.stringify({t:Date.now()}))}catch(e){}
+    const url='https://wa.me/'+NUM+'?text='+encodeURIComponent(msg);
+    try{location.href=url}catch(e){}
+    setTimeout(()=>{if(document.hidden)return;let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='🟢 Ouvrir WhatsApp ›';document.body.appendChild(a)}a.href=url;a.style.display='block';setTimeout(()=>a.style.display='none',15000)},2500);
+    $('vsel').hidden=true;majPV();if(!$('vacc').hidden)compte();
+  }
+  function partager(v){
+    const t=(v?v.n+' | ':'')+'ODA SHOP Agadez',web=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname),u=web?location.href.split('#')[0]:'';
+    if(navigator.share){navigator.share({title:'ODA SHOP',text:t,url:u||undefined}).catch(()=>{});return}
+    window.open('https://wa.me/?text='+encodeURIComponent(t+(u?'\n'+u:'')),'_blank');
+  }
+  function wa(v){
+    envoyerCommande('Bonjour ODA SHOP, '+(v?'je suis intéressé par votre vidéo : '+v.n:'j’ai une question')+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));
+  }
+  $('vsel').addEventListener('input',okForm);$('vsel').addEventListener('change',okForm);
+  $('vsel').addEventListener('click',e=>{if(e.target.closest('[data-vsback]')){$('vsel').hidden=true;return}if(e.target.closest('#vs-go')&&!$('vs-go').disabled)envoyerDemande()});
+  function majPV(){let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
+    const m=$('pvmsg'),b=$('pvend');if(!m||!b)return;
+    m.textContent=d?'✅ Demande envoyée à ODA SHOP le '+new Date(d.t).toLocaleDateString('fr-FR')+'. Réponse sur WhatsApp.':'';
+    b.textContent=d?'🏪 Renvoyer ma demande vendeur':'🏪 Devenir vendeur (publier mes vidéos)'}
+  window.ouvrirVendeur=()=>{formVendeur();$('vsel').hidden=false;$('vsel').scrollTop=0;okForm()};
+  window.majPV=majPV;majPV();
+  if($('pvend'))$('pvend').onclick=()=>ouvrirVendeur();
+  $('v-video').addEventListener('click',e=>{
+    const t=e.target;let b;
+    if(b=t.closest('[data-vlike]')){const v=LV[+b.dataset.vlike];if(!v)return;const i=likes.indexOf(v.i);if(i<0)likes.push(v.i);else likes.splice(i,1);svl();b.classList.toggle('on',i<0);return}
+    if(t.closest('[data-vmute]')){muted=!muted;vids().forEach(v=>v.muted=muted);document.querySelectorAll('[data-vmute]').forEach(x=>x.innerHTML=(muted?ICO.mut:ICO.snd)+'<small>Son</small>');
+      const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&!muted)v.play().catch(()=>{});return}
+    if(b=t.closest('[data-vacc]')){cur=b.dataset.vacc||'';tab='v';compte();$('vacc').hidden=false;$('vacc').scrollTop=0;vids().forEach(v=>v.pause());return}
+    if(t.closest('[data-vback]')){$('vacc').hidden=true;rejouer();return}
+    if(b=t.closest('[data-vtab]')){tab=b.dataset.vtab;compte();return}
+    if(b=t.closest('[data-vgo]')){aller(LV[+b.dataset.vgo]);return}
+    if(b=t.closest('[data-vshare]')){partager(LV[+b.dataset.vshare]);return}
+    if(b=t.closest('[data-vwa]')){wa(LV[+b.dataset.vwa]);return}
+    const sl=t.closest('.vs');if(sl&&!t.closest('button')){const v=sl.querySelector('video');if(v.paused){v.play().catch(()=>{});sl.classList.remove('paused')}else{v.pause();sl.classList.add('paused')}}
+  });
 })();
 </script>
 </body>
