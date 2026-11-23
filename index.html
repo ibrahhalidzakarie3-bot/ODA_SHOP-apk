@@ -1039,6 +1039,16 @@ html[data-theme=dark] .ptop button{background:rgba(255,255,255,.12)}
 #vplus{display:none;position:fixed;top:calc(10px + env(safe-area-inset-top));right:12px;z-index:45;width:44px;height:44px;border:0;border-radius:50%;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;font-size:28px;font-weight:900;line-height:1;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.4)}
 body.onvid #vplus{display:flex}
 .vsf .lnk{background:none;border:0;color:#0b6bcb;font-weight:800;font-size:14px;padding:6px 0;text-align:left;text-decoration:underline}
+
+.pdots{display:flex;gap:6px;justify-content:center;margin:2px 0 4px}.pdots i{width:28px;height:4px;border-radius:2px;background:#ddd}.pdots i.on{background:var(--y)}
+.pbig{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;min-height:200px;border:2px dashed #d4b24a;border-radius:20px;background:#fffbea;text-align:center;cursor:pointer}
+.pbig span{font-size:46px}.pbig b{font-size:17px}.pbig small{color:#777;font-size:12.5px}
+.pbig2{display:flex;align-items:center;justify-content:center;height:50px;border-radius:25px;background:#161616;color:#fff;font-weight:900;font-size:15px;cursor:pointer}
+.pprev{position:relative;width:62%;aspect-ratio:9/16;max-height:46vh;margin:2px auto 4px;border-radius:16px;overflow:hidden;background:#000}
+.pprev video{width:100%;height:100%;object-fit:cover;display:block}
+.pprev span{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.6);color:#fff;font-size:11px;font-weight:800;padding:3px 8px;border-radius:10px}
+.pctr{text-align:center;align-items:stretch;padding-top:30px}.pbig-ico{font-size:64px;line-height:1}
+html[data-theme=dark] .pbig{background:#241f0d;border-color:#7a6320}html[data-theme=dark] .pbig small{color:#aaa}html[data-theme=dark] .pdots i{background:#333}html[data-theme=dark] .pbig2{background:#2b2b2b}
 .vmsg{font-size:13px;font-weight:800;color:#b42318;min-height:18px}
 .pbar{height:8px;border-radius:4px;background:#e5e5e5;overflow:hidden}.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--y),#16a34a)}
 .ppubrow{padding:12px 14px 4px}.ppubrow button{width:100%;height:46px;border:0;border-radius:23px;background:linear-gradient(180deg,#34d058,#16a34a);color:#fff;font-weight:900;font-size:15px}
@@ -2294,21 +2304,40 @@ document.documentElement.classList.remove('boot');
         '<label>Mot de passe * (6 caractères minimum)</label><input type="password" id="pb-pw" maxlength="64" autocomplete="'+(reg?'new-password':'current-password')+'">'+
         '<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div><button class="go" type="button" id="pb-go">'+(reg?'Créer mon compte':'Se connecter')+'</button>'+
         '<button class="lnk" type="button" data-pmode="'+(reg?'login':'reg')+'">'+(reg?'J’ai déjà un compte':'Créer un compte')+'</button></div>'
-      :'<div class="vsf"><h2>🎬 Nouvelle vidéo</h2><p>Connecté : <b>'+esc(getL('oda_cn')||'')+'</b> · <button class="lnk" type="button" id="pb-out">Se déconnecter</button></p>'+
-        '<label>Vidéo * (20 Mo maximum, courte)</label><input type="file" id="pb-f" accept="video/*">'+
-        '<label>Titre *</label><input type="text" id="pb-t" maxlength="80" placeholder="Ex : Mon arrivage de chemises">'+
-        '<label>Description</label><textarea id="pb-d" maxlength="200"></textarea>'+
-        '<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div><div class="pbar" id="pb-bar" hidden><i id="pb-bi"></i></div>'+
-        '<button class="go" type="button" id="pb-go">Publier</button><p class="nt">3 vidéos par jour maximum. Publie du contenu respectueux : ODA SHOP peut retirer une vidéo ou suspendre un compte.</p></div>');
+      :pasHtml(msg));
   }
-  window.ouvrirPub=()=>{formPub();$('vpub').hidden=false;$('vpub').scrollTop=0};
+  let pst='pick',PF=null,PU='',PT='',PD='';
+  const dots=n=>'<div class="pdots">'+[1,2,3].map(i=>'<i class="'+(i<=n?'on':'')+'"></i>').join('')+'</div>';
+  const libPU=()=>{if(PU){try{URL.revokeObjectURL(PU)}catch(e){}PU=''}};
+  const resetPub=()=>{libPU();PF=null;PT='';PD='';pst='pick'};
+  function pasHtml(msg){
+    const m='<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div>';
+    if(pst==='edit')return '<div class="vsf">'+dots(2)+'<h2>Décris ta vidéo</h2><div class="pprev"><video src="'+esc(PU)+'" autoplay muted loop playsinline></video><span>'+esc(PF?(PF.size/1048576).toFixed(1)+' Mo':'')+'</span></div>'+
+      '<label>Titre *</label><input type="text" id="pb-t" maxlength="80" placeholder="Ex : Mon arrivage de chemises" value="'+esc(PT)+'">'+
+      '<label>Description</label><textarea id="pb-d" maxlength="200" placeholder="Prix, quartier, détails…">'+esc(PD)+'</textarea>'+m+
+      '<button class="go" type="button" id="pb-go">🚀 Publier</button><button class="lnk" type="button" data-pchange>Changer de vidéo</button></div>';
+    if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
+    if(pst==='done')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">🎉</div><h2>Vidéo publiée !</h2><p>Elle est maintenant visible par tout le monde dans l’onglet Vidéos.</p><button class="go" type="button" id="pb-see">▶ Voir dans Vidéos</button><button class="lnk" type="button" data-pagain>Publier une autre vidéo</button></div>';
+    return '<div class="vsf">'+dots(1)+'<h2>Choisis ta vidéo</h2><p>Connecté : <b>'+esc(getL('oda_cn')||'')+'</b> · <button class="lnk" type="button" id="pb-out">Se déconnecter</button></p>'+
+      '<label class="pbig" for="pb-f"><span>🎞️</span><b>Choisir dans la galerie</b><small>Vidéo courte · 20 Mo maximum</small></label><input type="file" id="pb-f" accept="video/*" hidden>'+
+      '<label class="pbig2" for="pb-c">🎥 Filmer maintenant</label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden>'+m+
+      '<p class="nt">3 vidéos par jour maximum. Publie du contenu respectueux : ODA SHOP peut retirer une vidéo ou suspendre un compte.</p></div>';
+  }
+  window.ouvrirPub=()=>{resetPub();formPub();$('vpub').hidden=false;$('vpub').scrollTop=0};
   $('vplus').onclick=ouvrirPub;
   function envoyerVideo(f,titre,desc){return new Promise((ok,ko)=>{const x=new XMLHttpRequest();x.open('POST',CAPI);x.setRequestHeader('Content-Type','video/mp4');x.setRequestHeader('x-token',tk());x.setRequestHeader('x-titre',encodeURIComponent(titre));x.setRequestHeader('x-desc',encodeURIComponent(desc));
-    $('pb-bar').hidden=false;x.upload.onprogress=e=>{if(e.lengthComputable){const p=Math.round(e.loaded/e.total*100);$('pb-bi').style.width=p+'%';$('pb-msg').style.color='#555';$('pb-msg').textContent=p<100?'Envoi… '+p+'%':'Traitement…'}};
+    x.upload.onprogress=e=>{if(e.lengthComputable){const p=Math.round(e.loaded/e.total*100);$('pb-bi').style.width=p+'%';$('pb-msg').textContent=p<100?'Envoi… '+p+'%':'Traitement…'}};
     x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}if(x.status===200&&j.ok)ok(j);else{if(j.code==='auth')sTk('');ko(new Error(j.error||'Envoi impossible, réessaie.'))}};
     x.onerror=()=>ko(new Error('Connexion coupée, réessaie.'));x.send(f)})}
+  $('vpub').addEventListener('change',e=>{const i=e.target;if(i.id!=='pb-f'&&i.id!=='pb-c')return;const f=i.files&&i.files[0];if(!f)return;
+    const err=m=>{formPub(m);const x=$('pb-msg');if(x)x.style.color='#b42318'};
+    if(f.type&&!/^video\//.test(f.type))return err('Choisis un fichier vidéo.');
+    if(f.size>20*1024*1024)return err('Vidéo trop lourde ('+(f.size/1048576).toFixed(0)+' Mo) : 20 Mo maximum. Choisis une vidéo plus courte.');
+    libPU();PF=f;PU=URL.createObjectURL(f);pst='edit';formPub();$('vpub').scrollTop=0});
   $('vpub').addEventListener('click',async e=>{const t=e.target;
-    if(t.closest('[data-vpback]')){$('vpub').hidden=true;return}
+    if(t.closest('[data-vpback]')){if(tk()&&pst==='edit'){resetPub();formPub();return}if(pst==='send')return;$('vpub').hidden=true;resetPub();return}
+    if(t.closest('[data-pchange]')||t.closest('[data-pagain]')){resetPub();formPub();return}
+    if(t.closest('#pb-see')){$('vpub').hidden=true;resetPub();show('video');return}
     let b;if(b=t.closest('[data-pmode]')){pmode=b.dataset.pmode;formPub();return}
     if(t.closest('#pb-out')){sTk('');MYV=null;formPub();profilVue();return}
     if(!t.closest('#pb-go')||$('pb-go').disabled)return;
@@ -2317,12 +2346,12 @@ document.documentElement.classList.remove('boot');
       if(pmode==='reg'&&nom.length<2)return msg('Écris ton nom.');if(tel.replace(/\D/g,'').length<8)return msg('Numéro de téléphone invalide.');if(pw.length<6)return msg('Mot de passe : 6 caractères minimum.');
       go.disabled=true;go.textContent='Un instant…';const j=await capi(pmode==='reg'?{a:'register',name:nom,phone:tel,password:pw}:{a:'login',phone:tel,password:pw});
       if(j.error){formPub(j.error);return}sTk(j.token,j.name);formPub();chargerMyV();return}
-    const f=$('pb-f').files[0],titre=$('pb-t').value.trim(),desc=$('pb-d').value.trim();
-    if(!f)return msg('Choisis une vidéo.');if(f.size>20*1024*1024)return msg('Vidéo trop lourde : 20 Mo maximum (vidéo courte).');if(titre.length<3)return msg('Ajoute un titre (3 lettres minimum).');
-    go.disabled=true;go.textContent='Envoi en cours…';
-    try{const r=await envoyerVideo(f,titre,desc);$('vpub').hidden=true;MYV=null;chargerMyV();if(window.chargerBase)await chargerBase();show('video');
+    const titre=$('pb-t').value.trim(),desc=$('pb-d').value.trim();PT=titre;PD=desc;
+    if(!PF)return msg('Choisis une vidéo.');if(titre.length<3)return msg('Ajoute un titre (3 lettres minimum).');
+    pst='send';formPub();$('pb-bi').parentNode.hidden=false;
+    try{const r=await envoyerVideo(PF,titre,desc);libPU();PF=null;PT='';PD='';pst='done';formPub();MYV=null;chargerMyV();if(window.chargerBase)chargerBase();
       if(r.publie===false)alert('Ta vidéo est en attente de validation par ODA SHOP.')}
-    catch(er){formPub(er.message)}
+    catch(er){pst='edit';formPub(er.message)}
   });
 
   let ptab='v',MYV=null;
