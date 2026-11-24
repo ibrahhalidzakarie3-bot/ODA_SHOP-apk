@@ -1159,6 +1159,26 @@ html[data-theme=dark] .vsf .lnk{color:#6db3ff}
 #vplus.open{left:12px!important;width:auto!important}
 #vplus.open #vsbtn{display:none}
 #vplus.open .vsx{display:flex!important}
+#v-profil:not([hidden]){display:flex;flex-direction:column;height:calc(100dvh - 90px);position:relative}
+#v-profil>.ptop{position:absolute;top:calc(8px + env(safe-area-inset-top));right:4px;padding:0;z-index:5;width:auto}
+#v-profil>.ptop span,#v-profil>.ptop b{display:none}
+#v-profil>.ptop button{width:36px;height:36px}
+#pfeed{flex:1;min-height:0;display:flex;flex-direction:column}
+#pfeed>.vah,#pfeed>.vtabs{flex:none}
+#pfeed .vah{padding:calc(12px + env(safe-area-inset-top)) 20px 4px;gap:2px}
+#pfeed .pav2,#pfeed .vah>img{width:68px!important;height:68px!important}
+#pfeed .pav2 svg{width:38px;height:38px}
+#pfeed .vah h2{font-size:17px;margin:2px 0 0}
+#pfeed .vah small{font-size:12.5px}
+#pfeed .vst{margin:2px 0;gap:22px}#pfeed .vst b{font-size:16px}#pfeed .vst small{font-size:11.5px}
+#pfeed .vah .bio{margin:2px auto 0;font-size:12.5px}
+#pfeed .vbt{margin-top:2px}#pfeed .vbt button{padding:6px 14px;font-size:12.5px}
+#pfeed .vtabs{position:static;margin:4px -14px 0}
+#pfeed .vtabs button{padding:8px 0;font-size:13.5px}
+#pfeed .pgs{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;margin:0 -14px;padding-bottom:110px}
+#pfeed .pgs::-webkit-scrollbar{display:none}
+#pfeed .pgs .vgrid{margin:0}
+.ppubrow button{background:linear-gradient(180deg,var(--y2),var(--y))!important;color:#161616!important;box-shadow:0 3px 10px rgba(245,184,0,.35)}
 </style>
 </head>
 <body class="lock">
@@ -2336,7 +2356,7 @@ document.documentElement.classList.remove('boot');
       '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
       (String(v.i).startsWith('db')?'<button type="button" data-vmore="'+k+'" aria-label="Plus d’options">'+ICO.dots+'<small>Plus</small></button>':'')+
       ''+'</div>'+
-      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
+      '<div class="vinfo"><b>'+esc(pf.h)+'</b>'+(v.d&&String(v.i).startsWith('db')&&v.d.startsWith(String(v.n).replace(/…$/,''))?'':'<h3>'+esc(v.n)+'</h3>')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
       (solo?'':btn)+'</section>';
   }
   function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
@@ -2383,7 +2403,7 @@ document.documentElement.classList.remove('boot');
       ((cid&&BIO[cid])?'<p class="bio">'+esc(BIO[cid])+'</p>':'')+
       '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'✓ Suivi':'＋ Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-vtab="v" class="on">▦ Vidéos</button></div>'+
+      '<div class="vtabs"><button type="button" data-vtab="v" class="on"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" style="vertical-align:-3px;margin-right:5px"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="M16.5 10.2 22 7v10l-5.5-3.2z"/></svg>Vidéos</button></div>'+
       '<div class="vgrid">'+grid+'</div>';
   }
   function formVendeur(){
@@ -2624,8 +2644,8 @@ document.documentElement.classList.remove('boot');
       '<div class="vst"><div data-fl="following" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div data-fl="followers" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+nbv(tk()?(LIKES[ME.id]||0):0)+'</b><small>J’aime</small></div></div>'+
       (tk()?(ME.id&&BIO[ME.id]?'<p class="bio">'+esc(BIO[ME.id])+'</p>':'')+'<div class="vbt"><button class="o" type="button" data-pbio>✏️ '+(ME.id&&BIO[ME.id]?'Modifier ma bio':'Ajouter une bio')+'</button></div>':'')+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'">▦ Vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
-      (ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>');
+      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" style="vertical-align:-3px;margin-right:5px"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="M16.5 10.2 22 7v10l-5.5-3.2z"/></svg>Vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
+      '<div class="pgs">'+(ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>')+'</div>';
   }
   window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV();chargerMoi()};
   $('v-profil').addEventListener('click',e=>{const t=e.target;let b;
