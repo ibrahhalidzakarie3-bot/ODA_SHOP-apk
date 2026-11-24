@@ -1033,6 +1033,52 @@ html[data-theme=dark] .vsf .ck{background:#2a2410;border-color:#554a1c}
 #pset{position:fixed;inset:0;z-index:60;background:#f6f4ee;overflow:auto;padding-bottom:40px}
 #pset .vabar{position:sticky;top:0;background:#f6f4ee;z-index:2}
 #pset .psin{max-width:480px;margin:0 auto;padding:0 14px}
+#pset .gcard{margin-top:12px;border-radius:26px;padding:16px 18px;background:linear-gradient(135deg,#e6c468 0%,#d4a92f 55%,#e9cf7a 100%);border:1.5px solid #c99a1e;box-shadow:0 10px 26px rgba(185,138,31,.35);color:#161616}
+#pset .gtop{display:flex;align-items:center;gap:10px}
+#pset .gic{font-size:26px;line-height:1}
+#pset .gchip{border:1.5px solid #161616;border-radius:14px;padding:3px 10px;font-weight:800;font-size:12px;letter-spacing:.3px}
+#pset .gbig{font-size:34px;font-weight:900;margin:12px 0 6px;word-break:break-all;letter-spacing:2px;cursor:pointer}
+#pset .gbig small{font-size:15px;letter-spacing:0;font-weight:800;margin-left:6px}
+#vcm{position:fixed;inset:0;z-index:90;background:rgba(0,0,0,.5);display:flex;align-items:flex-end}
+#vcm .cs{background:#fff;color:#161616;width:100%;max-width:560px;margin:0 auto;border-radius:20px 20px 0 0;max-height:72vh;display:flex;flex-direction:column}
+#vcm .ch{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid #eee;font-weight:900}
+#vcm .ch button{border:0;background:none;font-size:22px;color:#555}
+#vcm .cl{overflow:auto;padding:6px 16px;flex:1;min-height:120px}
+#vcm .ci{padding:9px 0;border-bottom:1px solid #f1f1f1;font-size:14px;line-height:1.4}
+#vcm .ci b{font-size:12.5px;color:#555;display:block}
+#vcm .ci i{font-style:normal;float:right;color:#c33;font-size:12px}
+#vcm .cv{color:#888;text-align:center;padding:26px 0;font-weight:700}
+#vcm .cf{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #eee}
+#vcm .cf input{flex:1;border:1.5px solid #ddd;border-radius:20px;padding:10px 14px;font-size:15px;min-width:0}
+#vcm .cf button{border:0;background:#f5b800;border-radius:20px;padding:0 16px;font-weight:900;color:#161616}
+#pset .gfoot{display:flex;align-items:center;justify-content:space-between;gap:10px}
+#pset .gfoot small{font-size:13px}
+#pset .gfoot button{border:1.5px solid #161616;background:rgba(255,255,255,.25);border-radius:16px;padding:8px 14px;font-weight:900;font-size:13px;color:#161616;flex:none}
+#pset .wcard{margin-top:14px;background:#fff;border-radius:24px;padding:16px 16px 18px;box-shadow:0 6px 18px rgba(0,0,0,.07)}
+#pset .wchip{display:inline-block;border:1.5px solid #161616;border-radius:12px;padding:2px 9px;font-weight:800;font-size:12px}
+#pset .wrow2{display:flex;gap:14px;align-items:flex-start;margin-top:8px}
+#pset .wf{flex:1;min-width:0}
+#pset .wf label{display:block;font-size:13px;color:#555;margin:10px 0 3px}
+#pset .wv{font-size:20px;font-weight:900}
+#pset .wi{width:100%;height:42px;border:0;border-bottom:1.5px solid #e6e6e6;background:none;font-size:16px;font-weight:800;color:#161616;padding:0;border-radius:0;box-sizing:border-box;margin:0}
+#pset .pav{flex:none;width:132px;margin:6px 0 0}
+#pset .pimg{width:118px;height:118px;border-radius:50%;overflow:hidden;border:4px solid #f0cf6a;box-shadow:0 0 0 4px #fbf0cc}
+#pset .pimg img,#pset .pimg svg{width:100%;height:100%;object-fit:cover}
+#pset .chg{font-size:12px;padding:8px 10px;white-space:nowrap}
+#pset .wcard .btn{margin-top:14px}
+#pset .prow{display:flex;align-items:center;gap:14px;width:100%;margin-top:12px;padding:15px 16px;border:0;border-radius:20px;background:#fff;box-shadow:0 5px 16px rgba(0,0,0,.07);font-size:17px;font-weight:900;text-align:left;color:#161616}
+#pset .prow[hidden]{display:none}
+#pset .prow .ico{font-size:26px;line-height:1;width:34px;text-align:center}
+#pset .prow b{flex:1}
+#pset .prow .chev{font-style:normal;font-size:24px;color:#999;font-weight:400}
+#pset .prow .sw{position:relative;width:54px;height:32px;border-radius:16px;background:#d7d7d7;flex:none;transition:.2s}
+#pset .prow .sw::after{content:'';position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);transition:.2s}
+#pset .prow .sw.on{background:#34c759}#pset .prow .sw.on::after{left:25px}
+#pset .btn.pub{margin-top:14px;height:54px;border-radius:20px;font-size:15px}
+#pset #pvmsg{font-size:12px;color:#2f7d4f;text-align:center;margin:6px 0 0}
+html[data-theme=dark] #pset .wcard,html[data-theme=dark] #pset .prow{background:#1b1b1b;color:#eee;box-shadow:none}
+html[data-theme=dark] #pset .wf label{color:#aaa}html[data-theme=dark] #pset .wi{color:#eee;border-color:#333}
+
 html[data-theme=dark] #pset,html[data-theme=dark] #pset .vabar{background:#0b0b0b}
 html[data-theme=dark] .ptop button{background:rgba(255,255,255,.12)}
 #vsel,#vpub{z-index:70}
@@ -1051,11 +1097,26 @@ body.onvid #vplus{display:flex}
 html[data-theme=dark] .pbig{background:#241f0d;border-color:#7a6320}html[data-theme=dark] .pbig small{color:#aaa}html[data-theme=dark] .pdots i{background:#333}html[data-theme=dark] .pbig2{background:#2b2b2b}
 
 .vs.hp .vinfo{bottom:196px}
+
+.vgrid em{position:absolute;top:6px;left:6px;z-index:2;background:rgba(0,0,0,.55);color:#fff;font-style:normal;font-size:11px;font-weight:800;padding:2px 7px;border-radius:10px}
+.vvw{display:block;margin:2px 0 3px;font-size:12px;font-weight:700;opacity:.92}
+.vs.solo .vinfo{bottom:96px}.vs.solo .vrail{bottom:120px}
+.vrail .vav i[hidden]{display:none}.vrail .vav i.ok{background:#fff;color:#2fa84f}
+.vbt button.y{background:linear-gradient(180deg,var(--y2),var(--y));color:#161616}
+.vst{flex-wrap:wrap}
+
 .vprod{position:absolute;left:12px;right:12px;bottom:96px;z-index:3;display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:18px;background:rgba(255,255,255,.96);border:1.5px solid #d4b24a;box-shadow:0 8px 22px rgba(0,0,0,.35);color:#161616;text-shadow:none}
 .vprod img,.vpi{width:56px;height:56px;border-radius:12px;object-fit:cover;flex:none;background:#f3efe2;display:flex;align-items:center;justify-content:center;font-size:26px}
 .vpt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}.vpt b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.vpt span{font-size:16px;font-weight:900;color:#a8791a}.vpt small{font-size:11px;color:#777;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .vprod button{height:42px;padding:0 18px;border:0;border-radius:21px;background:linear-gradient(180deg,#d9b24c,#b98a1f);color:#fff;font-weight:900;font-size:15px;flex:none}
 .pph{display:flex;align-items:center;gap:12px}.pph img{width:84px;height:84px;object-fit:cover;border-radius:14px;border:1.5px solid #e3e3e3}.pph label{font-size:13.5px;font-weight:800;color:#0b6bcb;text-decoration:underline;margin:0}
+
+.vrail .vem{font-size:30px;line-height:36px;height:36px;display:block;filter:drop-shadow(0 2px 4px rgba(0,0,0,.55))}
+#vsig{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.55);display:flex;align-items:flex-end}
+.vsg{width:100%;background:#fff;color:#161616;border-radius:22px 22px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:9px}
+.vsg b{font-size:17px}.vsg p{margin:0 0 2px;color:#666;font-size:13.5px}
+.vsg button{height:48px;border:0;border-radius:14px;background:#f3f3f3;font-size:15px;font-weight:800;color:#161616}.vsg button.x{background:none;color:#888}
+html[data-theme=dark] .vsg{background:#1b1b1b;color:#eee}html[data-theme=dark] .vsg button{background:#2a2a2a;color:#eee}
 .vmsg{font-size:13px;font-weight:800;color:#b42318;min-height:18px}
 .pbar{height:8px;border-radius:4px;background:#e5e5e5;overflow:hidden}.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--y),#16a34a)}
 .ppubrow{padding:12px 14px 4px}.ppubrow button{width:100%;height:46px;border:0;border-radius:23px;background:linear-gradient(180deg,#34d058,#16a34a);color:#fff;font-weight:900;font-size:15px}
@@ -1117,22 +1178,33 @@ html[data-theme=dark] .vsf .lnk{color:#6db3ff}
   <div class="ptop"><span></span><b id="ptitle">Profil</b><button id="pgear" type="button" aria-label="Paramètres"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3.2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button></div>
   <div id="pfeed"></div>
   <div id="pset" hidden>
-  <div class="vabar"><button type="button" id="psback" aria-label="Retour">‹</button><b>Paramètres</b></div>
+  <div class="vabar"><button type="button" id="psback" aria-label="Retour">‹</button><b>Tableau de bord • ODA</b></div>
   <div class="psin">
-  <div class="card g">
-    <div class="pav"><div class="pimg" id="pimg"></div><button class="chg" id="pbtn" type="button">📷 Changer la photo</button><input type="file" id="pfile" accept="image/*" hidden></div>
-    <label for="pville">Ville</label>
-    <select id="pville"><option>Agadez</option><option>Diffa</option><option>Dosso</option><option>Maradi</option><option>Niamey</option><option>Tahoua</option><option>Tillabéri</option><option>Zinder</option><option>Tchirozérine</option></select>
-    <label for="ptel">Téléphone</label>
-    <input id="ptel" type="tel" inputmode="tel" autocomplete="tel" placeholder="+227 …" style="width:100%;height:46px;border-radius:14px;border:1.5px solid #e3e3e3;padding:0 14px;font-size:15px;box-sizing:border-box;margin:6px 0 14px">
+  <div class="gcard">
+    <div class="gtop"><span class="gic">👛</span><span class="gchip" id="gchip">SOLDE</span></div>
+    <div class="gbig" id="gbig">••••••</div>
+    <div class="gfoot"><small id="gsub"></small><button id="gbtn" type="button">Recharger</button></div>
+  </div>
+  <div class="wcard">
+    <span class="wchip">PROFIL</span>
+    <div class="wrow2">
+      <div class="wf">
+        <label>Nom</label><div class="wv" id="pnom">—</div>
+        <label for="ptel">Téléphone</label>
+        <input id="ptel" class="wi" type="tel" inputmode="tel" autocomplete="tel" placeholder="+227 …">
+        <label for="pville">Ville</label>
+        <select id="pville" class="wi"><option>Agadez</option><option>Diffa</option><option>Dosso</option><option>Maradi</option><option>Niamey</option><option>Tahoua</option><option>Tillabéri</option><option>Zinder</option><option>Tchirozérine</option></select>
+      </div>
+      <div class="pav"><div class="pimg" id="pimg"></div><button class="chg" id="pbtn" type="button">📷 Changer la photo</button><input type="file" id="pfile" accept="image/*" hidden></div>
+    </div>
     <button class="btn" id="sv">Enregistrer</button>
     <div id="ok">✅ Profil enregistré</div>
   </div>
-  <button class="btn" id="notif" type="button" hidden>🔔 Activer les notifications</button>
-  <div id="notifmsg" style="font-size:12px;color:#888;text-align:center;margin:6px 0"></div>
-  <button class="btn vend" id="pvend" type="button">🏪 Devenir vendeur (publier mes vidéos)</button>
+  <button class="prow" id="notif" type="button" hidden><span class="ico">🔔</span><b>Notifications</b><i class="sw"></i></button>
+  <div id="notifmsg" style="font-size:12px;color:#888;text-align:center;margin:-4px 0 8px"></div>
+  <button class="prow" id="pvend" type="button"><span class="ico">🏪</span><b>Devenir vendeur</b><i class="chev">›</i></button>
   <div id="pvmsg"></div>
-  <button class="btn pub" id="pubbtn" type="button">📢 Contacter ODA SHOP pour publier un produit</button>
+  <button class="prow" id="cout" type="button" hidden><span class="ico">🚪</span><b>Me déconnecter du compte vidéo</b><i class="chev">›</i></button>
   <button class="out" id="out" type="button">Se déconnecter</button>
   </div></div>
 </div>
@@ -1410,7 +1482,7 @@ function appliquerBase(rows,info){
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
-      au:r.auteur||'',i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
+      au:r.auteur||'',cid:r.client_id||'',vw:Number(r.vues)||0,nc:Number(r.nb_comm)||0,i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
   Object.keys(dbSeen).forEach(k=>{if(!par[k]&&DB_SEC[k]&&!(REGION==='agadez'&&(k==='travaux'||k==='transport')))DB_SEC[k][0].length=0});
   Object.keys(par).forEach(k=>dbSeen[k]=1);
   Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
@@ -1427,7 +1499,7 @@ let lastSig='',dbSeen={};
 async function chargerBase(){
   try{
     const hd={headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY}};
-    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
+    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur,client_id,vues,nb_comm&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
       fetch(DB_URL+'/rest/v1/regions?select=slug,name,whatsapp,active&slug=eq.'+REGION,hd).catch(()=>null)]);
     if(!r.ok)throw new Error('HTTP '+r.status);
     const rows=await r.json();let info=null;try{if(ri&&ri.ok){const a=await ri.json();info=a[0]||null}}catch(e){}
@@ -1890,7 +1962,7 @@ $('aok').onclick=()=>{
   try{history.replaceState(null,'','#accueil')}catch(x){}
 };
 document.addEventListener('click',e=>{const a=e.target.closest('[data-wasvc]');if(a){e.preventDefault();envoyerCommande('Bonjour ODA SHOP, je suis intéressé par : '+a.dataset.wasvc+'\n\nNom : '+(getL('oda_nom')||'-')+'\nVille : '+(getL('oda_ville')||'Agadez'))}});
-$('pubbtn').onclick=()=>envoyerCommande('Bonjour ODA SHOP, je veux publier un produit.\n\nNom : '+(getL('oda_nom')||'-')+'\nTél : '+(getL('oda_tel')||'non renseigné')+'\nVille : '+(getL('oda_ville')||'Agadez')+'\n\nProduit à publier : ');
+if($('pubbtn'))$('pubbtn').onclick=()=>envoyerCommande('Bonjour ODA SHOP, je veux publier un produit.\n\nNom : '+(getL('oda_nom')||'-')+'\nTél : '+(getL('oda_tel')||'non renseigné')+'\nVille : '+(getL('oda_ville')||'Agadez')+'\n\nProduit à publier : ');
 $('out').onclick=()=>{delL('oda_session');authOpen()};
 if(getL('oda_session')!=='1')authOpen();else initGeo();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&getL('oda_session')==='1'&&!document.body.classList.contains('geo-on'))startGeo()});
@@ -2009,7 +2081,7 @@ async function majNotifBtn(){
   if(!pushOK()){b.hidden=true;return}
   b.hidden=false;
   let on=false;try{const r=await navigator.serviceWorker.ready;on=!!(await r.pushManager.getSubscription())&&Notification.permission==='granted'}catch(e){}
-  b.textContent=on?'🔔 Notifications activées ✓':'🔔 Activer les notifications';
+  b.innerHTML='<span class="ico">🔔</span><b>Notifications</b><i class="sw'+(on?' on':'')+'"></i>';
   $('notifmsg').textContent=Notification.permission==='denied'?"Notifications bloquées : autorise-les dans les réglages du navigateur.":'';
 }
 async function activerNotif(){
@@ -2188,11 +2260,13 @@ document.documentElement.classList.remove('boot');
 // ===== Vidéos style TikTok : fil vertical + comptes (ODA SHOP et vendeurs) =====
 (function(){
   const ICO={
+    dots:'<svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2.3"/><circle cx="12" cy="12" r="2.3"/><circle cx="19" cy="12" r="2.3"/></svg>',
     heart:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.2 3 4.5 6.7 4.5c2 0 3.7 1.1 5.3 3 1.6-1.9 3.3-3 5.3-3 3.7 0 5.8 3.7 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>',
     share:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 4.5v4.2C8.6 9 5 12.3 4 18c2.2-2.6 5.1-3.8 10-3.9v4.3l7-7.2-7-6.7z"/></svg>',
+    chat:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H9l-5 4v-4H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/></svg>',
     snd:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4H4zm11.5 2.5a3.5 3.5 0 0 0-2-3.1v6.2a3.5 3.5 0 0 0 2-3.1zM13.5 4.2v2.1a6 6 0 0 1 0 11.4v2.1a8 8 0 0 0 0-15.6z"/></svg>',
     mut:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 9.5v5h3.5l4.5 4v-13l-4.5 4H4zm12.3 .6l-1.4 1.4 1.9 1.9-1.9 1.9 1.4 1.4 1.9-1.9 1.9 1.9 1.4-1.4-1.9-1.9 1.9-1.9-1.4-1.4-1.9 1.9-1.9-1.9z"/></svg>'};
-  let muted=true,io=null,sig='',actif=0,tab='v',cur='',LV=[];
+  let muted=false,io=null,sig='',actif=0,tab='v',cur='',LV=[];
   const lg=()=>{try{return JSON.parse(localStorage.getItem('oda_vlikes')||'[]')}catch(e){return[]}};
   let likes=lg();
   const svl=()=>{try{localStorage.setItem('oda_vlikes',JSON.stringify(likes))}catch(e){}};
@@ -2201,34 +2275,48 @@ document.documentElement.classList.remove('boot');
   const selr=c=>c?VENDEURS.find(x=>x.code===c):null;
   const selActif=c=>{const v=selr(c);return !!v&&(!v.abo||v.abo>=today())};
   const slug=n=>'@'+(String(n||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'')||'vendeur');
+  const nbv=n=>{n=Number(n)||0;return n>=1e6?(n/1e6).toFixed(1).replace(/\.0$/,'')+' M':n>=1e4?Math.round(n/1e3)+' k':n>=1e3?(n/1e3).toFixed(1).replace(/\.0$/,'')+' k':String(n)};
+  const devId=()=>{let d=getL('oda_did');if(!d){d=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2));try{localStorage.setItem('oda_did',d)}catch(x){}}return d};
   const keyOf=v=>v.sc||(v.au?'u:'+v.au:'');
   const avatar=n=>'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5b800"/><text x="50" y="68" font-size="54" font-family="Arial" font-weight="700" text-anchor="middle" fill="#161616">'+String((n||'?').trim().charAt(0)||'?').toUpperCase().replace(/[<>&]/g,'?')+'</text></svg>');
   const prof=c=>{if(String(c).startsWith('u:')){const n=c.slice(2);return{n:n,h:slug(n),img:avatar(n),bio:'',vendeur:0}}const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0}};
+  let FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
   const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc))};
   const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
+  function jouer(vd){vd.muted=muted;const p=vd.play();if(p&&p.catch)p.catch(()=>{if(!vd.muted){vd.muted=true;vd.play().catch(()=>{})}})}
+  document.addEventListener('pointerdown',()=>{if(muted)return;const sl=$('vf')&&$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&v.muted&&!v.paused)v.muted=false},{passive:true});
   const vids=()=>[...document.querySelectorAll('#vf video')];
   function slide(v,k){
     const lk=lien(v),pf=prof(keyOf(v)),poster=v.img?' poster="'+esc(v.img)+'"':'';
     const btn=lk?'<button class="vcmd" type="button" data-cmd="'+esc(lk.i)+'"><span>🟢 Commander · '+esc(lk.n)+(lk.p>0?' · '+esc(fmt(lk.p)):'')+'</span></button>'
       :'<button class="vcmd" type="button" data-vwa="'+k+'"><span>🟢 Écrire à ODA SHOP</span></button>';
-    const cp=!lk&&v.au&&v.p>0;
-    return '<section class="vs'+(cp?' hp':'')+'" data-i="'+k+'"><video playsinline loop muted preload="none" webkit-playsinline'+poster+' data-src="'+esc(v.vid)+'"></video><div class="vsh"></div><div class="vplay">▶</div>'+
+    const solo=!lk&&v.au&&!v.sc;
+    return '<section class="vs'+(solo?' solo':'')+'" data-i="'+k+'"><video playsinline loop muted preload="none" webkit-playsinline'+poster+' data-src="'+esc(v.vid)+'"></video><div class="vsh"></div><div class="vplay">▶</div>'+
       '<div class="vtop"><b>Vidéos ODA SHOP</b></div>'+
-      '<div class="vrail"><button class="vav" type="button" data-vacc="'+esc(keyOf(v))+'" aria-label="Compte '+esc(pf.n)+'"><img src="'+esc(pf.img)+'" alt=""></button>'+
+      '<div class="vrail"><button class="vav" type="button" data-vacc="'+esc(keyOf(v))+'" aria-label="Compte '+esc(pf.n)+'"><img src="'+esc(pf.img)+'" alt="">'+(v.cid?'<i data-vfol="'+esc(v.cid)+'">+</i>':'')+'</button>'+
       '<button class="vlk'+(likes.includes(v.i)?' on':'')+'" type="button" data-vlike="'+k+'">'+ICO.heart+'<small>J’aime</small></button>'+
+      (String(v.i).startsWith('db')?'<button type="button" data-vcom="'+k+'" aria-label="Commentaires">'+ICO.chat+'<small data-nc="'+esc(v.i)+'">'+nbv(v.nc)+'</small></button>':'')+
       '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
-      '<button type="button" data-vmute>'+(muted?ICO.mut:ICO.snd)+'<small>Son</small></button></div>'+
-      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
-      (cp?'<div class="vprod">'+(v.img?'<img src="'+esc(v.img)+'" alt="">':'<div class="vpi">🛍️</div>')+'<div class="vpt"><b>'+esc(v.n)+'</b><span>'+esc(fmt(v.p))+'</span><small>Vendu par '+esc(pf.h)+'</small></div><button type="button" data-vbuy="'+k+'">Acheter</button></div>':btn)+'</section>';
+      (String(v.i).startsWith('db')?'<button type="button" data-vmore="'+k+'" aria-label="Plus d’options">'+ICO.dots+'<small>Plus</small></button>':'')+
+      ''+'</div>'+
+      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(String(v.i).startsWith('db')?'<small class="vvw" data-vw="'+esc(v.i)+'">👁 '+nbv(v.vw)+' vue'+(v.vw>1?'s':'')+'</small>':'')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
+      (solo?'':btn)+'</section>';
   }
   function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
+  const VUS=(()=>{try{return new Set(JSON.parse(localStorage.getItem('oda_vseen')||'[]'))}catch(e){return new Set()}})();
+  async function compterVue(v){
+    if(!v||!String(v.i).startsWith('db')||VUS.has(v.i))return;VUS.add(v.i);
+    try{localStorage.setItem('oda_vseen',JSON.stringify([...VUS].slice(-500)))}catch(e){}
+    try{const r=await fetch(DB_URL+'/rest/v1/rpc/compter_vue',{method:'POST',headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_id:String(v.i).slice(2),p_device:devId()})});
+      if(r.ok){const n=await r.json();v.vw=Number(n)||(v.vw+1);document.querySelectorAll('[data-vw="'+v.i+'"]').forEach(x=>x.textContent='👁 '+nbv(v.vw)+' vue'+(v.vw>1?'s':''))}}catch(e){VUS.delete(v.i)}}
   function observer(){
     if(io)io.disconnect();
     io=new IntersectionObserver(es=>es.forEach(en=>{
       const sl=en.target,vd=sl.querySelector('video');
       if(en.isIntersecting&&en.intersectionRatio>=.6){charger(sl);charger(sl.nextElementSibling,1);vd.muted=muted;sl.classList.remove('paused');actif=+sl.dataset.i;
-        if(!$('v-video').hidden&&$('vacc').hidden&&$('vsel').hidden){const p=vd.play();if(p&&p.catch)p.catch(()=>{})}}
-      else vd.pause()}),{root:$('vf'),threshold:[0,.6,1]});
+        if(!$('v-video').hidden&&$('vacc').hidden&&$('vsel').hidden){jouer(vd)}
+        clearTimeout(sl._vt);sl._vt=setTimeout(()=>{if(+sl.dataset.i===actif&&!$('v-video').hidden)compterVue(LV[actif])},2000)}
+      else{vd.pause();clearTimeout(sl._vt)}}),{root:$('vf'),threshold:[0,.6,1]});
     $('vf').querySelectorAll('.vs').forEach(x=>io.observe(x));
   }
   function rendre(force){
@@ -2237,25 +2325,26 @@ document.documentElement.classList.remove('boot');
     $('vsoon').hidden=LV.length>0;$('vf').hidden=!LV.length;
     if(!LV.length){sig='';return}
     if(sg===sig&&!force)return;sig=sg;
-    $('vf').innerHTML=LV.map(slide).join('');observer();
+    $('vf').innerHTML=LV.map(slide).join('');observer();majBadges();
   }
   const rejouer=()=>{const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&$('vacc').hidden&&$('vsel').hidden&&!$('v-video').hidden)v.play().catch(()=>{})};
   window.majVideos=()=>{if(!$('v-video').hidden){rendre();if(!$('vacc').hidden)compte()}else sig=''};
   window.vidVue=on=>{
-    if(on){rendre();const sl=$('vf').children[actif]||$('vf').firstElementChild;if(sl){$('vf').scrollTop=sl.offsetTop;const v=sl.querySelector('video');if(v){charger(sl);v.muted=muted;const p=v.play();if(p&&p.catch)p.catch(()=>{})}}}
+    if(on){rendre();const sl=$('vf').children[actif]||$('vf').firstElementChild;if(sl){$('vf').scrollTop=sl.offsetTop;const v=sl.querySelector('video');if(v){charger(sl);jouer(v)}}}
     else{vids().forEach(v=>v.pause());$('vacc').hidden=true;$('vsel').hidden=true}
   };
   document.addEventListener('visibilitychange',()=>{if(document.hidden)vids().forEach(v=>v.pause());else rejouer()});
   function aller(v){$('vacc').hidden=true;const k=LV.indexOf(v),sl=$('vf').children[k];if(sl){$('vf').scrollTo({top:sl.offsetTop})}}
   function compte(){
     const pf=prof(cur),own=LV.filter(v=>keyOf(v)===cur),mine=LV.filter(v=>likes.includes(v.i)),G=tab==='v'?own:mine;
-    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<span>'+esc(v.n)+'</span></button>').join('')
+    const cid=String(cur).startsWith('u:')?((own.find(v=>v.cid)||{}).cid||''):'',S=cid?(cid===ME.id?ME:(STAT[cid]||{})):null;
+    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
       :'<div class="vgn">'+(tab==='v'?'Aucune vidéo pour le moment.':'Tu n’as encore aimé aucune vidéo. Touche le ❤️ sur une vidéo.')+'</div>';
     $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.h)+'</b></div>'+
       '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>'+esc(pf.h)+' · Agadez</small>'+
-      '<div class="vst"><div><b>'+own.length+'</b><small>Vidéos</small></div><div><b>'+mine.length+'</b><small>Tes J’aime</small></div></div>'+
+      '<div class="vst"><div><b>'+own.length+'</b><small>Vidéos</small></div>'+(S?'<div><b>'+(S.followers||0)+'</b><small>Followers</small></div><div><b>'+(S.following||0)+'</b><small>Suivis</small></div>':'')+'<div><b>'+mine.length+'</b><small>Tes J’aime</small></div></div>'+
       (pf.bio?'<p>'+esc(pf.bio)+'</p>':'')+
-      '<div class="vbt"><button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button><button class="o" type="button" data-vshare="-1">Partager</button></div>'+
+      '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'✓ Suivi':'＋ Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
       '</div>'+
       '<div class="vtabs"><button type="button" data-vtab="v" class="'+(tab==='v'?'on':'')+'">▦ Vidéos</button><button type="button" data-vtab="l" class="'+(tab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
       '<div class="vgrid">'+grid+'</div>';
@@ -2282,20 +2371,49 @@ document.documentElement.classList.remove('boot');
     setTimeout(()=>{if(document.hidden)return;let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='🟢 Ouvrir WhatsApp ›';document.body.appendChild(a)}a.href=url;a.style.display='block';setTimeout(()=>a.style.display='none',15000)},2500);
     $('vsel').hidden=true;majPV();if(!$('vacc').hidden)compte();
   }
+  function ouvrirCom(v){
+    if(!v)return;let o=$('vcm');if(o)o.remove();o=document.createElement('div');o.id='vcm';const pid=String(v.i).slice(2);let moi='';
+    o.innerHTML='<div class="cs"><div class="ch"><span>Commentaires</span><button type="button" data-x="1" aria-label="Fermer">✕</button></div><div class="cl"><div class="cv">Chargement…</div></div><form class="cf"><input maxlength="300" placeholder="Ajouter un commentaire…" autocomplete="off"><button type="submit">Envoyer</button></form></div>';
+    document.body.appendChild(o);
+    const L=o.querySelector('.cl'),F=o.querySelector('form'),I=F.querySelector('input');
+    const nb=n=>{v.nc=Math.max(0,n);document.querySelectorAll('[data-nc="'+v.i+'"]').forEach(x=>x.textContent=nbv(v.nc));o.querySelector('.ch span').textContent='Commentaires'+(v.nc?' ('+v.nc+')':'')};
+    const ligne=c=>'<div class="ci" data-id="'+esc(c.id)+'"><b>'+esc(slug(c.author))+' · '+new Date(c.created_at).toLocaleDateString('fr-FR')+(moi&&c.client_id===moi?' <i data-del="'+esc(c.id)+'">Supprimer</i>':'')+'</b>'+esc(c.body)+'</div>';
+    const vide=()=>{if(!L.querySelector('.ci'))L.innerHTML='<div class="cv">Aucun commentaire. Sois le premier 💬</div>'};
+    capi({a:'comments',id:pid,t:tk()}).then(j=>{if(j.error){L.innerHTML='<div class="cv">'+esc(j.error)+'</div>';return}moi=j.moi||'';L.innerHTML=(j.comments||[]).map(ligne).join('');nb((j.comments||[]).length>v.nc?(j.comments||[]).length:v.nc);vide()});
+    o.onclick=async e=>{if(e.target===o||e.target.closest('[data-x]')){o.remove();return}
+      const d=e.target.closest('[data-del]');if(d){const j=await capi({a:'comment_del',t:tk(),id:d.dataset.del});if(j.error){toast(j.error,2200);return}d.closest('.ci').remove();nb(v.nc-1);vide()}};
+    F.onsubmit=async e=>{e.preventDefault();const t=I.value.trim();if(!t)return;
+      if(!tk()){o.remove();toast('Crée un compte ou connecte-toi pour commenter.',2600);pmode='login';ouvrirPub();return}
+      I.disabled=true;const j=await capi({a:'comment',t:tk(),id:pid,body:t});I.disabled=false;
+      if(j.error){toast(j.error,2600);if(j.code==='auth')o.remove();return}
+      moi=j.comment.client_id;I.value='';const cv=L.querySelector('.cv');if(cv)cv.remove();L.insertAdjacentHTML('afterbegin',ligne(j.comment));nb(v.nc+1);L.scrollTop=0}}
+  function menuVideo(v){
+    if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
+    o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b><button type="button" data-act="rep">🚩 Signaler cette vidéo</button><button type="button" class="x" data-act="">Annuler</button></div>';
+    document.body.appendChild(o);
+    o.onclick=e=>{const b=e.target.closest('[data-act]');if(!b&&e.target!==o)return;o.remove();if(b&&b.dataset.act==='rep')signaler(v)}}
+  function signaler(v){
+    if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
+    o.innerHTML='<div class="vsg"><b>🚩 Signaler cette vidéo</b><p>Pourquoi ?</p>'+['Contenu inapproprié','Arnaque ou faux produit','Spam ou publicité','Autre'].map(m=>'<button type="button" data-m="'+m+'">'+m+'</button>').join('')+'<button type="button" class="x" data-m="">Annuler</button></div>';
+    document.body.appendChild(o);
+    o.onclick=async e=>{const b=e.target.closest('[data-m]');if(!b&&e.target!==o)return;o.remove();if(!b||!b.dataset.m)return;
+      const d=devId();
+      try{const r=await fetch(DB_URL+'/rest/v1/rpc/signaler_video',{method:'POST',headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_id:String(v.i).slice(2),p_motif:b.dataset.m,p_device:d})});
+        toast(r.ok?'Merci, ODA SHOP va examiner cette vidéo.':'Signalement impossible, réessaie.',2600)}catch(x){toast('Pas de connexion.',2200)}}}
   function partager(v){
     const t=(v?v.n+' | ':'')+'ODA SHOP Agadez',web=/^https?:$/.test(location.protocol)&&!/^(localhost|127\.)/.test(location.hostname),u=web?location.href.split('#')[0]:'';
     if(navigator.share){navigator.share({title:'ODA SHOP',text:t,url:u||undefined}).catch(()=>{});return}
     window.open('https://wa.me/?text='+encodeURIComponent(t+(u?'\n'+u:'')),'_blank');
   }
   function wa(v){
-    envoyerCommande('Bonjour ODA SHOP, '+(v?'je suis intéressé par votre vidéo : '+v.n:'j’ai une question')+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));
+    envoyerCommande('Bonjour ODA SHOP, '+(v?'je suis intéressé par votre vidéo : '+v.n+(v.code?' (Réf : '+v.code+')':''):'j’ai une question')+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));
   }
   $('vsel').addEventListener('input',okForm);$('vsel').addEventListener('change',okForm);
   $('vsel').addEventListener('click',e=>{if(e.target.closest('[data-vsback]')){$('vsel').hidden=true;return}if(e.target.closest('#vs-go')&&!$('vs-go').disabled)envoyerDemande()});
   function majPV(){let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
     const m=$('pvmsg'),b=$('pvend');if(!m||!b)return;
     m.textContent=d?'✅ Demande envoyée à ODA SHOP le '+new Date(d.t).toLocaleDateString('fr-FR')+'. Réponse sur WhatsApp.':'';
-    b.textContent=d?'🏪 Renvoyer ma demande vendeur':'🏪 Devenir vendeur (publier mes vidéos)'}
+    b.innerHTML='<span class="ico">🏪</span><b>'+(d?'Renvoyer ma demande vendeur':'Devenir vendeur')+'</b><i class="chev">›</i>'}
   window.ouvrirVendeur=()=>{formVendeur();$('vsel').hidden=false;$('vsel').scrollTop=0;okForm()};
   const CAPI=DB_URL+'/functions/v1/client-api';
   const tk=()=>getL('oda_ct')||'';
@@ -2303,6 +2421,30 @@ document.documentElement.classList.remove('boot');
   async function capi(b){try{const r=await fetch(CAPI,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});const j=await r.json().catch(()=>({}));if(!r.ok){if(j.code==='auth')sTk('');return{error:j.error||'Erreur, réessaie.',code:j.code}}return j}catch(e){return{error:'Pas de connexion. Réessaie.'}}}
   async function chargerMyV(){if(!tk()){MYV=null;return}const j=await capi({a:'mine',t:tk()});MYV=j.error?null:(j.videos||[]);if(!$('v-profil').hidden)profilVue()}
   async function supprimerVideo(id){if(!confirm('Supprimer cette vidéo ?'))return;const j=await capi({a:'delete',t:tk(),id:id});if(j.error){alert(j.error);return}await chargerMyV();if(window.chargerBase)chargerBase()}
+  const masqueTel=t=>{const d=String(t||'').replace(/\D/g,'');if(d.length<4)return '';return (String(t).trim().startsWith('+')||d.startsWith('227')?'+227 ':'')+'•• •• •• '+d.slice(-2)};
+  let COINSHOW=false;const nbv0=n=>String(Math.floor(Number(n)||0)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
+  function majPset(){
+    const log=!!tk(),nom=(log&&getL('oda_cn'))||getL('oda_nom')||'';
+    const H=new Date(),hm=String(H.getHours()).padStart(2,'0')+':'+String(H.getMinutes()).padStart(2,'0');
+    if($('gchip'))$('gchip').textContent='SOLDE';
+    if($('gbig'))$('gbig').innerHTML=(log&&COINSHOW?nbv0(ME.coins||0)+' <small>Coins</small>':'••••••')+'';
+    if($('gsub'))$('gsub').textContent=log?'Dernière mise à jour · aujourd’hui à '+hm:'Connecte-toi pour voir tes coins';
+    if($('gbtn'))$('gbtn').textContent=log?'Recharger':'Créer un compte';
+    if($('pnom'))$('pnom').textContent=nom||'—';
+    if($('cout'))$('cout').hidden=!log;
+  }
+  async function chargerMoi(){
+    if(!tk()){FOL=new Set();ME={id:'',followers:0,following:0,videos:0};majBadges();return}
+    const j=await capi({a:'me',t:tk()});if(j.error)return;ME=j;FOL=new Set(j.ids||[]);majBadges();if(!$('v-profil').hidden)profilVue();majPset()}
+  function majBadges(){document.querySelectorAll('i[data-vfol]').forEach(i=>{const id=i.dataset.vfol,on=FOL.has(id);i.textContent=on?'✓':'+';i.classList.toggle('ok',on);i.hidden=(id===ME.id)})}
+  async function suivre(id){
+    if(!tk()){toast('Connecte-toi pour suivre ce compte.',2200);pmode='login';ouvrirPub();return}
+    const j=await capi({a:'follow',t:tk(),id:id});if(j.error){toast(j.error,2600);return}
+    if(j.suivi)FOL.add(id);else FOL.delete(id);
+    ME.following=FOL.size;STAT[id]=Object.assign(STAT[id]||{},{followers:j.followers,suivi:j.suivi});
+    majBadges();if(!$('vacc').hidden)compte();if(!$('v-profil').hidden)profilVue();
+    toast(j.suivi?'Tu suis ce compte ✓':'Tu ne suis plus ce compte',1600)}
+  async function statsDe(id){const j=await capi({a:'stats',id:id,t:tk()});if(!j.error){STAT[id]=j;if(j.suivi)FOL.add(id);if(!$('vacc').hidden)compte();majBadges()}}
   let pmode='login';
   function formPub(msg){
     const back='<div class="vabar"><button type="button" data-vpback aria-label="Retour">‹</button><b>Publier une vidéo</b></div>',reg=pmode==='reg';
@@ -2312,7 +2454,7 @@ document.documentElement.classList.remove('boot');
         '<label>Téléphone *</label><input type="tel" id="pb-tel" inputmode="tel" maxlength="20" value="'+esc(getL('oda_tel')||'')+'">'+
         '<label>Mot de passe * (6 caractères minimum)</label><input type="password" id="pb-pw" maxlength="64" autocomplete="'+(reg?'new-password':'current-password')+'">'+
         '<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div><button class="go" type="button" id="pb-go">'+(reg?'Créer mon compte':'Se connecter')+'</button>'+
-        '<button class="lnk" type="button" data-pmode="'+(reg?'login':'reg')+'">'+(reg?'J’ai déjà un compte':'Créer un compte')+'</button></div>'
+        '<button class="lnk" type="button" data-pmode="'+(reg?'login':'reg')+'">'+(reg?'J’ai déjà un compte':'Créer un compte')+'</button>'+(reg?'':'<button class="lnk" type="button" data-pforgot>Mot de passe oublié ?</button>')+'</div>'
       :pasHtml(msg));
   }
   let pst='pick',PF=null,PU='',PT='',PD='',PX='',PP='';
@@ -2321,22 +2463,46 @@ document.documentElement.classList.remove('boot');
   const resetPub=()=>{libPU();PF=null;PT='';PD='';PX='';PP='';pst='pick'};
   function pasHtml(msg){
     const m='<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div>';
-    if(pst==='edit')return '<div class="vsf">'+dots(2)+'<h2>Décris ta vidéo</h2><div class="pprev"><video src="'+esc(PU)+'" autoplay muted loop playsinline></video><span>'+esc(PF?(PF.size/1048576).toFixed(1)+' Mo':'')+'</span></div>'+
-      '<label>Titre *</label><input type="text" id="pb-t" maxlength="80" placeholder="Ex : Mon arrivage de chemises" value="'+esc(PT)+'">'+
-      '<label>Description</label><textarea id="pb-d" maxlength="200" placeholder="Détails, quartier, livraison…">'+esc(PD)+'</textarea>'+
-      '<label>Prix du produit (FCFA) *</label><input type="text" id="pb-x" inputmode="numeric" maxlength="9" placeholder="Ex : 12500" value="'+esc(PX)+'">'+
-      '<label>Photo du produit *</label>'+(PP?'<div class="pph"><img src="'+esc(PP)+'" alt=""><label for="pb-p">🔄 Changer la photo</label></div>':'<label class="pbig2" for="pb-p">📷 Ajouter la photo du produit</label>')+'<input type="file" id="pb-p" accept="image/*" hidden>'+m+
+    if(pst==='edit')return '<div class="vsf">'+dots(2)+'<h2>Ajoute une description</h2><div class="pprev"><video src="'+esc(PU)+'" autoplay muted loop playsinline></video><span>'+esc(PF?(PF.size/1048576).toFixed(1)+' Mo':'')+'</span></div>'+
+      '<label>Légende *</label><input type="text" id="pb-t" maxlength="80" placeholder="Ex : Ma journée à Agadez" value="'+esc(PT)+'">'+
+      '<label>Description</label><textarea id="pb-d" maxlength="200" placeholder="Parle de ta vidéo…">'+esc(PD)+'</textarea>'+
+      m+
       '<button class="go" type="button" id="pb-go">🚀 Publier</button><button class="lnk" type="button" data-pchange>Changer de vidéo</button></div>';
-    if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
+    if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page, l’allègement peut prendre un moment.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
     if(pst==='done')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">🎉</div><h2>Vidéo publiée !</h2><p>Elle est maintenant visible par tout le monde dans l’onglet Vidéos.</p><button class="go" type="button" id="pb-see">▶ Voir dans Vidéos</button><button class="lnk" type="button" data-pagain>Publier une autre vidéo</button></div>';
     return '<div class="vsf">'+dots(1)+'<h2>Choisis ta vidéo</h2><p>Connecté : <b>'+esc(getL('oda_cn')||'')+'</b> · <button class="lnk" type="button" id="pb-out">Se déconnecter</button></p>'+
-      '<label class="pbig" for="pb-f"><span>🎞️</span><b>Choisir dans la galerie</b><small>Vidéo courte · 20 Mo maximum</small></label><input type="file" id="pb-f" accept="video/*" hidden>'+
+      '<label class="pbig" for="pb-f"><span>🎞️</span><b>Choisir dans la galerie</b><small>Vidéo courte · 60 secondes maximum</small></label><input type="file" id="pb-f" accept="video/*" hidden>'+
       '<label class="pbig2" for="pb-c">🎥 Filmer maintenant</label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden>'+m+
-      '<p class="nt">3 vidéos par jour maximum. Publie du contenu respectueux : ODA SHOP peut retirer une vidéo ou suspendre un compte.</p></div>';
+      '<p class="nt">Ta vidéo est allégée automatiquement avant l’envoi. 3 vidéos par jour maximum. Publie du contenu respectueux : ODA SHOP peut retirer une vidéo ou suspendre un compte.</p></div>';
   }
   window.ouvrirPub=()=>{resetPub();formPub();$('vpub').hidden=false;$('vpub').scrollTop=0};
   $('vplus').onclick=ouvrirPub;
-  function envoyerVideo(f,titre,desc,prix,photo){return new Promise((ok,ko)=>{const x=new XMLHttpRequest();x.open('POST',CAPI);x.setRequestHeader('Content-Type','video/mp4');x.setRequestHeader('x-token',tk());x.setRequestHeader('x-titre',encodeURIComponent(titre));x.setRequestHeader('x-desc',encodeURIComponent(desc));x.setRequestHeader('x-prix',String(prix||0));x.setRequestHeader('x-photo',photo||'');
+  const MAXS=60;
+  function dureeVideo(f){return new Promise(ok=>{const v=document.createElement('video'),u=URL.createObjectURL(f);v.preload='metadata';v.onloadedmetadata=()=>{const d=v.duration;URL.revokeObjectURL(u);ok(isFinite(d)?d:0)};v.onerror=()=>{URL.revokeObjectURL(u);ok(0)};v.src=u})}
+  // Allège la vidéo dans le téléphone : réduit la taille de l'image et le débit pour rester sous 10 Mo
+  function compresser(file,prog){return new Promise((ok,ko)=>{
+    if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream)return ko(new Error('nosupport'));
+    const mime=['video/mp4;codecs=avc1.42E01E,mp4a.40.2','video/webm;codecs=vp9,opus','video/webm;codecs=vp8,opus','video/webm'].find(m=>{try{return MediaRecorder.isTypeSupported(m)}catch(e){return false}});
+    if(!mime)return ko(new Error('nosupport'));
+    const v=document.createElement('video'),u=URL.createObjectURL(file);let ac=null,fini=false,rec=null,raf=0,garde=0;
+    const fin=(e,b)=>{if(fini)return;fini=true;cancelAnimationFrame(raf);clearTimeout(garde);try{v.pause()}catch(x){}try{if(ac)ac.close()}catch(x){}URL.revokeObjectURL(u);e?ko(e):ok(b)};
+    v.playsInline=true;v.preload='auto';v.src=u;v.onerror=()=>fin(new Error('lecture'));
+    v.onloadedmetadata=()=>{
+      const d=v.duration;if(!isFinite(d)||d<=0)return fin(new Error('lecture'));
+      const r=Math.min(1,720/Math.max(v.videoWidth,v.videoHeight)),w=Math.max(2,Math.round(v.videoWidth*r/2)*2),h=Math.max(2,Math.round(v.videoHeight*r/2)*2);
+      const c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');
+      const vb=Math.max(350000,Math.min(1400000,Math.floor(8.5*1048576*8/d)-80000));
+      const st=c.captureStream(30);
+      try{ac=new (window.AudioContext||window.webkitAudioContext)();const src=ac.createMediaElementSource(v),dest=ac.createMediaStreamDestination();src.connect(dest);dest.stream.getAudioTracks().forEach(t=>st.addTrack(t))}catch(e){ac=null}
+      const ch=[];try{rec=new MediaRecorder(st,{mimeType:mime,videoBitsPerSecond:vb,audioBitsPerSecond:64000})}catch(e){return fin(new Error('nosupport'))}
+      rec.ondataavailable=e=>{if(e.data&&e.data.size)ch.push(e.data)};
+      rec.onstop=()=>fin(null,new Blob(ch,{type:mime.split(';')[0]}));rec.onerror=()=>fin(new Error('encodage'));
+      const boucle=()=>{if(fini)return;g.drawImage(v,0,0,w,h);if(prog)prog(Math.min(1,v.currentTime/d));raf=requestAnimationFrame(boucle)};
+      v.onended=()=>{try{rec.stop()}catch(e){fin(new Error('encodage'))}};
+      garde=setTimeout(()=>fin(new Error('trop long')),d*1000*1.6+20000);
+      v.play().then(()=>{rec.start(500);boucle()}).catch(()=>fin(new Error('lecture')))};
+  })}
+  function envoyerVideo(f,titre,desc,prix,photo){return new Promise((ok,ko)=>{const x=new XMLHttpRequest();x.open('POST',CAPI);x.setRequestHeader('Content-Type',/webm/i.test(f.type||'')?'video/webm':'video/mp4');x.setRequestHeader('x-token',tk());x.setRequestHeader('x-titre',encodeURIComponent(titre));x.setRequestHeader('x-desc',encodeURIComponent(desc));x.setRequestHeader('x-prix',String(prix||0));x.setRequestHeader('x-photo',photo||'');
     x.upload.onprogress=e=>{if(e.lengthComputable){const p=Math.round(e.loaded/e.total*100);$('pb-bi').style.width=p+'%';$('pb-msg').textContent=p<100?'Envoi… '+p+'%':'Traitement…'}};
     x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}if(x.status===200&&j.ok)ok(j);else{if(j.code==='auth')sTk('');ko(new Error(j.error||'Envoi impossible, réessaie.'))}};
     x.onerror=()=>ko(new Error('Connexion coupée, réessaie.'));x.send(f)})}
@@ -2348,48 +2514,59 @@ document.documentElement.classList.remove('boot');
     if(i.id!=='pb-f'&&i.id!=='pb-c')return;const f=i.files&&i.files[0];if(!f)return;
     const err=m=>{formPub(m);const x=$('pb-msg');if(x)x.style.color='#b42318'};
     if(f.type&&!/^video\//.test(f.type))return err('Choisis un fichier vidéo.');
-    if(f.size>20*1024*1024)return err('Vidéo trop lourde ('+(f.size/1048576).toFixed(0)+' Mo) : 20 Mo maximum. Choisis une vidéo plus courte.');
+    if(f.size>300*1024*1024)return err('Vidéo trop lourde. Choisis une vidéo plus courte.');
+    const d=await dureeVideo(f);if(d>MAXS+1)return err('Vidéo trop longue ('+Math.round(d)+' s) : '+MAXS+' secondes maximum.');
     libPU();PF=f;PU=URL.createObjectURL(f);pst='edit';formPub();$('vpub').scrollTop=0});
   $('vpub').addEventListener('click',async e=>{const t=e.target;
     if(t.closest('[data-vpback]')){if(tk()&&pst==='edit'){resetPub();formPub();return}if(pst==='send')return;$('vpub').hidden=true;resetPub();return}
     if(t.closest('[data-pchange]')||t.closest('[data-pagain]')){resetPub();formPub();return}
     if(t.closest('#pb-see')){$('vpub').hidden=true;resetPub();show('video');return}
+    if(t.closest('[data-pforgot]')){const n=($('pb-tel')&&$('pb-tel').value||'').trim();
+      const u='https://wa.me/'+NUM+'?text='+encodeURIComponent('Bonjour ODA SHOP, j’ai oublié mon mot de passe pour publier mes vidéos.\n\n📞 Mon numéro : '+(n||'(à préciser)')+'\n\nMerci de me donner un nouveau mot de passe.');
+      try{location.href=u}catch(x){}return}
     let b;if(b=t.closest('[data-pmode]')){pmode=b.dataset.pmode;formPub();return}
-    if(t.closest('#pb-out')){sTk('');MYV=null;formPub();profilVue();return}
+    if(t.closest('#pb-out')){sTk('');MYV=null;formPub();chargerMoi();profilVue();return}
     if(!t.closest('#pb-go')||$('pb-go').disabled)return;
     const msg=m=>{$('pb-msg').style.color='#b42318';$('pb-msg').textContent=m},go=$('pb-go');
     if(!tk()){const tel=$('pb-tel').value.trim(),pw=$('pb-pw').value,nom=pmode==='reg'?$('pb-nom').value.trim():'';
       if(pmode==='reg'&&nom.length<2)return msg('Écris ton nom.');if(tel.replace(/\D/g,'').length<8)return msg('Numéro de téléphone invalide.');if(pw.length<6)return msg('Mot de passe : 6 caractères minimum.');
       go.disabled=true;go.textContent='Un instant…';const j=await capi(pmode==='reg'?{a:'register',name:nom,phone:tel,password:pw}:{a:'login',phone:tel,password:pw});
-      if(j.error){formPub(j.error);return}sTk(j.token,j.name);formPub();chargerMyV();return}
-    lireChamps();const titre=PT.trim(),desc=PD.trim(),px=parseInt(String(PX).replace(/\D/g,''),10)||0;PT=titre;PD=desc;
+      if(j.error){formPub(j.error);return}sTk(j.token,j.name);formPub();chargerMyV();chargerMoi();return}
+    lireChamps();const titre=PT.trim(),desc=PD.trim();PT=titre;PD=desc;
     if(!PF)return msg('Choisis une vidéo.');if(titre.length<3)return msg('Ajoute un titre (3 lettres minimum).');
-    if(px<1)return msg('Indique le prix du produit.');if(!PP)return msg('Ajoute la photo du produit.');
-    pst='send';formPub();$('pb-msg').textContent='Envoi de la photo…';
-    try{const ph=await capi({a:'photo',t:tk(),img:PP});if(ph.error)throw new Error(ph.error);
-      const r=await envoyerVideo(PF,titre,desc,px,ph.url);libPU();PF=null;PT='';PD='';PX='';PP='';pst='done';formPub();MYV=null;chargerMyV();if(window.chargerBase)chargerBase();
+    pst='send';formPub();const info=t=>{const m=$('pb-msg');if(m)m.textContent=t};
+    try{let fic=PF;
+      if(PF.size>8*1024*1024){info('Allègement de la vidéo… 0%');
+        try{fic=await compresser(PF,p=>{info('Allègement de la vidéo… '+Math.round(p*100)+'%');const b=$('pb-bi');if(b)b.style.width=Math.round(p*100)+'%'})}
+        catch(e){throw new Error('Impossible d’alléger cette vidéo sur ce téléphone. Choisis une vidéo plus courte ou plus légère (10 Mo maximum).')}}
+      if(fic.size>10*1024*1024)throw new Error('Vidéo trop lourde même allégée (10 Mo maximum). Choisis une vidéo plus courte.');
+      info('Envoi de la vidéo…');const b0=$('pb-bi');if(b0)b0.style.width='0';
+      const r=await envoyerVideo(fic,titre,desc,0,'');libPU();PF=null;PT='';PD='';PX='';PP='';pst='done';formPub();MYV=null;chargerMyV();chargerMoi();if(window.chargerBase)chargerBase();
       if(r.publie===false)alert('Ta vidéo est en attente de validation par ODA SHOP.')}
     catch(er){pst='edit';formPub(er.message)}
   });
 
   let ptab='v',MYV=null;
   function profilVue(){
-    const nom=getL('oda_nom')||'Mon profil',ville=getL('oda_ville')||'Agadez',f=getL('oda_photo'),mine=LV.filter(v=>likes.includes(v.i));
+    const nom=(tk()&&getL('oda_cn'))||getL('oda_nom')||'Mon profil',ville=getL('oda_ville')||'Agadez',f=getL('oda_photo'),mine=LV.filter(v=>likes.includes(v.i));
     let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
     const own=MYV||[];
     const G=ptab==='l'?mine:own;
-    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span><span class="pdel" data-pdel="'+m.id+'">🗑</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<span>'+esc(v.n)+'</span></button>').join('')
-      :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le ❤️ dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Deviens vendeur pour publier tes vidéos sur ODA SHOP.')+'</div>';
+    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video><em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span><span class="pdel" data-pdel="'+m.id+'">🗑</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+      :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le ❤️ dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Touche « Publier une vidéo » pour commencer.')+'</div>';
     $('ptitle').textContent=nom;
-    $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>📍 '+esc(ville)+'</small>'+
-      '<div class="vst"><div><b>'+own.length+'</b><small>Vidéos</small></div><div><b>'+mine.length+'</b><small>J’aime</small></div></div>'+
-      '<div class="vbt"><button class="o" type="button" data-pedit>Modifier le profil</button><button class="y" type="button" data-pvend>'+(d?'🏪 Demande envoyée':'🏪 Devenir vendeur')+'</button></div></div>'+
+    $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>'+(tk()?esc(slug(nom))+' · ':'')+'📍 '+esc(ville)+'</small>'+
+      '<div class="vst"><div><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+own.length+'</b><small>Vidéos</small></div><div><b>'+mine.length+'</b><small>J’aime</small></div></div>'+
+      '</div>'+
       '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'">▦ Mes vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
       (ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>');
   }
-  window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV()};
+  window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV();chargerMoi()};
   $('v-profil').addEventListener('click',e=>{const t=e.target;let b;
-    if(t.closest('#pgear')||t.closest('[data-pedit]')){$('pset').hidden=false;$('pset').scrollTop=0;return}
+    if(t.closest('#pgear')||t.closest('[data-pedit]')){majPset();$('pset').hidden=false;$('pset').scrollTop=0;return}
+    if(t.closest('#gbig')){if(tk()){COINSHOW=!COINSHOW;majPset()}return}
+    if(t.closest('#gbtn')){if(tk()){envoyerCommande('Bonjour ODA SHOP, je veux recharger mes coins.\n\nCompte : '+slug(getL('oda_cn')||'')+'\nTéléphone : '+(getL('oda_tel')||'-'))}else{$('pset').hidden=true;pmode='reg';ouvrirPub()}return}
+    if(t.closest('#cout')){if(confirm('Se déconnecter de ton compte vidéo ?')){sTk('');MYV=null;chargerMoi();$('pset').hidden=true;profilVue()}return}
     if(t.closest('#psback')){$('pset').hidden=true;return}
     if(b=t.closest('[data-pdel]')){e.stopPropagation();supprimerVideo(b.dataset.pdel);return}
     if(t.closest('[data-ppub]')){ouvrirPub();return}
@@ -2399,18 +2576,22 @@ document.documentElement.classList.remove('boot');
   });
 
   window.majPV=majPV;majPV();
+  if(tk())chargerMoi();
   if($('pvend'))$('pvend').onclick=()=>ouvrirVendeur();
   $('v-video').addEventListener('click',e=>{
     const t=e.target;let b;
     if(b=t.closest('[data-vlike]')){const v=LV[+b.dataset.vlike];if(!v)return;const i=likes.indexOf(v.i);if(i<0)likes.push(v.i);else likes.splice(i,1);svl();b.classList.toggle('on',i<0);return}
     if(t.closest('[data-vmute]')){muted=!muted;vids().forEach(v=>v.muted=muted);document.querySelectorAll('[data-vmute]').forEach(x=>x.innerHTML=(muted?ICO.mut:ICO.snd)+'<small>Son</small>');
       const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&!muted)v.play().catch(()=>{});return}
-    if(b=t.closest('[data-vacc]')){cur=b.dataset.vacc||'';tab='v';compte();$('vacc').hidden=false;$('vacc').scrollTop=0;vids().forEach(v=>v.pause());return}
+    if(b=t.closest('[data-vfol]')){e.stopPropagation();suivre(b.dataset.vfol);return}
+    if(b=t.closest('[data-vacc]')){cur=b.dataset.vacc||'';tab='v';compte();$('vacc').hidden=false;$('vacc').scrollTop=0;vids().forEach(v=>v.pause());const o=LV.find(v=>keyOf(v)===cur&&v.cid);if(o&&o.cid!==ME.id)statsDe(o.cid);return}
     if(t.closest('[data-vback]')){$('vacc').hidden=true;rejouer();return}
     if(b=t.closest('[data-vtab]')){tab=b.dataset.vtab;compte();return}
     if(b=t.closest('[data-vgo]')){aller(LV[+b.dataset.vgo]);return}
     if(b=t.closest('[data-vshare]')){partager(LV[+b.dataset.vshare]);return}
-    if(b=t.closest('[data-vbuy]')){const v=LV[+b.dataset.vbuy];if(v)envoyerCommande('Bonjour ODA SHOP, je veux acheter ce produit vu dans une vidéo :\n\n🛍️ '+v.n+'\n💰 '+fmt(v.p)+'\n👤 Vendu par '+prof(keyOf(v)).h+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));return}
+    if(b=t.closest('[data-vcom]')){ouvrirCom(LV[+b.dataset.vcom]);return}
+    if(b=t.closest('[data-vmore]')){menuVideo(LV[+b.dataset.vmore]);return}
+    if(b=t.closest('[data-vbuy]')){const v=LV[+b.dataset.vbuy];if(v)envoyerCommande('Bonjour ODA SHOP, je veux acheter ce produit vu dans une vidéo :\n\n🛍️ '+v.n+'\n💰 '+fmt(v.p)+'\n👤 Vendu par '+prof(keyOf(v)).h+(v.code?'\n🔖 Réf : '+v.code:'')+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));return}
     if(b=t.closest('[data-vwa]')){wa(LV[+b.dataset.vwa]);return}
     const sl=t.closest('.vs');if(sl&&!t.closest('button')){const v=sl.querySelector('video');if(v.paused){v.play().catch(()=>{});sl.classList.remove('paused')}else{v.pause();sl.classList.add('paused')}}
   });
