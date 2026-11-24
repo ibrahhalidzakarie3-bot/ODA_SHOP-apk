@@ -18,6 +18,19 @@
 #pfeed .vgrid .ppin,#pfeed .vgrid .pdel{position:absolute!important;top:6px!important;bottom:auto!important;left:auto!important;width:30px!important;height:30px!important;padding:0!important;border-radius:50%!important;background:rgba(0,0,0,.6)!important;display:flex!important;align-items:center;justify-content:center;font-size:14px!important;z-index:3;text-shadow:none;white-space:normal}
 #pfeed .vgrid .pdel{right:6px!important}#pfeed .vgrid .ppin{right:42px!important}#pfeed .vgrid .ppin.on{background:#f5b800!important}
 .vah h2{margin-bottom:1px!important}.vah>small{display:block;margin-top:0!important}
+#vplus{left:12px!important;right:12px!important;top:calc(10px + env(safe-area-inset-top))!important;width:auto!important;height:auto!important;border-radius:0!important;background:none!important;box-shadow:none!important;display:none;flex-direction:column;align-items:stretch;max-width:456px;margin:0 auto}
+body.onvid #vplus{display:flex}
+#vplus .vsx{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.45);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.25);border-radius:22px;padding:0 14px;height:42px;color:#fff}
+#vplus .vsx input{flex:1;min-width:0;background:none;border:0;outline:0;color:#fff;font-size:15px;font-weight:600}
+#vplus .vsx input::placeholder{color:rgba(255,255,255,.75)}
+#vres{margin-top:6px;background:#fff;color:#161616;border-radius:16px;max-height:55vh;overflow:auto;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+#vres button{display:block;width:100%;text-align:left;border:0;background:none;padding:11px 16px;border-bottom:1px solid #f0f0f0;font-size:14px}
+#vres button small{display:block;color:#888;font-size:12px}
+#vres .vgn{padding:18px;color:#888;text-align:center}
+.vtop{display:none!important}
+#ptitle{visibility:hidden}
+.vgrid em{bottom:6px!important;right:6px!important;left:auto!important}
+.vgrid button span:not(.ppin):not(.pdel){padding-right:56px;box-sizing:border-box}
 </style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1138,6 +1151,14 @@ html[data-theme=dark] .vsg{background:#1b1b1b;color:#eee}html[data-theme=dark] .
 html[data-theme=dark] .vsf .lnk{color:#6db3ff}
 .btn.vend{margin-top:10px;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616}
 #pvmsg{font-size:12.5px;color:#166534;font-weight:800;text-align:center;margin:6px 0}
+#vplus #vres{width:100%!important;box-sizing:border-box}#vplus #vres[hidden]{display:none}#vplus .vsx span{font-size:16px!important;width:auto!important;height:auto!important;background:none!important}
+#vplus .vsx{width:100%!important;box-sizing:border-box}
+#vplus{left:auto!important;right:12px!important;width:44px!important}
+#vplus #vsbtn{width:44px;height:44px;border:0;border-radius:50%;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;font-size:20px;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 10px rgba(0,0,0,.4);margin-left:auto}
+#vplus .vsx{display:none!important}
+#vplus.open{left:12px!important;width:auto!important}
+#vplus.open #vsbtn{display:none}
+#vplus.open .vsx{display:flex!important}
 </style>
 </head>
 <body class="lock">
@@ -1300,7 +1321,7 @@ html[data-theme=dark] .vsf .lnk{color:#6db3ff}
 
 <div class="vacc" id="vsel" hidden></div>
 <div class="vacc" id="vpub" hidden></div>
-<button id="vplus" type="button" aria-label="Publier une vidéo">＋</button>
+<div id="vplus"><button id="vsbtn" type="button" aria-label="Rechercher">🔍</button><label class="vsx"><span>🔍</span><input id="vsq" type="search" enterkeyhint="search" autocomplete="off" placeholder="Rechercher une vidéo…"></label><div id="vres" hidden></div></div>
 <button id="tifa" type="button" aria-label="Parler à Tifa"><img src="oda-p56.png" alt="Tifa"></button>
 <div id="tf" hidden><div class="tfp" role="dialog" aria-label="Tifa, assistante ODA SHOP">
 <div class="tfh"><img src="oda-p56.png" alt=""><div><b>Tifa</b><small>Assistante ODA SHOP</small></div><button class="tfx" id="tfx" type="button" aria-label="Fermer">×</button></div>
@@ -2417,9 +2438,13 @@ document.documentElement.classList.remove('boot');
     catch(e){L.innerHTML='<div class="cv">Pas de connexion.</div>'}}
   function menuVideo(v){
     if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
-    o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b><button type="button" data-act="rep">🚩 Signaler cette vidéo</button><button type="button" class="x" data-act="">Annuler</button></div>';
+    const mien=!!(tk()&&v.cid&&ME&&v.cid===ME.id);
+    o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b>'+(mien?'<button type="button" data-act="pin">📌 '+(v.ep?'Désépingler':'Épingler')+' sur mon profil</button><button type="button" data-act="del" style="color:#d62828">🗑 Supprimer la vidéo</button>':'<button type="button" data-act="rep">🚩 Signaler cette vidéo</button>')+'<button type="button" class="x" data-act="">Annuler</button></div>';
     document.body.appendChild(o);
-    o.onclick=e=>{const b=e.target.closest('[data-act]');if(!b&&e.target!==o)return;o.remove();if(b&&b.dataset.act==='rep')signaler(v)}}
+    o.onclick=e=>{const b=e.target.closest('[data-act]');if(!b&&e.target!==o)return;o.remove();if(!b)return;const a=b.dataset.act;
+      if(a==='rep')signaler(v);
+      if(a==='del')window.__supVid(String(v.i).slice(2));
+      if(a==='pin')fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:String(v.i).slice(2)})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}v.ep=j.epingle?1:0;toast(j.epingle?'📌 Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200))}}
   function signaler(v){
     if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
     o.innerHTML='<div class="vsg"><b>🚩 Signaler cette vidéo</b><p>Pourquoi ?</p>'+['Contenu inapproprié','Arnaque ou faux produit','Spam ou publicité','Autre'].map(m=>'<button type="button" data-m="'+m+'">'+m+'</button>').join('')+'<button type="button" class="x" data-m="">Annuler</button></div>';
@@ -2448,6 +2473,7 @@ document.documentElement.classList.remove('boot');
   const sTk=(t,n)=>{try{if(t){localStorage.setItem('oda_ct',t);localStorage.setItem('oda_cn',n||'')}else{localStorage.removeItem('oda_ct');localStorage.removeItem('oda_cn')}}catch(e){}};
   async function capi(b){try{const r=await fetch(CAPI,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)});const j=await r.json().catch(()=>({}));if(!r.ok){if(j.code==='auth')sTk('');return{error:j.error||'Erreur, réessaie.',code:j.code}}return j}catch(e){return{error:'Pas de connexion. Réessaie.'}}}
   async function chargerMyV(){if(!tk()){MYV=null;return}const j=await capi({a:'mine',t:tk()});MYV=j.error?null:(j.videos||[]);if(!$('v-profil').hidden)profilVue()}
+  window.__supVid=id=>supprimerVideo(id);
   async function supprimerVideo(id){if(!confirm('Supprimer cette vidéo ?'))return;const j=await capi({a:'delete',t:tk(),id:id});if(j.error){alert(j.error);return}await chargerMyV();if(window.chargerBase)chargerBase()}
   const masqueTel=t=>{const d=String(t||'').replace(/\D/g,'');if(d.length<4)return '';return (String(t).trim().startsWith('+')||d.startsWith('227')?'+227 ':'')+'•• •• •• '+d.slice(-2)};
   let COINSHOW=false;const nbv0=n=>String(Math.floor(Number(n)||0)).replace(/\B(?=(\d{3})+(?!\d))/g,' ');
@@ -2493,8 +2519,7 @@ document.documentElement.classList.remove('boot');
   function pasHtml(msg){
     const m='<div class="vmsg" id="pb-msg">'+esc(msg||'')+'</div>';
     if(pst==='edit')return '<div class="vsf">'+dots(2)+'<h2>Ajoute une description</h2><div class="pprev"><video src="'+esc(PU)+'" autoplay muted loop playsinline></video><span>'+esc(PF?(PF.size/1048576).toFixed(1)+' Mo':'')+'</span></div>'+
-      '<label>Légende *</label><input type="text" id="pb-t" maxlength="80" placeholder="Ex : Ma journée à Agadez" value="'+esc(PT)+'">'+
-      '<label>Description</label><textarea id="pb-d" maxlength="200" placeholder="Parle de ta vidéo…">'+esc(PD)+'</textarea>'+
+      '<label>Description *</label><textarea id="pb-d" maxlength="200" placeholder="Parle de ta vidéo…">'+esc(PD)+'</textarea>'+
       m+
       '<button class="go" type="button" id="pb-go">🚀 Publier</button><button class="lnk" type="button" data-pchange>Changer de vidéo</button></div>';
     if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page, l’allègement peut prendre un moment.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
@@ -2505,7 +2530,17 @@ document.documentElement.classList.remove('boot');
       '<p class="nt">Ta vidéo est allégée automatiquement avant l’envoi. 3 vidéos par jour maximum. Publie du contenu respectueux : ODA SHOP peut retirer une vidéo ou suspendre un compte.</p></div>';
   }
   window.ouvrirPub=()=>{resetPub();formPub();$('vpub').hidden=false;$('vpub').scrollTop=0};
-  $('vplus').onclick=ouvrirPub;
+  (function(){const nz=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''),q=$('vsq'),R=$('vres');
+    const maj=()=>{const t=nz(q.value).trim();if(!t){R.hidden=true;R.innerHTML='';return}
+      const L=LV.map((v,i)=>({v:v,i:i})).filter(x=>nz(x.v.n+' '+(x.v.au||'')+' '+(x.v.d||'')).includes(t)).slice(0,20);
+      R.innerHTML=L.length?L.map(x=>'<button type="button" data-sgo="'+x.i+'"><b>'+esc(x.v.n)+'</b><small>'+esc(slug(keyOf(x.v).replace(/^u:/,'')||x.v.au||'ODA SHOP'))+'</small></button>').join(''):'<div class="vgn">Aucune vidéo trouvée.</div>';R.hidden=false};
+    const P=$('vplus'),ouvrir=()=>{P.classList.add('open');setTimeout(()=>q.focus(),30)},fermer=()=>{q.value='';R.hidden=true;R.innerHTML='';q.blur();P.classList.remove('open')};
+    $('vsbtn').onclick=ouvrir;
+    document.addEventListener('pointerdown',e=>{if(P.classList.contains('open')&&!e.target.closest('#vplus'))fermer()},true);
+    q.addEventListener('keydown',e=>{if(e.key==='Escape')fermer()});
+    q.addEventListener('input',maj);
+    R.addEventListener('click',e=>{const b=e.target.closest('[data-sgo]');if(!b)return;const v=LV[+b.dataset.sgo];fermer();if(v)aller(v)});
+    q.addEventListener('keydown',e=>{if(e.key==='Enter')q.blur()})})();
   const MAXS=60;
   function dureeVideo(f){return new Promise(ok=>{const v=document.createElement('video'),u=URL.createObjectURL(f);v.preload='metadata';v.onloadedmetadata=()=>{const d=v.duration;URL.revokeObjectURL(u);ok(isFinite(d)?d:0)};v.onerror=()=>{URL.revokeObjectURL(u);ok(0)};v.src=u})}
   // Allège la vidéo dans le téléphone : réduit la taille de l'image et le débit pour rester sous 10 Mo
@@ -2531,10 +2566,11 @@ document.documentElement.classList.remove('boot');
       garde=setTimeout(()=>fin(new Error('trop long')),d*1000*1.6+20000);
       v.play().then(()=>{rec.start(500);boucle()}).catch(()=>fin(new Error('lecture')))};
   })}
-  function envoyerVideo(f,titre,desc,prix,photo){return new Promise((ok,ko)=>{const x=new XMLHttpRequest();x.open('POST',CAPI);x.setRequestHeader('Content-Type',/webm/i.test(f.type||'')?'video/webm':'video/mp4');x.setRequestHeader('x-token',tk());x.setRequestHeader('x-titre',encodeURIComponent(titre));x.setRequestHeader('x-desc',encodeURIComponent(desc));x.setRequestHeader('x-prix',String(prix||0));x.setRequestHeader('x-photo',photo||'');
+  async function envoyerVideo(f,titre,desc,prix,photo){for(let i=1;;i++){try{return await envoyerVideo1(f,titre,desc,prix,photo)}catch(e){if(!/Connexion coupée/.test(e.message))throw e;if(i>=3)throw new Error('Connexion coupée pendant l’envoi. Vérifie ton réseau (Wi-Fi si possible) et réessaie.');const m=$('pb-msg');if(m)m.textContent='Connexion instable, nouvel essai '+(i+1)+'/3…';await new Promise(r=>setTimeout(r,1500*i))}}}
+  function envoyerVideo1(f,titre,desc,prix,photo){return new Promise((ok,ko)=>{const x=new XMLHttpRequest();x.open('POST',CAPI);x.setRequestHeader('Content-Type',/webm/i.test(f.type||'')?'video/webm':'video/mp4');x.setRequestHeader('x-token',tk());x.setRequestHeader('x-titre',encodeURIComponent(titre));x.setRequestHeader('x-desc',encodeURIComponent(desc));x.setRequestHeader('x-prix',String(prix||0));x.setRequestHeader('x-photo',photo||'');
     x.upload.onprogress=e=>{if(e.lengthComputable){const p=Math.round(e.loaded/e.total*100);$('pb-bi').style.width=p+'%';$('pb-msg').textContent=p<100?'Envoi… '+p+'%':'Traitement…'}};
     x.onload=()=>{let j={};try{j=JSON.parse(x.responseText)}catch(e){}if(x.status===200&&j.ok)ok(j);else{if(j.code==='auth')sTk('');ko(new Error(j.error||'Envoi impossible, réessaie.'))}};
-    x.onerror=()=>ko(new Error('Connexion coupée, réessaie.'));x.send(f)})}
+    x.onerror=()=>ko(new Error('Connexion coupée'));x.send(f)})}
   const lireChamps=()=>{const g=i=>$(i)?$(i).value:'';PT=g('pb-t')||PT;PD=$('pb-d')?$('pb-d').value:PD;PX=$('pb-x')?$('pb-x').value:PX};
   function reduire(file){return new Promise((ok,ko)=>{const im=new Image(),u=URL.createObjectURL(file);im.onload=()=>{const r=Math.min(1,900/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.max(1,Math.round(im.width*r));c.height=Math.max(1,Math.round(im.height*r));c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);ok(c.toDataURL('image/jpeg',.82))};im.onerror=()=>{URL.revokeObjectURL(u);ko(new Error('Photo illisible'))};im.src=u})}
   $('vpub').addEventListener('change',async e=>{const i=e.target;
@@ -2561,11 +2597,11 @@ document.documentElement.classList.remove('boot');
       if(pmode==='reg'&&nom.length<2)return msg('Écris ton nom.');if(tel.replace(/\D/g,'').length<8)return msg('Numéro de téléphone invalide.');if(pw.length<6)return msg('Mot de passe : 6 caractères minimum.');
       go.disabled=true;go.textContent='Un instant…';const j=await capi(pmode==='reg'?{a:'register',name:nom,phone:tel,password:pw}:{a:'login',phone:tel,password:pw});
       if(j.error){formPub(j.error);return}sTk(j.token,j.name);formPub();chargerMyV();chargerMoi();return}
-    lireChamps();const titre=PT.trim(),desc=PD.trim();PT=titre;PD=desc;
-    if(!PF)return msg('Choisis une vidéo.');if(titre.length<3)return msg('Ajoute un titre (3 lettres minimum).');
+    lireChamps();const desc=PD.trim(),titre=desc.split('\n')[0].slice(0,80).trim();PT=titre;PD=desc;
+    if(!PF)return msg('Choisis une vidéo.');if(desc.length<3)return msg('Ajoute une description (3 lettres minimum).');
     pst='send';formPub();const info=t=>{const m=$('pb-msg');if(m)m.textContent=t};
     try{let fic=PF;
-      if(PF.size>8*1024*1024){info('Allègement de la vidéo… 0%');
+      if(PF.size>5*1024*1024){info('Allègement de la vidéo… 0%');
         try{fic=await compresser(PF,p=>{info('Allègement de la vidéo… '+Math.round(p*100)+'%');const b=$('pb-bi');if(b)b.style.width=Math.round(p*100)+'%'})}
         catch(e){throw new Error('Impossible d’alléger cette vidéo sur ce téléphone. Choisis une vidéo plus courte ou plus légère (10 Mo maximum).')}}
       if(fic.size>10*1024*1024)throw new Error('Vidéo trop lourde même allégée (10 Mo maximum). Choisis une vidéo plus courte.');
@@ -2581,15 +2617,15 @@ document.documentElement.classList.remove('boot');
     let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
     const own=(MYV||[]).slice().sort((a,b)=>((LV.find(x=>x.i==='db'+b.id)||{}).ep||0)-((LV.find(x=>x.i==='db'+a.id)||{}).ep||0));
     const G=ptab==='l'?mine:own;
-    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);const ep=((LV.find(x=>x.i==='db'+m.id)||{}).ep)?1:0;return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video>'+(ep?'<b class="pinb" style="top:auto;bottom:52px">📌 Épinglée</b>':'')+'<span class="ppin'+(ep?' on':'')+'" data-ppin="'+m.id+'">📌</span><em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span><span class="pdel" data-pdel="'+m.id+'">🗑</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);const ep=((LV.find(x=>x.i==='db'+m.id)||{}).ep)?1:0;return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video>'+(ep?'<b class="pinb" style="top:auto;bottom:52px">📌 Épinglée</b>':'')+'<em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
       :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le ❤️ dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Touche « Publier une vidéo » pour commencer.')+'</div>';
     $('ptitle').textContent=nom;
     $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>'+(tk()?esc(slug(nom))+' · ':'')+esc(ville)+'</small>'+
       '<div class="vst"><div data-fl="following" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div data-fl="followers" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+nbv(tk()?(LIKES[ME.id]||0):0)+'</b><small>J’aime</small></div></div>'+
       (tk()?(ME.id&&BIO[ME.id]?'<p class="bio">'+esc(BIO[ME.id])+'</p>':'')+'<div class="vbt"><button class="o" type="button" data-pbio>✏️ '+(ME.id&&BIO[ME.id]?'Modifier ma bio':'Ajouter une bio')+'</button></div>':'')+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-ptab="v" class="on">▦ Mes vidéos</button></div>'+
-      grid;
+      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'">▦ Vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
+      (ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>');
   }
   window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV();chargerMoi()};
   $('v-profil').addEventListener('click',e=>{const t=e.target;let b;
