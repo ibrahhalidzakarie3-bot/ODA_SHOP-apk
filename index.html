@@ -7,7 +7,18 @@
 <meta name="theme-color" content="#D9A21A">
 <link rel="manifest" href="manifest.json">
 <script>document.documentElement.className+=" boot";setTimeout(function(){document.documentElement.setAttribute("data-slow","1")},12000);setTimeout(function(){document.documentElement.classList.remove("boot")},120000);try{if(localStorage.getItem("oda_session")!=="1")document.documentElement.className+=" noauth"}catch(e){document.documentElement.className+=" noauth"}</script>
-<style>html.noauth body{background:#000}html.noauth body>*:not(#auth):not(script):not(style){visibility:hidden!important}html.noauth #auth[hidden]{display:flex!important}</style>
+<style>html.noauth body{background:#000}html.noauth body>*:not(#auth):not(script):not(style){visibility:hidden!important}html.noauth #auth[hidden]{display:flex!important}#pscroll{display:flex!important;flex-direction:column;overflow:hidden!important;padding-bottom:0!important;transform:none!important}
+#pscroll>*{flex:none}
+#pscroll>#pprod{flex:1 1 auto;min-height:0;overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding-bottom:120px}
+#pprod::-webkit-scrollbar{display:none}
+.vah .bio{max-width:320px;margin:6px auto 0;font-size:13.5px;line-height:1.4;white-space:pre-line;word-break:break-word}
+.vbt button.pn{background:#fff3c4;color:#161616}
+.ppin{position:absolute;top:6px;right:42px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;font-size:14px;z-index:2}.ppin.on{background:#f5b800}
+.vgrid .pinb{position:absolute;top:6px;left:6px;z-index:2;background:#f5b800;color:#161616;font-size:10.5px;font-weight:900;padding:2px 7px;border-radius:10px}
+#pfeed .vgrid .ppin,#pfeed .vgrid .pdel{position:absolute!important;top:6px!important;bottom:auto!important;left:auto!important;width:30px!important;height:30px!important;padding:0!important;border-radius:50%!important;background:rgba(0,0,0,.6)!important;display:flex!important;align-items:center;justify-content:center;font-size:14px!important;z-index:3;text-shadow:none;white-space:normal}
+#pfeed .vgrid .pdel{right:6px!important}#pfeed .vgrid .ppin{right:42px!important}#pfeed .vgrid .ppin.on{background:#f5b800!important}
+.vah h2{margin-bottom:1px!important}.vah>small{display:block;margin-top:0!important}
+</style>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="ODA SHOP">
@@ -1098,7 +1109,10 @@ html[data-theme=dark] .pbig{background:#241f0d;border-color:#7a6320}html[data-th
 
 .vs.hp .vinfo{bottom:196px}
 
-.vgrid em{position:absolute;top:6px;left:6px;z-index:2;background:rgba(0,0,0,.55);color:#fff;font-style:normal;font-size:11px;font-weight:800;padding:2px 7px;border-radius:10px}
+.body-none{}
+body:has(#vacc:not([hidden])) #vplus,body:has(#vpub:not([hidden])) #vplus,body:has(#vsel:not([hidden])) #vplus{display:none!important}
+.vst>div[data-fl]{cursor:pointer}
+.vgrid em{position:absolute;bottom:30px;left:6px;z-index:2;background:rgba(0,0,0,.55);color:#fff;font-style:normal;font-size:11px;font-weight:800;padding:2px 7px;border-radius:10px}
 .vvw{display:block;margin:2px 0 3px;font-size:12px;font-weight:700;opacity:.92}
 .vs.solo .vinfo{bottom:96px}.vs.solo .vrail{bottom:120px}
 .vrail .vav i[hidden]{display:none}.vrail .vav i.ok{background:#fff;color:#2fa84f}
@@ -1150,8 +1164,10 @@ html[data-theme=dark] .vsf .lnk{color:#6db3ff}
   <div class="dots" id="dots"></div>
 </div>
 
+<div id="pprod">
 <div class="hd"><h2 id="sh">Produits</h2></div>
 <div class="gr" id="prods"></div>
+</div>
 </div>
 </div>
 
@@ -1404,7 +1420,7 @@ function showService(i){
     prods.innerHTML='<div class="vide indispo" style="grid-column:1/-1;padding:40px 16px">📍<br><b>ODA SHOP n\'est pas disponible dans cette région.</b><br>Bientôt chez vous !<br><br><button class="btn" type="button" data-v="ville">Choisir une autre ville</button></div>';return}
   if(REG_ETAT==='chargement'&&REGION!=='agadez'){prods.className='gr';prods.innerHTML='<div class="vide" style="grid-column:1/-1;padding:30px 10px">⏳<br>Chargement des produits...</div>';return}
   prods.innerHTML=listHTML(s);prods.className=(s.immo||s.acts)?'imcw':((s.places&&!immoSub)||s.cta?'gr':'pkg');
-  $('pscroll').scrollTop=0;
+  $('pscroll').scrollTop=0;$('pprod').scrollTop=0;
 }
 function bnames(){}
 function showPhoto(){}
@@ -1482,7 +1498,7 @@ function appliquerBase(rows,info){
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
-      au:r.auteur||'',cid:r.client_id||'',vw:Number(r.vues)||0,nc:Number(r.nb_comm)||0,i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
+      au:r.auteur||'',cid:r.client_id||'',vw:Number(r.vues)||0,nc:Number(r.nb_comm)||0,ep:r.epingle?1:0,i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
   Object.keys(dbSeen).forEach(k=>{if(!par[k]&&DB_SEC[k]&&!(REGION==='agadez'&&(k==='travaux'||k==='transport')))DB_SEC[k][0].length=0});
   Object.keys(par).forEach(k=>dbSeen[k]=1);
   Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
@@ -1499,7 +1515,7 @@ let lastSig='',dbSeen={};
 async function chargerBase(){
   try{
     const hd={headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY}};
-    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur,client_id,vues,nb_comm&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
+    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur,client_id,vues,nb_comm,epingle&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
       fetch(DB_URL+'/rest/v1/regions?select=slug,name,whatsapp,active&slug=eq.'+REGION,hd).catch(()=>null)]);
     if(!r.ok)throw new Error('HTTP '+r.status);
     const rows=await r.json();let info=null;try{if(ri&&ri.ok){const a=await ri.json();info=a[0]||null}}catch(e){}
@@ -2280,7 +2296,7 @@ document.documentElement.classList.remove('boot');
   const keyOf=v=>v.sc||(v.au?'u:'+v.au:'');
   const avatar=n=>'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5b800"/><text x="50" y="68" font-size="54" font-family="Arial" font-weight="700" text-anchor="middle" fill="#161616">'+String((n||'?').trim().charAt(0)||'?').toUpperCase().replace(/[<>&]/g,'?')+'</text></svg>');
   const prof=c=>{if(String(c).startsWith('u:')){const n=c.slice(2);return{n:n,h:slug(n),img:avatar(n),bio:'',vendeur:0}}const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0}};
-  let FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
+  let LIKES={},BIO={},FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
   const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc))};
   const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
   function jouer(vd){vd.muted=muted;const p=vd.play();if(p&&p.catch)p.catch(()=>{if(!vd.muted){vd.muted=true;vd.play().catch(()=>{})}})}
@@ -2299,7 +2315,7 @@ document.documentElement.classList.remove('boot');
       '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
       (String(v.i).startsWith('db')?'<button type="button" data-vmore="'+k+'" aria-label="Plus d’options">'+ICO.dots+'<small>Plus</small></button>':'')+
       ''+'</div>'+
-      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(String(v.i).startsWith('db')?'<small class="vvw" data-vw="'+esc(v.i)+'">👁 '+nbv(v.vw)+' vue'+(v.vw>1?'s':'')+'</small>':'')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
+      '<div class="vinfo"><b>'+esc(pf.h)+'</b><h3>'+esc(v.n)+'</h3>'+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
       (solo?'':btn)+'</section>';
   }
   function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
@@ -2336,17 +2352,17 @@ document.documentElement.classList.remove('boot');
   document.addEventListener('visibilitychange',()=>{if(document.hidden)vids().forEach(v=>v.pause());else rejouer()});
   function aller(v){$('vacc').hidden=true;const k=LV.indexOf(v),sl=$('vf').children[k];if(sl){$('vf').scrollTo({top:sl.offsetTop})}}
   function compte(){
-    const pf=prof(cur),own=LV.filter(v=>keyOf(v)===cur),mine=LV.filter(v=>likes.includes(v.i)),G=tab==='v'?own:mine;
+    const pf=prof(cur),own=LV.filter(v=>keyOf(v)===cur).sort((a,b)=>(b.ep||0)-(a.ep||0)),mine=LV.filter(v=>likes.includes(v.i)),G=own;
     const cid=String(cur).startsWith('u:')?((own.find(v=>v.cid)||{}).cid||''):'',S=cid?(cid===ME.id?ME:(STAT[cid]||{})):null;
-    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
-      :'<div class="vgn">'+(tab==='v'?'Aucune vidéo pour le moment.':'Tu n’as encore aimé aucune vidéo. Touche le ❤️ sur une vidéo.')+'</div>';
+    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+(v.ep?'<b class="pinb">📌 Épinglée</b>':'')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+      :'<div class="vgn">'+'Aucune vidéo pour le moment.'+'</div>';
     $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.h)+'</b></div>'+
       '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>'+esc(pf.h)+' · Agadez</small>'+
-      '<div class="vst"><div><b>'+own.length+'</b><small>Vidéos</small></div>'+(S?'<div><b>'+(S.followers||0)+'</b><small>Followers</small></div><div><b>'+(S.following||0)+'</b><small>Suivis</small></div>':'')+'<div><b>'+mine.length+'</b><small>Tes J’aime</small></div></div>'+
-      (pf.bio?'<p>'+esc(pf.bio)+'</p>':'')+
+      '<div class="vst">'+(S?'<div data-fl="followers" data-flid="'+esc(cid)+'"><b>'+(S.followers||0)+'</b><small>Followers</small></div><div data-fl="following" data-flid="'+esc(cid)+'"><b>'+(S.following||0)+'</b><small>Suivis</small></div><div><b>'+nbv(LIKES[cid]||0)+'</b><small>J’aime</small></div>':'')+'</div>'+
+      ((cid&&BIO[cid])?'<p class="bio">'+esc(BIO[cid])+'</p>':'')+
       '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'✓ Suivi':'＋ Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-vtab="v" class="'+(tab==='v'?'on':'')+'">▦ Vidéos</button><button type="button" data-vtab="l" class="'+(tab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
+      '<div class="vtabs"><button type="button" data-vtab="v" class="on">▦ Vidéos</button></div>'+
       '<div class="vgrid">'+grid+'</div>';
   }
   function formVendeur(){
@@ -2387,6 +2403,18 @@ document.documentElement.classList.remove('boot');
       I.disabled=true;const j=await capi({a:'comment',t:tk(),id:pid,body:t});I.disabled=false;
       if(j.error){toast(j.error,2600);if(j.code==='auth')o.remove();return}
       moi=j.comment.client_id;I.value='';const cv=L.querySelector('.cv');if(cv)cv.remove();L.insertAdjacentHTML('afterbegin',ligne(j.comment));nb(v.nc+1);L.scrollTop=0}}
+  async function listeFol(kind,id){
+    if(!id)return;let o=$('vcm');if(o)o.remove();o=document.createElement('div');o.id='vcm';
+    o.innerHTML='<div class="cs"><div class="ch"><span>'+(kind==='followers'?'Followers':'Suivis')+'</span><button type="button" data-x="1" aria-label="Fermer">✕</button></div><div class="cl"><div class="cv">Chargement…</div></div></div>';
+    document.body.appendChild(o);const L=o.querySelector('.cl');
+    o.onclick=e=>{if(e.target===o||e.target.closest('[data-x]')){o.remove();return}
+      const r=e.target.closest('[data-un]');if(!r)return;const n=r.dataset.un;o.remove();
+      const go=()=>{cur='u:'+n;tab='v';compte();$('vacc').hidden=false;$('vacc').scrollTop=0;vids().forEach(v=>v.pause());const x=LV.find(v=>keyOf(v)===cur&&v.cid);if(x&&x.cid!==ME.id)statsDe(x.cid)};
+      if($('v-video').hidden){show('video');setTimeout(go,300)}else go()};
+    try{const r=await fetch(DB_URL+'/functions/v1/client-follows',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,kind:kind})});const j=await r.json();
+      if(!r.ok||j.error){L.innerHTML='<div class="cv">Erreur, réessaie.</div>';return}
+      L.innerHTML=j.list.length?j.list.map(c=>'<div class="ci" data-un="'+esc(c.name)+'" style="cursor:pointer;display:flex;align-items:center;gap:10px"><img src="'+esc(avatar(c.name))+'" alt="" style="width:38px;height:38px;border-radius:50%"><span><b style="font-size:14px;color:#161616">'+esc(c.name)+'</b>'+esc(slug(c.name))+'</span></div>').join(''):'<div class="cv">'+(kind==='followers'?'Aucun follower pour le moment.':'Aucun compte suivi pour le moment.')+'</div>'}
+    catch(e){L.innerHTML='<div class="cv">Pas de connexion.</div>'}}
   function menuVideo(v){
     if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
     o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b><button type="button" data-act="rep">🚩 Signaler cette vidéo</button><button type="button" class="x" data-act="">Annuler</button></div>';
@@ -2435,7 +2463,7 @@ document.documentElement.classList.remove('boot');
   }
   async function chargerMoi(){
     if(!tk()){FOL=new Set();ME={id:'',followers:0,following:0,videos:0};majBadges();return}
-    const j=await capi({a:'me',t:tk()});if(j.error)return;ME=j;FOL=new Set(j.ids||[]);majBadges();if(!$('v-profil').hidden)profilVue();majPset()}
+    const j=await capi({a:'me',t:tk()});if(j.error)return;ME=j;bioDe(j.id);FOL=new Set(j.ids||[]);majBadges();if(!$('v-profil').hidden)profilVue();majPset()}
   function majBadges(){document.querySelectorAll('i[data-vfol]').forEach(i=>{const id=i.dataset.vfol,on=FOL.has(id);i.textContent=on?'✓':'+';i.classList.toggle('ok',on);i.hidden=(id===ME.id)})}
   async function suivre(id){
     if(!tk()){toast('Connecte-toi pour suivre ce compte.',2200);pmode='login';ouvrirPub();return}
@@ -2444,7 +2472,8 @@ document.documentElement.classList.remove('boot');
     ME.following=FOL.size;STAT[id]=Object.assign(STAT[id]||{},{followers:j.followers,suivi:j.suivi});
     majBadges();if(!$('vacc').hidden)compte();if(!$('v-profil').hidden)profilVue();
     toast(j.suivi?'Tu suis ce compte ✓':'Tu ne suis plus ce compte',1600)}
-  async function statsDe(id){const j=await capi({a:'stats',id:id,t:tk()});if(!j.error){STAT[id]=j;if(j.suivi)FOL.add(id);if(!$('vacc').hidden)compte();majBadges()}}
+  async function bioDe(id){if(!id)return;try{const r=await fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'get',id:id})});const j=await r.json();if(r.ok&&typeof j.bio==='string'&&(BIO[id]!==j.bio||LIKES[id]!==j.likes)){BIO[id]=j.bio;LIKES[id]=Number(j.likes)||0;if(!$('vacc').hidden)compte();if(!$('v-profil').hidden)profilVue()}}catch(e){}}
+  async function statsDe(id){bioDe(id);const j=await capi({a:'stats',id:id,t:tk()});if(!j.error){STAT[id]=j;if(j.suivi)FOL.add(id);if(!$('vacc').hidden)compte();majBadges()}}
   let pmode='login';
   function formPub(msg){
     const back='<div class="vabar"><button type="button" data-vpback aria-label="Retour">‹</button><b>Publier une vidéo</b></div>',reg=pmode==='reg';
@@ -2550,16 +2579,17 @@ document.documentElement.classList.remove('boot');
   function profilVue(){
     const nom=(tk()&&getL('oda_cn'))||getL('oda_nom')||'Mon profil',ville=getL('oda_ville')||'Agadez',f=getL('oda_photo'),mine=LV.filter(v=>likes.includes(v.i));
     let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
-    const own=MYV||[];
+    const own=(MYV||[]).slice().sort((a,b)=>((LV.find(x=>x.i==='db'+b.id)||{}).ep||0)-((LV.find(x=>x.i==='db'+a.id)||{}).ep||0));
     const G=ptab==='l'?mine:own;
-    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video><em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span><span class="pdel" data-pdel="'+m.id+'">🗑</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);const ep=((LV.find(x=>x.i==='db'+m.id)||{}).ep)?1:0;return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video>'+(ep?'<b class="pinb" style="top:auto;bottom:52px">📌 Épinglée</b>':'')+'<span class="ppin'+(ep?' on':'')+'" data-ppin="'+m.id+'">📌</span><em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span><span class="pdel" data-pdel="'+m.id+'">🗑</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
       :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le ❤️ dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Touche « Publier une vidéo » pour commencer.')+'</div>';
     $('ptitle').textContent=nom;
-    $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>'+(tk()?esc(slug(nom))+' · ':'')+'📍 '+esc(ville)+'</small>'+
-      '<div class="vst"><div><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+own.length+'</b><small>Vidéos</small></div><div><b>'+mine.length+'</b><small>J’aime</small></div></div>'+
+    $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>'+(tk()?esc(slug(nom))+' · ':'')+esc(ville)+'</small>'+
+      '<div class="vst"><div data-fl="following" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div data-fl="followers" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+nbv(tk()?(LIKES[ME.id]||0):0)+'</b><small>J’aime</small></div></div>'+
+      (tk()?(ME.id&&BIO[ME.id]?'<p class="bio">'+esc(BIO[ME.id])+'</p>':'')+'<div class="vbt"><button class="o" type="button" data-pbio>✏️ '+(ME.id&&BIO[ME.id]?'Modifier ma bio':'Ajouter une bio')+'</button></div>':'')+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'">▦ Mes vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
-      (ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>');
+      '<div class="vtabs"><button type="button" data-ptab="v" class="on">▦ Mes vidéos</button></div>'+
+      grid;
   }
   window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV();chargerMoi()};
   $('v-profil').addEventListener('click',e=>{const t=e.target;let b;
@@ -2568,9 +2598,12 @@ document.documentElement.classList.remove('boot');
     if(t.closest('#gbtn')){if(tk()){envoyerCommande('Bonjour ODA SHOP, je veux recharger mes coins.\n\nCompte : '+slug(getL('oda_cn')||'')+'\nTéléphone : '+(getL('oda_tel')||'-'))}else{$('pset').hidden=true;pmode='reg';ouvrirPub()}return}
     if(t.closest('#cout')){if(confirm('Se déconnecter de ton compte vidéo ?')){sTk('');MYV=null;chargerMoi();$('pset').hidden=true;profilVue()}return}
     if(t.closest('#psback')){$('pset').hidden=true;return}
+    if(t.closest('[data-pbio]')){e.stopPropagation();const v=prompt('Ta bio (150 caractères max) :',BIO[ME.id]||'');if(v===null)return;fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'set_bio',t:tk(),bio:v})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2600);return}BIO[ME.id]=j.bio;profilVue();toast('✅ Bio enregistrée',1800)});return}
+    if(b=t.closest('[data-ppin]')){e.stopPropagation();e.preventDefault();fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:b.dataset.ppin})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}const x=LV.find(z=>z.i==='db'+b.dataset.ppin);if(x)x.ep=j.epingle?1:0;profilVue();toast(j.epingle?'📌 Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200));return}
     if(b=t.closest('[data-pdel]')){e.stopPropagation();supprimerVideo(b.dataset.pdel);return}
     if(t.closest('[data-ppub]')){ouvrirPub();return}
     if(t.closest('[data-pvend]')){ouvrirVendeur();return}
+    if(b=t.closest('[data-fl]')){if(!tk()){toast('Connecte-toi pour voir ta liste.',2200);return}listeFol(b.dataset.fl,b.dataset.flid);return}
     if(b=t.closest('[data-ptab]')){ptab=b.dataset.ptab;profilVue();return}
     if(b=t.closest('[data-pgo]')){const v=LV[+b.dataset.pgo];if(v){show('video');setTimeout(()=>aller(v),250)}}
   });
@@ -2580,13 +2613,14 @@ document.documentElement.classList.remove('boot');
   if($('pvend'))$('pvend').onclick=()=>ouvrirVendeur();
   $('v-video').addEventListener('click',e=>{
     const t=e.target;let b;
-    if(b=t.closest('[data-vlike]')){const v=LV[+b.dataset.vlike];if(!v)return;const i=likes.indexOf(v.i);if(i<0)likes.push(v.i);else likes.splice(i,1);svl();b.classList.toggle('on',i<0);return}
+    if(b=t.closest('[data-fl]')){listeFol(b.dataset.fl,b.dataset.flid);return}
+    if(b=t.closest('[data-vlike]')){const v=LV[+b.dataset.vlike];if(!v)return;const i=likes.indexOf(v.i);if(i<0)likes.push(v.i);else likes.splice(i,1);svl();if(tk()&&String(v.i).startsWith('db'))fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'like',t:tk(),id:String(v.i).slice(2),on:i<0})}).catch(()=>{});b.classList.toggle('on',i<0);return}
     if(t.closest('[data-vmute]')){muted=!muted;vids().forEach(v=>v.muted=muted);document.querySelectorAll('[data-vmute]').forEach(x=>x.innerHTML=(muted?ICO.mut:ICO.snd)+'<small>Son</small>');
       const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&!muted)v.play().catch(()=>{});return}
     if(b=t.closest('[data-vfol]')){e.stopPropagation();suivre(b.dataset.vfol);return}
     if(b=t.closest('[data-vacc]')){cur=b.dataset.vacc||'';tab='v';compte();$('vacc').hidden=false;$('vacc').scrollTop=0;vids().forEach(v=>v.pause());const o=LV.find(v=>keyOf(v)===cur&&v.cid);if(o&&o.cid!==ME.id)statsDe(o.cid);return}
     if(t.closest('[data-vback]')){$('vacc').hidden=true;rejouer();return}
-    if(b=t.closest('[data-vtab]')){tab=b.dataset.vtab;compte();return}
+    if(b=t.closest('[data-vtab]')){return}
     if(b=t.closest('[data-vgo]')){aller(LV[+b.dataset.vgo]);return}
     if(b=t.closest('[data-vshare]')){partager(LV[+b.dataset.vshare]);return}
     if(b=t.closest('[data-vcom]')){ouvrirCom(LV[+b.dataset.vcom]);return}
