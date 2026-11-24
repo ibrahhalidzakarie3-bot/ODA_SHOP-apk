@@ -1202,6 +1202,17 @@ body.onprof{overflow:hidden!important;height:100dvh;overscroll-behavior:none}
 .ebot .vmsg{color:#ffb4ab;text-shadow:0 1px 3px #000;min-height:0}
 .erow{display:flex;gap:10px}.erow .chg2{border:0;border-radius:27px;background:rgba(255,255,255,.2);color:#fff;font-weight:800;padding:0 18px;height:50px}
 .erow .go{flex:1;height:50px;border:0;border-radius:27px;background:linear-gradient(180deg,var(--y2),var(--y));color:#161616;font-size:16px;font-weight:900}
+#v-video{--navh:calc(92px + env(safe-area-inset-bottom))}
+.vf{inset:0 0 var(--navh) 0!important}
+.vs{height:calc(100vh - 92px - env(safe-area-inset-bottom))!important;height:calc(100dvh - 92px - env(safe-area-inset-bottom))!important}
+.vrail{bottom:104px!important}
+.vinfo{bottom:74px!important}
+.vs.hp .vinfo{bottom:104px!important}
+.vcmd{bottom:10px!important}.vprod{bottom:10px!important}
+.vs.solo .vinfo{bottom:22px!important}.vs.solo .vrail{bottom:34px!important}
+@media (max-height:700px){.vrail{gap:10px;bottom:90px!important}.vrail svg{width:30px;height:30px}.vrail .vav img{width:44px;height:44px}}
+body.onvid{background:#000}
+#vplus #vsbtn{background:none!important;box-shadow:none!important;filter:drop-shadow(0 1px 4px rgba(0,0,0,.8))}
 </style>
 </head>
 <body class="lock">
@@ -1364,7 +1375,7 @@ body.onprof{overflow:hidden!important;height:100dvh;overscroll-behavior:none}
 
 <div class="vacc" id="vsel" hidden></div>
 <div class="vacc" id="vpub" hidden></div>
-<div id="vplus"><button id="vsbtn" type="button" aria-label="Rechercher">🔍</button><label class="vsx"><span>🔍</span><input id="vsq" type="search" enterkeyhint="search" autocomplete="off" placeholder="Rechercher une vidéo…"></label><div id="vres" hidden></div></div>
+<div id="vplus"><button id="vsbtn" type="button" aria-label="Rechercher"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></button><label class="vsx"><span>🔍</span><input id="vsq" type="search" enterkeyhint="search" autocomplete="off" placeholder="Rechercher une vidéo…"></label><div id="vres" hidden></div></div>
 <button id="tifa" type="button" aria-label="Parler à Tifa"><img src="oda-p56.png" alt="Tifa"></button>
 <div id="tf" hidden><div class="tfp" role="dialog" aria-label="Tifa, assistante ODA SHOP">
 <div class="tfh"><img src="oda-p56.png" alt=""><div><b>Tifa</b><small>Assistante ODA SHOP</small></div><button class="tfx" id="tfx" type="button" aria-label="Fermer">×</button></div>
