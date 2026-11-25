@@ -1259,6 +1259,7 @@ body:has(#vacc:not([hidden])) #vtabs,body:has(#vpub:not([hidden])) #vtabs,body:h
 .czm{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);background:rgba(0,0,0,.55);color:#f5b800;font-weight:900;padding:5px 14px;border-radius:16px;z-index:4}
 .czm[hidden]{display:none}
 .vcam{touch-action:none}
+.vcam video,.vcam video.fit{object-fit:cover!important}
 </style>
 </head>
 <body class="lock">
@@ -2422,7 +2423,7 @@ document.documentElement.classList.remove('boot');
   let LIKES={},BIO={},FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
   const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc))};
   const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
-  document.addEventListener('loadedmetadata',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'&&v.closest&&v.closest('.vs,.ved,.vcam')&&v.videoWidth&&v.videoHeight)v.classList.toggle('fit',v.videoWidth/v.videoHeight>0.62)},true);
+  document.addEventListener('loadedmetadata',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'&&v.closest&&v.closest('.vs,.ved')&&v.videoWidth&&v.videoHeight)v.classList.toggle('fit',v.videoWidth/v.videoHeight>0.62)},true);
   function jouer(vd){vd.muted=muted;const p=vd.play();if(p&&p.catch)p.catch(()=>{if(!vd.muted){vd.muted=true;vd.play().catch(()=>{})}})}
   document.addEventListener('pointerdown',()=>{if(muted)return;const sl=$('vf')&&$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&v.muted&&!v.paused)v.muted=false},{passive:true});
   const vids=()=>[...document.querySelectorAll('#vf video')];
