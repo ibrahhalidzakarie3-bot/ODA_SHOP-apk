@@ -2420,13 +2420,13 @@ document.documentElement.classList.remove('boot');
     const solo=!lk&&v.au&&!v.sc;
     return '<section class="vs'+(solo?' solo':'')+'" data-i="'+k+'" data-cid="'+esc(v.cid||'')+'"><video playsinline loop muted preload="none" webkit-playsinline'+poster+' data-src="'+esc(v.vid)+'"></video><div class="vsh"></div><div class="vplay">▶</div><div class="vseekt"></div><div class="vprog"><i></i></div>'+
       '<div class="vtop"><b>Vidéos ODA SHOP</b></div>'+
-      '<div class="vrail"><button class="vav" type="button" data-vacc="'+esc(keyOf(v))+'" aria-label="Compte '+esc(pf.n)+'"><img src="'+esc(pf.img)+'" alt="">'+(v.cid?'<i data-vfol="'+esc(v.cid)+'">+</i>':'')+'</button>'+
+      '<div class="vrail"><button class="vav" type="button" data-vacc="'+esc(keyOf(v))+'" aria-label="Compte '+esc(pf.n)+'"><img src="'+esc(pf.img)+'" alt="" onerror="this.onerror=null;this.src=\''+avatar(pf.n).replace(/'/g,'%27')+'\'">'+(v.cid?'<i data-vfol="'+esc(v.cid)+'">+</i>':'')+'</button>'+
       '<button class="vlk'+(likes.includes(v.i)?' on':'')+'" type="button" data-vlike="'+k+'">'+ICO.heart+'<small>'+nbv(v.nl||0)+'</small></button>'+
       (String(v.i).startsWith('db')?'<button type="button" data-vcom="'+k+'" aria-label="Commentaires">'+ICO.chat+'<small data-nc="'+esc(v.i)+'">'+nbv(v.nc)+'</small></button>':'')+
       '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
       (String(v.i).startsWith('db')?'<button type="button" data-vmore="'+k+'" aria-label="Plus d’options">'+ICO.dots+'<small>Plus</small></button>':'')+
       ''+'</div>'+
-      '<div class="vinfo"><b>'+esc(pf.h)+'</b>'+(v.d&&String(v.i).startsWith('db')&&v.d.startsWith(String(v.n).replace(/…$/,''))?'':'<h3>'+esc(v.n)+'</h3>')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
+      '<div class="vinfo"><b>'+esc(pf.n)+'</b>'+(v.d&&String(v.i).startsWith('db')&&v.d.startsWith(String(v.n).replace(/…$/,''))?'':'<h3>'+esc(v.n)+'</h3>')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
       (solo?'':btn)+'</section>';
   }
   function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
@@ -2467,8 +2467,8 @@ document.documentElement.classList.remove('boot');
     const cid=String(cur).startsWith('u:')?((own.find(v=>v.cid)||{}).cid||''):'',S=cid?(cid===ME.id?ME:(STAT[cid]||{})):null;
     const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+(v.ep?'<b class="pinb">📌 Épinglée</b>':'')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
       :'<div class="vgn">'+'Aucune vidéo pour le moment.'+'</div>';
-    $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.h)+'</b></div>'+
-      '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>'+esc(pf.h)+' · Agadez</small>'+
+    $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.n)+'</b></div>'+
+      '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>Agadez</small>'+
       '<div class="vst">'+(S?'<div data-fl="followers" data-flid="'+esc(cid)+'"><b>'+(S.followers||0)+'</b><small>Followers</small></div><div data-fl="following" data-flid="'+esc(cid)+'"><b>'+(S.following||0)+'</b><small>Suivis</small></div><div><b>'+nbv(LIKES[cid]||0)+'</b><small>J’aime</small></div>':'')+'</div>'+
       ((cid&&BIO[cid])?'<p class="bio">'+esc(BIO[cid])+'</p>':'')+
       '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'✓ Suivi':'＋ Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
@@ -2504,7 +2504,7 @@ document.documentElement.classList.remove('boot');
     document.body.appendChild(o);
     const L=o.querySelector('.cl'),F=o.querySelector('form'),I=F.querySelector('input');
     const nb=n=>{v.nc=Math.max(0,n);document.querySelectorAll('[data-nc="'+v.i+'"]').forEach(x=>x.textContent=nbv(v.nc));o.querySelector('.ch span').textContent='Commentaires'+(v.nc?' ('+v.nc+')':'')};
-    const ligne=c=>'<div class="ci" data-id="'+esc(c.id)+'"><b>'+esc(slug(c.author))+' · '+new Date(c.created_at).toLocaleDateString('fr-FR')+(moi&&c.client_id===moi?' <i data-del="'+esc(c.id)+'">Supprimer</i>':'')+'</b>'+esc(c.body)+'</div>';
+    const ligne=c=>'<div class="ci" data-id="'+esc(c.id)+'"><b>'+esc(c.author)+' · '+new Date(c.created_at).toLocaleDateString('fr-FR')+(moi&&c.client_id===moi?' <i data-del="'+esc(c.id)+'">Supprimer</i>':'')+'</b>'+esc(c.body)+'</div>';
     const vide=()=>{if(!L.querySelector('.ci'))L.innerHTML='<div class="cv">Aucun commentaire. Sois le premier 💬</div>'};
     capi({a:'comments',id:pid,t:tk()}).then(j=>{if(j.error){L.innerHTML='<div class="cv">'+esc(j.error)+'</div>';return}moi=j.moi||'';L.innerHTML=(j.comments||[]).map(ligne).join('');nb((j.comments||[]).length>v.nc?(j.comments||[]).length:v.nc);vide()});
     o.onclick=async e=>{if(e.target===o||e.target.closest('[data-x]')){o.remove();return}
@@ -2524,7 +2524,7 @@ document.documentElement.classList.remove('boot');
       if($('v-video').hidden){show('video');setTimeout(go,300)}else go()};
     try{const r=await fetch(DB_URL+'/functions/v1/client-follows',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:id,kind:kind})});const j=await r.json();
       if(!r.ok||j.error){L.innerHTML='<div class="cv">Erreur, réessaie.</div>';return}
-      L.innerHTML=j.list.length?j.list.map(c=>'<div class="ci" data-un="'+esc(c.name)+'" style="cursor:pointer;display:flex;align-items:center;gap:10px"><img src="'+esc(avatar(c.name))+'" alt="" style="width:38px;height:38px;border-radius:50%"><span><b style="font-size:14px;color:#161616">'+esc(c.name)+'</b>'+esc(slug(c.name))+'</span></div>').join(''):'<div class="cv">'+(kind==='followers'?'Aucun follower pour le moment.':'Aucun compte suivi pour le moment.')+'</div>'}
+      L.innerHTML=j.list.length?j.list.map(c=>'<div class="ci" data-un="'+esc(c.name)+'" style="cursor:pointer;display:flex;align-items:center;gap:10px"><img src="'+esc(avatar(c.name))+'" alt="" style="width:38px;height:38px;border-radius:50%"><span><b style="font-size:14px;color:#161616">'+esc(c.name)+'</b></span></div>').join(''):'<div class="cv">'+(kind==='followers'?'Aucun follower pour le moment.':'Aucun compte suivi pour le moment.')+'</div>'}
     catch(e){L.innerHTML='<div class="cv">Pas de connexion.</div>'}}
   async function telecharger(v){
     if(!v||!v.vid)return;toast('Téléchargement…',1800);
@@ -2674,7 +2674,7 @@ document.documentElement.classList.remove('boot');
   (function(){const nz=t=>String(t||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,''),q=$('vsq'),R=$('vres');
     const maj=()=>{const t=nz(q.value).trim();if(!t){R.hidden=true;R.innerHTML='';return}
       const L=LV.map((v,i)=>({v:v,i:i})).filter(x=>nz(x.v.n+' '+(x.v.au||'')+' '+(x.v.d||'')).includes(t)).slice(0,20);
-      R.innerHTML=L.length?L.map(x=>'<button type="button" data-sgo="'+x.i+'"><b>'+esc(x.v.n)+'</b><small>'+esc(slug(keyOf(x.v).replace(/^u:/,'')||x.v.au||'ODA SHOP'))+'</small></button>').join(''):'<div class="vgn">Aucune vidéo trouvée.</div>';R.hidden=false};
+      R.innerHTML=L.length?L.map(x=>'<button type="button" data-sgo="'+x.i+'"><b>'+esc(x.v.n)+'</b><small>'+esc(keyOf(x.v).replace(/^u:/,'')||x.v.au||'ODA SHOP')+'</small></button>').join(''):'<div class="vgn">Aucune vidéo trouvée.</div>';R.hidden=false};
     const P=$('vplus'),ouvrir=()=>{P.classList.add('open');setTimeout(()=>q.focus(),30)},fermer=()=>{q.value='';R.hidden=true;R.innerHTML='';q.blur();P.classList.remove('open')};
     $('vsbtn').onclick=ouvrir;
     document.addEventListener('pointerdown',e=>{if(P.classList.contains('open')&&!e.target.closest('#vplus'))fermer()},true);
