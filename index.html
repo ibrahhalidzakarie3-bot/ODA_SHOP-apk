@@ -1246,6 +1246,19 @@ body:has(#vacc:not([hidden])) #vtabs,body:has(#vpub:not([hidden])) #vtabs,body:h
 .vseekt{position:absolute;left:50%;top:42%;transform:translate(-50%,-50%);z-index:5;background:rgba(0,0,0,.55);color:#fff;font-weight:900;font-size:26px;padding:8px 16px;border-radius:14px;opacity:0;pointer-events:none;transition:opacity .12s}
 .vs.seek .vseekt{opacity:1}.vs.seek .vprog{height:8px}
 .vs.seek .vrail,.vs.seek .vinfo,.vs.seek .vcmd,.vs.seek .vprod{opacity:.25}
+.cbar{justify-content:space-between!important;padding:0 26px;box-sizing:border-box}
+.cgal{width:auto!important;flex-direction:row!important}
+.cgal i{width:58px!important;height:58px!important;border-radius:50%!important;background:rgba(255,255,255,.22)!important;border:2px solid #fff!important;font-size:24px!important}
+.cgal small{display:none}
+.crec{width:82px!important;height:82px!important;border:5px solid #fff!important}
+.crec i{width:62px!important;height:62px!important;background:#fff!important}
+.crec.on i{width:32px!important;height:32px!important;border-radius:8px!important;background:#e53935!important}
+.cflip2{width:58px!important;height:58px!important;margin:0!important;background:rgba(40,40,40,.65)!important}
+.ctorch{position:absolute;top:calc(12px + env(safe-area-inset-top));right:12px;width:42px;height:42px;border:0;border-radius:50%;background:rgba(0,0,0,.45);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3}
+.ctorch[hidden]{display:none}.ctorch.on{background:#f5b800;color:#161616}
+.czm{position:absolute;left:50%;bottom:150px;transform:translateX(-50%);background:rgba(0,0,0,.55);color:#f5b800;font-weight:900;padding:5px 14px;border-radius:16px;z-index:4}
+.czm[hidden]{display:none}
+.vcam{touch-action:none}
 </style>
 </head>
 <body class="lock">
@@ -1410,7 +1423,7 @@ body:has(#vacc:not([hidden])) #vtabs,body:has(#vpub:not([hidden])) #vtabs,body:h
 
 <div class="vacc" id="vsel" hidden></div>
 <div class="vacc" id="vpub" hidden></div>
-<div id="vtabs"><button type="button" data-vt="all" class="on">Pour toi</button><button type="button" data-vt="fol">Suivis</button></div><div id="vplus"><button id="vsbtn" type="button" aria-label="Rechercher"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></button><label class="vsx"><span>🔍</span><input id="vsq" type="search" enterkeyhint="search" autocomplete="off" placeholder="Rechercher une vidéo…"></label><div id="vres" hidden></div></div>
+<div id="vtabs"><button type="button" data-vt="fol">Suivis</button><button type="button" data-vt="all" class="on">Pour toi</button></div><div id="vplus"><button id="vsbtn" type="button" aria-label="Rechercher"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.8-3.8"/></svg></button><label class="vsx"><span>🔍</span><input id="vsq" type="search" enterkeyhint="search" autocomplete="off" placeholder="Rechercher une vidéo…"></label><div id="vres" hidden></div></div>
 <button id="tifa" type="button" aria-label="Parler à Tifa"><img src="oda-p56.png" alt="Tifa"></button>
 <div id="tf" hidden><div class="tfp" role="dialog" aria-label="Tifa, assistante ODA SHOP">
 <div class="tfh"><img src="oda-p56.png" alt=""><div><b>Tifa</b><small>Assistante ODA SHOP</small></div><button class="tfx" id="tfx" type="button" aria-label="Fermer">×</button></div>
@@ -2644,21 +2657,30 @@ document.documentElement.classList.remove('boot');
     if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page, l’allègement peut prendre un moment.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
     if(pst==='done')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">🎉</div><h2>Vidéo publiée !</h2><p>Elle est maintenant visible par tout le monde dans l’onglet Vidéos.</p><button class="go" type="button" id="pb-see">▶ Voir dans Vidéos</button><button class="lnk" type="button" data-pagain>Publier une autre vidéo</button></div>';
     return '<div class="vcam"><video id="cam-v" autoplay muted playsinline></video><div class="vsh"></div>'+
-      '<button type="button" class="cx" data-vpback aria-label="Fermer">✕</button><div class="ctm" id="cam-t" hidden></div>'+
+      '<button type="button" class="cx" data-vpback aria-label="Fermer">✕</button><button type="button" class="ctorch" data-ctorch aria-label="Lampe" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></button><div class="czm" id="cam-z" hidden></div><div class="ctm" id="cam-t" hidden></div>'+
       '<div class="cmsg" id="pb-msg">'+esc(msg||'')+'</div>'+
       '<div class="cbar"><label class="cgal" for="pb-f"><i>🖼️</i><small>Galerie</small></label><input type="file" id="pb-f" accept="video/*" hidden>'+
-      '<button type="button" class="crec" id="cam-rec" data-crec aria-label="Filmer"><i></i></button><label class="cgal" id="cam-fb" for="pb-c" hidden><i>🎥</i><small>Filmer</small></label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden><button type="button" class="cflip2" data-cflip aria-label="Changer de caméra">🔄</button></div></div>';
+      '<button type="button" class="crec" id="cam-rec" data-crec aria-label="Filmer"><i></i></button><label class="cgal" id="cam-fb" for="pb-c" hidden><i>🎥</i><small>Filmer</small></label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden><button type="button" class="cflip2" data-cflip aria-label="Changer de caméra"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><path d="M9.5 13.5a2.7 2.7 0 0 1 4.6-1.6M14.5 13.5a2.7 2.7 0 0 1-4.6 1.6"/><path d="M14.2 10.6v1.5h-1.5M9.8 16.4v-1.5h1.5"/></svg></button></div></div>';
   }
-  let CAM=null,REC=null,CH=[],CT=0,CTM=null,FM='user';
+  let CAM=null,REC=null,CH=[],CT=0,CTM=null,FM='user',CTRK=null,ZM=null,TON=false;
   function stopCam(){try{if(REC&&REC.state!=='inactive'){REC.onstop=null;REC.stop()}}catch(e){}REC=null;clearInterval(CTM);if(CAM){try{CAM.getTracks().forEach(t=>t.stop())}catch(e){}CAM=null}}
   async function startCam(){
     const v=$('cam-v');if(!v)return;
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){camKo();return}
-    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,frameRate:{ideal:30}},audio:true});
+    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,width:{ideal:720},height:{ideal:1280},aspectRatio:{ideal:9/16},frameRate:{ideal:30}},audio:true});
       if(!$('cam-v')||pst!=='pick'){CAM.getTracks().forEach(t=>t.stop());CAM=null;return}
-      v.srcObject=CAM;v.style.transform=FM==='user'?'scaleX(-1)':'none';v.play().catch(()=>{})}
+      v.srcObject=CAM;v.style.transform=FM==='user'?'scaleX(-1)':'none';v.play().catch(()=>{});
+      CTRK=CAM.getVideoTracks()[0];TON=false;ZM=null;let caps={};try{caps=CTRK.getCapabilities?CTRK.getCapabilities():{}}catch(_){}
+      const tb=document.querySelector('.ctorch');if(tb&&caps.torch)tb.hidden=false;
+      if(caps.zoom&&caps.zoom.max>caps.zoom.min){let cur=1;try{cur=(CTRK.getSettings().zoom)||caps.zoom.min}catch(_){}ZM={min:caps.zoom.min,max:caps.zoom.max,cur:cur}}}
     catch(e){camKo()}}
   function camKo(){const m=$('pb-msg');if(m)m.textContent='Caméra indisponible : autorise-la dans ton navigateur, ou utilise « Galerie » / « Filmer ».';const f=$('cam-fb');if(f)f.hidden=false;const r=$('cam-rec');if(r)r.style.display='none'}
+  function torche(){if(!CTRK)return;TON=!TON;CTRK.applyConstraints({advanced:[{torch:TON}]}).then(()=>{const b=document.querySelector('.ctorch');if(b)b.classList.toggle('on',TON)}).catch(()=>{TON=false})}
+  (function(){let d0=0,z0=1,tm=0;const dist=e=>Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);
+    document.addEventListener('touchstart',e=>{if(!ZM||pst!=='pick'||!e.target.closest||!e.target.closest('.vcam')||e.touches.length!==2)return;d0=dist(e);z0=ZM.cur},{passive:true});
+    document.addEventListener('touchmove',e=>{if(!ZM||!d0||e.touches.length!==2||!CTRK)return;const z=Math.max(ZM.min,Math.min(ZM.max,z0*dist(e)/d0));ZM.cur=z;
+      CTRK.applyConstraints({advanced:[{zoom:z}]}).catch(()=>{});const el=$('cam-z');if(el){el.hidden=false;el.textContent=(Math.round(z*10)/10)+'x';clearTimeout(tm);tm=setTimeout(()=>{el.hidden=true},1200)}},{passive:true});
+    document.addEventListener('touchend',e=>{if(e.touches.length<2)d0=0},{passive:true})})();
   function recCam(){
     if(REC&&REC.state==='recording'){REC.stop();return}
     if(!CAM)return;
@@ -2726,6 +2748,7 @@ document.documentElement.classList.remove('boot');
   $('vpub').addEventListener('click',async e=>{const t=e.target;
     if(t.closest('[data-vpback]')){if(tk()&&pst==='edit'){resetPub();formPub();return}if(pst==='send')return;stopCam();$('vpub').hidden=true;resetPub();return}
     if(t.closest('[data-crec]')){recCam();return}
+    if(t.closest('[data-ctorch]')){torche();return}
     if(t.closest('[data-cflip]')){FM=FM==='user'?'environment':'user';formPub();return}
     let tg=t.closest('[data-tag]');if(tg){const d=$('pb-d');if(d){const x=tg.dataset.tag;if(!d.value.includes(x)){d.value=(d.value.trim()+' '+x+' ').trimStart().slice(0,200)}d.focus()}return}
     if(t.closest('[data-pchange]')||t.closest('[data-pagain]')){resetPub();formPub();return}
