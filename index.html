@@ -1260,6 +1260,7 @@ body:has(#vacc:not([hidden])) #vtabs,body:has(#vpub:not([hidden])) #vtabs,body:h
 .czm[hidden]{display:none}
 .vcam{touch-action:none}
 .vcam video,.vcam video.fit{object-fit:cover!important}
+.vcam video.cland{object-fit:contain!important}
 </style>
 </head>
 <body class="lock">
@@ -2421,7 +2422,8 @@ document.documentElement.classList.remove('boot');
   const avatar=n=>'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5b800"/><text x="50" y="68" font-size="54" font-family="Arial" font-weight="700" text-anchor="middle" fill="#161616">'+String((n||'?').trim().charAt(0)||'?').toUpperCase().replace(/[<>&]/g,'?')+'</text></svg>');
   const prof=c=>{if(String(c).startsWith('u:')){const n=c.slice(2);const o=LV.find(v=>keyOf(v)===c&&v.ai),mien=ME&&ME.id&&LV.find(v=>keyOf(v)===c&&v.cid===ME.id)&&getL('oda_photo');return{n:n,h:slug(n),img:mien||(o&&o.ai)||avatar(n),bio:'',vendeur:0}}const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0}};
   let LIKES={},BIO={},FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
-  const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc))};
+  let RANK=null;const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc));if(RANK)LV.sort((a,b)=>(RANK[a.i]===undefined?-1:RANK[a.i])-(RANK[b.i]===undefined?-1:RANK[b.i]))};
+  function ordreNeuf(){const seen=[...VUS],base=VIDEOS.filter(v=>!v.sc||selActif(v.sc)),nw=base.filter(v=>!VUS.has(v.i)),old=base.filter(v=>VUS.has(v.i)).sort((a,b)=>seen.indexOf(a.i)-seen.indexOf(b.i));RANK={};nw.concat(old).forEach((v,k)=>{RANK[v.i]=k})}
   const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
   document.addEventListener('loadedmetadata',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'&&v.closest&&v.closest('.vs,.ved')&&v.videoWidth&&v.videoHeight)v.classList.toggle('fit',v.videoWidth/v.videoHeight>0.62)},true);
   function jouer(vd){vd.muted=muted;const p=vd.play();if(p&&p.catch)p.catch(()=>{if(!vd.muted){vd.muted=true;vd.play().catch(()=>{})}})}
@@ -2471,7 +2473,7 @@ document.documentElement.classList.remove('boot');
   const rejouer=()=>{const sl=$('vf').children[actif],v=sl&&sl.querySelector('video');if(v&&$('vacc').hidden&&$('vsel').hidden&&!$('v-video').hidden)v.play().catch(()=>{})};
   window.majVideos=()=>{if(!$('v-video').hidden){rendre();if(!$('vacc').hidden)compte()}else sig=''};
   window.vidVue=on=>{
-    if(on){rendre();const sl=$('vf').children[actif]||$('vf').firstElementChild;if(sl){$('vf').scrollTop=sl.offsetTop;const v=sl.querySelector('video');if(v){charger(sl);jouer(v)}}}
+    if(on){ordreNeuf();actif=0;rendre(true);$('vf').scrollTop=0;const sl=$('vf').firstElementChild;if(sl){$('vf').scrollTop=sl.offsetTop;const v=sl.querySelector('video');if(v){charger(sl);jouer(v)}}}
     else{vids().forEach(v=>v.pause());$('vacc').hidden=true;$('vsel').hidden=true}
   };
   document.addEventListener('visibilitychange',()=>{if(document.hidden)vids().forEach(v=>v.pause());else rejouer()});
@@ -2668,10 +2670,14 @@ document.documentElement.classList.remove('boot');
   async function startCam(){
     const v=$('cam-v');if(!v)return;
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){camKo();return}
-    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,width:{ideal:720},height:{ideal:1280},aspectRatio:{ideal:9/16},frameRate:{ideal:30}},audio:true});
+    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,width:{ideal:1080},height:{ideal:1920}},audio:true});
       if(!$('cam-v')||pst!=='pick'){CAM.getTracks().forEach(t=>t.stop());CAM=null;return}
       v.srcObject=CAM;v.style.transform=FM==='user'?'scaleX(-1)':'none';v.play().catch(()=>{});
-      CTRK=CAM.getVideoTracks()[0];TON=false;ZM=null;let caps={};try{caps=CTRK.getCapabilities?CTRK.getCapabilities():{}}catch(_){}
+      CTRK=CAM.getVideoTracks()[0];
+      v.onloadedmetadata=async()=>{try{if(v.videoWidth>v.videoHeight){try{await CTRK.applyConstraints({width:{ideal:1080},height:{ideal:1920},aspectRatio:{ideal:9/16}})}catch(_){}
+        await new Promise(r=>setTimeout(r,400))}
+        v.classList.toggle('cland',v.videoWidth>v.videoHeight)}catch(_){}};
+      TON=false;ZM=null;let caps={};try{caps=CTRK.getCapabilities?CTRK.getCapabilities():{}}catch(_){}
       const tb=document.querySelector('.ctorch');if(tb&&caps.torch)tb.hidden=false;
       if(caps.zoom&&caps.zoom.max>caps.zoom.min){let cur=1;try{cur=(CTRK.getSettings().zoom)||caps.zoom.min}catch(_){}ZM={min:caps.zoom.min,max:caps.zoom.max,cur:cur}}}
     catch(e){camKo()}}
