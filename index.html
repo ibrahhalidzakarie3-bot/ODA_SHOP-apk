@@ -1286,6 +1286,30 @@ body.onprof #tifa{display:none!important}
 #inbp .ibn{display:flex;align-items:center;gap:10px;margin:10px 14px;padding:11px 13px;border-radius:14px;background:#fff8dc;border:1px solid #f1d26a;font-size:13px;line-height:1.35}
 #inbp .ibn:empty{display:none}#inbp .ibn span{flex:1}
 #inbp .ibn button{border:0;background:#f5b800;border-radius:16px;padding:8px 14px;font-weight:900;color:#161616}
+.cert{vertical-align:-2px;margin-left:5px;flex:none}.vah h2 .cert{width:20px;height:20px;vertical-align:-3px}
+.dbh{position:absolute;z-index:6;pointer-events:none;transform:translate(-50%,-50%);animation:dbh .8s ease-out forwards;filter:drop-shadow(0 4px 10px rgba(0,0,0,.45))}
+.dbh.off svg{opacity:.85}.dbh.off{animation-name:dbh2}
+@keyframes dbh{0%{transform:translate(-50%,-50%) scale(.3);opacity:0}20%{transform:translate(-50%,-50%) scale(1.25);opacity:1}45%{transform:translate(-50%,-50%) scale(1)}100%{transform:translate(-50%,-85%) scale(1);opacity:0}}
+@keyframes dbh2{0%{transform:translate(-50%,-50%) scale(1);opacity:1}100%{transform:translate(-50%,-50%) scale(.2);opacity:0}}
+#pnag{position:fixed;left:12px;right:12px;bottom:calc(62px + env(safe-area-inset-bottom) + 10px);z-index:85;display:flex;align-items:center;gap:8px;background:#161616;color:#fff;border-radius:16px;padding:12px 12px 12px 14px;font-size:13px;line-height:1.35;box-shadow:0 10px 28px rgba(0,0,0,.45)}
+#pnag span{flex:1}#pnag [data-ok]{border:0;background:#f5b800;color:#161616;border-radius:14px;padding:9px 14px;font-weight:900}
+#pnag [data-no]{border:0;background:none;color:#aaa;font-size:18px;padding:4px 6px}
+.ic{flex:none;display:inline-block;vertical-align:-3px}
+.vsg button{display:flex;align-items:center;gap:14px;justify-content:flex-start;padding:0 16px;text-align:left}
+.vsg button.x{justify-content:center}.vsg button .ic{color:#444}.vsg button[data-act=del] .ic{color:#d62828}
+html[data-theme=dark] .vsg button .ic{color:#ddd}
+.ch button,.cx{display:flex;align-items:center;justify-content:center}
+.cgal i{display:flex!important;align-items:center;justify-content:center;font-style:normal;color:#fff}
+.prow .ico{display:flex;align-items:center;justify-content:center}.prow .ico svg{width:22px;height:22px}
+.gic{display:flex;align-items:center;justify-content:center}
+.vgrid .pinb{display:inline-flex;align-items:center;gap:4px}.vgrid em{display:inline-flex;align-items:center;gap:4px;font-style:normal}
+.vtabs button{display:inline-flex;align-items:center;justify-content:center;gap:6px}
+.vbt button,.ppubrow button{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.pbig-ico{width:84px;height:84px;border-radius:50%;background:#f5b800;color:#161616;display:flex;align-items:center;justify-content:center;margin:6px auto 12px}
+.ibn .ic{flex:none;vertical-align:-4px}
+.vfe span{display:flex;flex-direction:column;align-items:center;gap:4px}
+#tff button{display:flex;align-items:center;justify-content:center}
+.rm{display:flex;align-items:center;justify-content:center}
 </style>
 </head>
 <body class="lock">
@@ -1326,13 +1350,13 @@ body.onprof #tifa{display:none!important}
   <div class="vsoon" id="vsoon">
     <div class="vsb"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm3.2 5.2v7.6a.6.6 0 0 0 .9.5l6-3.8a.6.6 0 0 0 0-1l-6-3.8a.6.6 0 0 0-.9.5z"/></svg></div>
     <h1>Vidéos ODA SHOP</h1>
-    <span class="vpill">✨ Bientôt disponible</span>
+    <span class="vpill">Bientôt disponible</span>
     <p>Découvre bientôt nos produits en vidéo : fais défiler, aime, partage et commande en un geste.</p>
-    <div class="vfe"><span>❤️<small>J'aime</small></span><span>💬<small>Commenter</small></span><span>↗️<small>Partager</small></span><span>👤<small>Profil</small></span></div>
+    <div class="vfe"><span><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20.5s-7.3-4.5-9.3-9C1.3 8.2 3.3 4.7 6.8 4.7c2 0 3.6 1 5.2 2.9 1.6-1.9 3.2-2.9 5.2-2.9 3.5 0 5.5 3.5 4.1 6.8-2 4.5-9.3 9-9.3 9z"/></svg><small>J'aime</small></span><span><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5c-4.7 0-8.5 3.3-8.5 7.5 0 2.1 1 4 2.6 5.3L5.5 20.5l4-2c.8.2 1.6.3 2.5.3 4.7 0 8.5-3.3 8.5-7.5S16.7 3.5 12 3.5z"/></svg><small>Commenter</small></span><span><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4.5v4.2C8.6 9 5 12.3 4 18c2.2-2.6 5.1-3.8 10-3.9v4.3l7-7.2-7-6.7z"/></svg><small>Partager</small></span><span><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500"/></svg><small>Profil</small></span></div>
   </div>
 </div>
 <div id="v-panier" hidden>
-  <h1>🛒 Mon panier</h1>
+  <h1>Mon panier</h1>
   <div id="pub"></div>
   <div id="liste"></div>
   <div id="cat"></div>
@@ -1346,7 +1370,7 @@ body.onprof #tifa{display:none!important}
   <div class="vabar"><button type="button" id="psback" aria-label="Retour">‹</button><b>Tableau de bord • ODA</b></div>
   <div class="psin">
   <div class="gcard">
-    <div class="gtop"><span class="gic">👛</span><span class="gchip" id="gchip">SOLDE</span></div>
+    <div class="gtop"><span class="gic"><svg class="ic" viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h13v3"/><rect x="3" y="8" width="18" height="12" rx="3"/><circle cx="16.5" cy="14" r="1.2"/></svg></span><span class="gchip" id="gchip">SOLDE</span></div>
     <div class="gbig" id="gbig">••••••</div>
     <div class="gfoot"><small id="gsub"></small><button id="gbtn" type="button">Recharger</button></div>
   </div>
@@ -1360,29 +1384,29 @@ body.onprof #tifa{display:none!important}
         <label for="pville">Ville</label>
         <select id="pville" class="wi"><option>Agadez</option><option>Diffa</option><option>Dosso</option><option>Maradi</option><option>Niamey</option><option>Tahoua</option><option>Tillabéri</option><option>Zinder</option><option>Tchirozérine</option></select>
       </div>
-      <div class="pav"><div class="pimg" id="pimg"></div><button class="chg" id="pbtn" type="button">📷 Changer la photo</button><input type="file" id="pfile" accept="image/*" hidden></div>
+      <div class="pav"><div class="pimg" id="pimg"></div><button class="chg" id="pbtn" type="button">Changer la photo</button><input type="file" id="pfile" accept="image/*" hidden></div>
     </div>
     <button class="btn" id="sv">Enregistrer</button>
-    <div id="ok">✅ Profil enregistré</div>
+    <div id="ok">Profil enregistré</div>
   </div>
-  <button class="prow" id="notif" type="button" hidden><span class="ico">🔔</span><b>Notifications</b><i class="sw"></i></button>
+  <button class="prow" id="notif" type="button" hidden><span class="ico"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></svg></span><b>Notifications</b><i class="sw"></i></button>
   <div id="notifmsg" style="font-size:12px;color:#888;text-align:center;margin:-4px 0 8px"></div>
-  <button class="prow" id="pbioset" type="button" hidden><span class="ico">✏️</span><b>Ma bio<small id="pbiotx" style="display:block;font-weight:600;color:#888;font-size:12px;margin-top:2px"></small></b><i class="chev">›</i></button>
-  <button class="prow" id="pvend" type="button"><span class="ico">🏪</span><b>Devenir vendeur</b><i class="chev">›</i></button>
+  <button class="prow" id="pbioset" type="button" hidden><span class="ico"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/></svg></span><b>Ma bio<small id="pbiotx" style="display:block;font-weight:600;color:#888;font-size:12px;margin-top:2px"></small></b><i class="chev">›</i></button>
+  <button class="prow" id="pvend" type="button"><span class="ico"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9l1.5-5h13L20 9"/><path d="M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9"/><path d="M5 12v8h14v-8"/></svg></span><b>Devenir vendeur</b><i class="chev">›</i></button>
   <div id="pvmsg"></div>
-  <button class="prow" id="cout" type="button" hidden><span class="ico">🚪</span><b>Me déconnecter du compte vidéo</b><i class="chev">›</i></button>
+  <button class="prow" id="cout" type="button" hidden><span class="ico"><svg class="ic" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4H5v16h4"/><path d="M16 8l4 4-4 4M20 12H9"/></svg></span><b>Me déconnecter du compte vidéo</b><i class="chev">›</i></button>
   <button class="out" id="out" type="button">Se déconnecter</button>
   </div></div>
 </div>
 
 <div id="v-ville" hidden>
-  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>📍 Autre ville</h1>
+  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>Autre ville</h1>
   <div class="vhero"><div class="vhi">🛍️</div><h2>Dans quelle ville veux-tu <span>commander ?</span></h2><p>Recherche ta ville dans la liste A-Z.</p></div>
   <div class="vsr"><input id="vq" type="text" placeholder="Dans quelle ville veux-tu commander ?" autocomplete="off"></div>
   <div class="vls" id="vls"></div>
 </div>
 <div id="v-food" hidden>
-  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>🍔 Livraison nourriture</h1>
+  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>Livraison nourriture</h1>
   <div class="card g">
     <p class="sub2">Dis-nous ton restaurant et tes plats : ODA achète et te livre chez toi à Agadez.</p>
     <label for="fresto">1. Ton restaurant préféré</label>
@@ -1394,22 +1418,22 @@ body.onprof #tifa{display:none!important}
     <input id="ftel" type="tel" placeholder="Ton téléphone WhatsApp" autocomplete="tel">
     <input id="fadr" placeholder="Adresse / Quartier (Agadez)">
     <textarea id="fnote" placeholder="Note spéciale (sans piment, etc.)"></textarea>
-    <button class="btn" id="fgo" type="button">🟢 Commander sur WhatsApp</button>
-    <a class="lk g" href="tel:+22777174950">📞 Appeler ODA</a>
+    <button class="btn" id="fgo" type="button">Commander sur WhatsApp</button>
+    <a class="lk g" href="tel:+22777174950">Appeler ODA</a>
   </div>
 </div>
 
 <div id="v-pharma" hidden>
-  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>💊 ODA Pharmacie</h1>
+  <h1><a class="back" href="#accueil" data-v="accueil" aria-label="Retour">←</a>ODA Pharmacie</h1>
   <div class="card g">
     <div class="ptit">Marre de faire la queue ?</div>
     <p class="sub2">Envoie ton ordonnance : on achète tes médicaments et on livre discrètement à Agadez.</p>
     <label class="upl" for="phfile"><span>📷</span><b id="phtxt">Ajouter la photo de l'ordonnance</b><small>Choisis dans ta galerie ou prends-la en photo</small></label>
     <input type="file" id="phfile" accept="image/*" hidden>
-    <label for="phliste">💊 Pas d'ordonnance ? Écris la liste ici</label>
+    <label for="phliste">Pas d'ordonnance ? Écris la liste ici</label>
     <textarea id="phliste" placeholder="Ex : Doliprane 1000, Amoxicilline, Vitamine C Longrich..."></textarea>
-    <button class="btn" id="phgo" type="button">🟢 Envoyer sur WhatsApp</button>
-    <a class="lk g" href="tel:+22793849012">📞 Appeler la pharmacie</a>
+    <button class="btn" id="phgo" type="button">Envoyer sur WhatsApp</button>
+    <a class="lk g" href="tel:+22793849012">Appeler la pharmacie</a>
     <div class="note">Photo de l'ordonnance ou liste obligatoire</div>
   </div>
 </div>
@@ -1419,7 +1443,7 @@ body.onprof #tifa{display:none!important}
     <div class="gico">📍</div>
     <h2 id="gt">Active ta position</h2>
     <p id="gp">Pour que le livreur te trouve, ODA SHOP a besoin de ta position. Choisis « Autoriser » : tu ne le feras qu'une seule fois.</p>
-    <button class="btn" id="gok" type="button">📍 Activer ma position</button>
+    <button class="btn" id="gok" type="button">Activer ma position</button>
     <button class="gl" id="glater" type="button">Plus tard</button>
   </div>
 </div>
@@ -1457,7 +1481,7 @@ body.onprof #tifa{display:none!important}
 <div class="tfb" id="tfb"></div>
 <div class="tfv" id="tfv"><button type="button" id="tfm" class="tfo" aria-label="Parler à Tifa"><i></i><i></i><img src="oda-p56.png" alt="Tifa"></button><div class="tft" id="tft">Touche-moi pour parler</div></div>
 <div class="tfs" id="tfs"></div>
-<form class="tff" id="tff" autocomplete="off"><input id="tfi" type="text" placeholder="Que cherches-tu ?" maxlength="120" enterkeyhint="send"><button type="submit" aria-label="Envoyer">➤</button></form>
+<form class="tff" id="tff" autocomplete="off"><input id="tfi" type="text" placeholder="Que cherches-tu ?" maxlength="120" enterkeyhint="send"><button type="submit" aria-label="Envoyer"><svg class="ic" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 3L10 14"/><path d="M21 3l-7 18-4-7-7-4z"/></svg></button></form>
 </div></div>
 <script>
 const IMG={"bouteille": "oda-p04.png", "kettle": "oda-p05.png", "ecouteurs": "oda-p06.png", "lampe": "oda-p07.png", "sac": "oda-p08.png", "iphone": "oda-p09.png", "mixeur": "oda-p10.png"};
@@ -1499,7 +1523,7 @@ const prix=p=>p.p>0?fmt(p.p).replace(' FCFA','<small> FCFA</small>'):''+(p.devis
 const ICO_CHAT='<svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/></svg>';
 const ICO_SHARE='<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg>';
 const cardImmo=p=>{const c=(p.imgs&&p.imgs[0])||p.img||'',nb=(p.imgs||[]).length;
-  return `<div class="imr" data-imm="${esc(p.i)}"><div class="imrp">${c?'<img src="'+esc(c)+'" alt="" loading="lazy" decoding="async">':'<span>'+(p.sec==='automobile'?'🚗':p.sub==='terrain'?'🏞️':/boutique/.test(p.sub||'')?'🏪':'🏠')+'</span>'}${p.vid?'<i class="imrv">▶</i>':''}${nb>1?'<i class="imrn">📷 '+nb+'</i>':''}</div>
+  return `<div class="imr" data-imm="${esc(p.i)}"><div class="imrp">${c?'<img src="'+esc(c)+'" alt="" loading="lazy" decoding="async">':'<span>'+(p.sec==='automobile'?'🚗':p.sub==='terrain'?'🏞️':/boutique/.test(p.sub||'')?'🏪':'🏠')+'</span>'}${p.vid?'<i class="imrv">▶</i>':''}${nb>1?'<i class="imrn">'+nb+'</i>':''}</div>
   <div class="imrt"><div class="imrh"><span class="imrk">${p.sec==='automobile'?'AUTO':(SUBK[p.sub]||'ANNONCE')}</span>${p.code?'<span class="imrc">'+esc(p.code)+'</span>':''}</div>
   <b>${esc(p.n)}</b><span class="imrd">${esc(p.d||'')}</span><span class="imrx">${prix(p)}</span></div>
   <button class="imrs" type="button" data-share="${esc(p.i)}" aria-label="Partager">${ICO_SHARE}</button></div>`};
@@ -1545,7 +1569,7 @@ function listHTML(s){
       u.acts.map((a,k)=>(immoSub==='gaz'&&u.items.length&&/^GAZ /.test(a.n))?'':'<div class="imc nop actc" data-sact="'+immoSub+':'+k+'"><span class="imcg">'+a.e+'</span><div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>').join('')+
       (u.items.length?u.items.map(p=>card(p,immoSub==='gaz'?'GAZ':'GÂTEAU')).join(''):(u.acts.length?'':'<div class="vide" style="padding:30px 10px">'+u.e+'<br>Aucun produit pour le moment.</div>'))}
   if(s.acts)return s.acts.map((a,k)=>a.ph?'<div class="imc" '+(a.sub?'data-sub="'+a.sub+'"':'data-act="'+k+'"')+'><div class="imcv" style="background-image:url(\''+a.ph+'\')"></div><div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>':'<div class="imc nop actc" '+(a.sub?'data-sub="'+a.sub+'"':'data-act="'+k+'"')+'>'+(a.ph?'<img class="actimg" src="'+a.ph+'" alt="">':'<span class="imcg">'+a.e+'</span>')+'<div class="imco"><b>'+esc(a.n)+'</b><small>'+esc(a.d)+'</small></div><span class="imca">›</span></div>').join('')+
-    '<div class="actb"><a class="btn" href="tel:+22777174950">📞 Appeler le service</a><a class="btn-v" data-actwa="1">🟢 WhatsApp</a></div>'+(s.items&&s.items.length?s.items.map(p=>card(p,s.b)).join(''):'');
+    '<div class="actb"><a class="btn" href="tel:+22777174950">Appeler le service</a><a class="btn-v" data-actwa="1">WhatsApp</a></div>'+(s.items&&s.items.length?s.items.map(p=>card(p,s.b)).join(''):'');
   if(s.cta)return '<div class="cta" data-v="'+s.cta.view+'"><div class="cico">'+s.cta.e+'</div><b>'+s.cta.t+'</b><p>'+s.cta.d+'</p><button class="btn" type="button">'+s.cta.b+' →</button></div>';
   if(s.immo&&immoSub){const l=(s.items||[]).filter(p=>p.sub===immoSub);
     return '<button class="btn-v" type="button" data-subback style="grid-column:1/-1;width:100%">← Retour · '+SUBT[immoSub]+'</button>'+
@@ -1648,7 +1672,7 @@ function appliquerBase(rows,info){
   rows.forEach(r=>{if(!DB_SEC[r.section])return;if(r.status&&r.status!=='En stock')return;
     const im=(Array.isArray(r.photos)&&r.photos.length?r.photos:[r.photo||r.image_url]).filter(Boolean);
     (par[r.section]=par[r.section]||[]).push({n:r.name,p:Number(r.sell_price||r.price)||0,img:im[0]||'',imgs:im,d:r.description||'',
-      au:r.auteur||'',cid:r.client_id||'',vw:Number(r.vues)||0,nc:Number(r.nb_comm)||0,nl:Number(r.nb_likes)||0,ai:r.auteur_img||'',ep:r.epingle?1:0,i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
+      au:r.auteur||'',cid:r.client_id||'',vw:Number(r.vues)||0,nc:Number(r.nb_comm)||0,nl:Number(r.nb_likes)||0,ai:r.auteur_img||'',cz:r.auteur_cert?1:0,ep:r.epingle?1:0,i:'db'+r.id,e:DB_SEC[r.section][1],code:r.code||'',sc:r.seller_code||'',abo:r.abonnement_fin||'',sec:r.section,sub:r.sous_categorie||(r.section==='transport'?'camion':(r.section==='longrich'?'longrich':(r.section==='gaz'||r.section==='patisserie'?r.section:''))),vid:r.video_url||'',devis:(Number(r.sell_price||r.price)||0)>0?0:1,v:(r.section==='vivrier'||r.section==='longrich'||r.section==='gaz'||r.section==='patisserie')?1:0})});
   Object.keys(dbSeen).forEach(k=>{if(!par[k]&&DB_SEC[k]&&!(REGION==='agadez'&&(k==='travaux'||k==='transport')))DB_SEC[k][0].length=0});
   Object.keys(par).forEach(k=>dbSeen[k]=1);
   Object.keys(par).forEach(k=>{const a=DB_SEC[k][0];
@@ -1665,7 +1689,7 @@ let lastSig='',dbSeen={};
 async function chargerBase(){
   try{
     const hd={headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY}};
-    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur,client_id,vues,nb_comm,nb_likes,epingle,auteur_img&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
+    const [r,ri]=await Promise.all([fetch(DB_URL+'/rest/v1/products?select=id,name,description,price,sell_price,photo,image_url,section,code,status,video_url,photos,sous_categorie,seller_code,abonnement_fin,auteur,client_id,vues,nb_comm,nb_likes,epingle,auteur_img,auteur_cert&region=eq.'+REGION+'&order=created_at.desc&limit=500',hd),
       fetch(DB_URL+'/rest/v1/regions?select=slug,name,whatsapp,active&slug=eq.'+REGION,hd).catch(()=>null)]);
     if(!r.ok)throw new Error('HTTP '+r.status);
     const rows=await r.json();let info=null;try{if(ri&&ri.ok){const a=await ri.json();info=a[0]||null}}catch(e){}
@@ -1712,7 +1736,7 @@ car.addEventListener('touchmove',e=>{if(!drag)return;const t=e.touches[0];dx=t.c
   const k=si,lim=(k===0&&dx>0)||(k===Math.min(NSV,SERVICES.length)-1&&dx<0)?.3:1;trk.style.transform='translateX(calc(-'+(k*100)+'% + '+(dx*lim)+'px))'},{passive:true});
 car.addEventListener('touchend',()=>{if(!drag)return;drag=0;
   if(moved&&Math.abs(dx)>w0*.18){const k=Math.max(0,Math.min(Math.min(NSV,SERVICES.length)-1,si+(dx<0?1:-1)));activer(k,true)}else vers(si)});
-car.addEventListener('click',e=>{if(moved){moved=0;return}const sl=e.target.closest('.slide');if(!sl)return;pause=Date.now()+12000;activer(+sl.dataset.k,true);toast('✅ '+SERVICES[+sl.dataset.k].h,1000)});
+car.addEventListener('click',e=>{if(moved){moved=0;return}const sl=e.target.closest('.slide');if(!sl)return;pause=Date.now()+12000;activer(+sl.dataset.k,true);toast(''+SERVICES[+sl.dataset.k].h,1000)});
 setInterval(()=>{ // les photos défilent toutes seules toutes les 6 s (les produits ne changent pas)
   if(Date.now()<pause||document.hidden||$('v-accueil').hidden||document.activeElement===$('q')||drag)return;
   const k=(si+1)%Math.min(NSV,SERVICES.length);marquer(k);vers(k)},6000);
@@ -1764,7 +1788,7 @@ function changerPanier(k,d){
   try{localStorage.setItem('oda_panier',JSON.stringify(P))}catch(e){}
   document.querySelectorAll('[data-stp]').forEach(el=>{if(el.dataset.stp===k)el.innerHTML=stepHTML(k)});
   if(!$('v-panier').hidden)drawPanier(true);
-  if(d>0){const n=P.reduce((a,x)=>a+x.q,0);const tt=$('toast');tt.innerText='🛒 Ajouté au panier ('+n+')';tt.style.opacity=1;setTimeout(()=>tt.style.opacity=0,1200)}
+  if(d>0){const n=P.reduce((a,x)=>a+x.q,0);const tt=$('toast');tt.innerText='Ajouté au panier ('+n+')';tt.style.opacity=1;setTimeout(()=>tt.style.opacity=0,1200)}
 }
 const ajouter=k=>changerPanier(k,1);
 
@@ -1791,7 +1815,7 @@ function geoAsk(state){ // fenêtre qui demande (ou explique comment rétablir) 
   $('gp').innerHTML=denied
     ?"Pour la débloquer : touche le cadenas 🔒 à côté de l'adresse du site, puis <b>Autorisations</b> → <b>Position</b> → <b>Autoriser</b>. Elle s'activera toute seule ensuite."
     :"Pour que le livreur te trouve, ODA SHOP a besoin de ta position. Choisis « Autoriser » : tu ne le feras qu'une seule fois.";
-  $('gok').innerText=denied?'🔄 J\'ai autorisé, réessayer':'📍 Activer ma position';
+  $('gok').innerText=denied?'🔄 J\'ai autorisé, réessayer':'Activer ma position';
   $('geoask').hidden=false;
 }
 let geoLater=false,geoInitDone=false;
@@ -1842,16 +1866,16 @@ const WORKER='https://oda-photos.ibrahhalidzakarie3.workers.dev';
 const lienProduit=p=>p.code?WORKER+'/p/'+encodeURIComponent(p.code):photoUrl(p);
 async function envoyerCommande(corps,num,photo){
   if(CIB)corps+='\n\n📍 Commande vers une autre ville : '+CIB+' (client de '+(getL('oda_ville')||'Agadez')+')';
-  toast('📍 Localisation en cours... autorise-la pour que le livreur te trouve',7000);
+  toast('Localisation en cours... autorise-la pour que le livreur te trouve',7000);
   const pos=await position();
-  toast(pos?'📍 Position ajoutée, ouverture de WhatsApp...':'Position non partagée, ouverture de WhatsApp...',3000);
+  toast(pos?'Position ajoutée, ouverture de WhatsApp...':'Position non partagée, ouverture de WhatsApp...',3000);
   const url='https://wa.me/'+(num||NUM)+'?text='+encodeURIComponent(corps+(photo?'\n📷 '+photo:'')+'\n'+locTxt(pos));
   // on ouvre WhatsApp dans le même onglet (le plus fiable sur téléphone)
   try{location.href=url}catch(e){}
   // si rien ne s'est passé, un bouton à toucher apparaît
   setTimeout(()=>{
     if(document.hidden)return;
-    let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='🟢 Ouvrir WhatsApp ›';document.body.appendChild(a)}
+    let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='Ouvrir WhatsApp ›';document.body.appendChild(a)}
     a.href=url;a.style.display='block';setTimeout(()=>a.style.display='none',15000);
   },2500);
 }
@@ -1887,9 +1911,9 @@ function drawPanier(leger){
     $('bas').innerHTML='';return;
   }
   const nb=P.reduce((a,p)=>a+p.q,0);
-  $('liste').innerHTML='<div class="cth">Mon panier <span>('+nb+' article'+(nb>1?'s':'')+')</span></div>'+P.map((p,i)=>`<div class="it g">${p.img?`<img src="${esc(p.img)}" alt="">`:(p.e?`<div class="ee">${p.e}</div>`:'')}<div class="in">${p.tag?`<span class="itg">${esc(p.tag)}</span>`:''}<div class="n">${esc(p.n)}</div><div class="p">${p.p>0?fmt(p.p*p.q):'Sur devis'}</div></div><div class="q"><button data-a="-" data-i="${i}">−</button><b>${p.q}</b><button data-a="+" data-i="${i}">+</button></div><button class="rm" data-a="x" data-i="${i}" aria-label="Retirer">✕</button></div>`).join('');
+  $('liste').innerHTML='<div class="cth">Mon panier <span>('+nb+' article'+(nb>1?'s':'')+')</span></div>'+P.map((p,i)=>`<div class="it g">${p.img?`<img src="${esc(p.img)}" alt="">`:(p.e?`<div class="ee">${p.e}</div>`:'')}<div class="in">${p.tag?`<span class="itg">${esc(p.tag)}</span>`:''}<div class="n">${esc(p.n)}</div><div class="p">${p.p>0?fmt(p.p*p.q):'Sur devis'}</div></div><div class="q"><button data-a="-" data-i="${i}">−</button><b>${p.q}</b><button data-a="+" data-i="${i}">+</button></div><button class="rm" data-a="x" data-i="${i}" aria-label="Retirer">${IC.x(16)}</button></div>`).join('');
   const total=P.reduce((a,p)=>a+(p.p>0?p.p*p.q:0),0),devis=P.some(p=>!(p.p>0));
-  $('bas').innerHTML=`<div class="tot"><span>Total</span><span>${fmt(total)}${devis?' <small>+ devis</small>':''}</span></div><button class="cmd" id="cmd">🟢 Commander sur WhatsApp</button>`;
+  $('bas').innerHTML=`<div class="tot"><span>Total</span><span>${fmt(total)}${devis?' <small>+ devis</small>':''}</span></div><button class="cmd" id="cmd">Commander sur WhatsApp</button>`;
   $('cmd').onclick=()=>{
     const g=k=>{try{return localStorage.getItem(k)||''}catch(e){return ''}};
     const lignes=P.map(p=>`- ${p.q} x ${p.n}${p.code?' ['+p.code+']':''} (${p.p>0?fmt(p.p*p.q):'sur devis'})`).join('\n');
@@ -1997,38 +2021,38 @@ const TR={
 'Envoyer un colis →':['Send a parcel →','أرسل طردًا →','Aika kunshi →'],
 'Boutique neuve':['New shop','متجر جديد','Sabon shago'],
 'Aucun produit pour le moment.':['No products yet.','لا توجد منتجات حاليًا.','Babu kayayyaki a yanzu.'],
-'🛒 Mon panier':['🛒 My cart','🛒 سلتي','🛒 Kwandona'],
-'👤 Mon profil':['👤 My profile','👤 ملفي','👤 Bayanina'],
-'📷 Changer la photo':['📷 Change photo','📷 تغيير الصورة','📷 Canja hoto'],
+'Mon panier':['My cart','سلتي','Kwandona'],
+'Mon profil':['My profile','ملفي','Bayanina'],
+'Changer la photo':['Change photo','تغيير الصورة','Canja hoto'],
 'Ville':['City','المدينة','Gari'],
 'Enregistrer':['Save','حفظ','Ajiye'],
-'✅ Profil enregistré':['✅ Profile saved','✅ تم حفظ الملف','✅ An ajiye bayanai'],
-'📢 Contacter ODA SHOP pour publier un produit':['📢 Contact ODA SHOP to post a product','📢 تواصل مع ODA SHOP لنشر منتج','📢 Tuntuɓi ODA SHOP don saka kaya'],
+'Profil enregistré':['Profile saved','تم حفظ الملف','An ajiye bayanai'],
+'Contacter ODA SHOP pour publier un produit':['Contact ODA SHOP to post a product','تواصل مع ODA SHOP لنشر منتج','Tuntuɓi ODA SHOP don saka kaya'],
 'Se déconnecter':['Log out','تسجيل الخروج','Fita'],
-'🍔 Livraison nourriture':['🍔 Food delivery','🍔 توصيل الطعام','🍔 Kai abinci'],
+'Livraison nourriture':['Food delivery','توصيل الطعام','Kai abinci'],
 "Dis-nous ton restaurant et tes plats : ODA achète et te livre chez toi à Agadez.":['Tell us your restaurant and dishes: ODA buys and delivers to your home in Agadez.','أخبرنا بمطعمك وأطباقك: ODA يشتري ويوصل إلى منزلك في أغاديز.','Faɗa mana gidan abincin ka da abincin: ODA ya saya ya kai maka gida a Agadez.'],
 '1. Ton restaurant préféré':['1. Your favorite restaurant','1. مطعمك المفضل','1. Gidan abincin da kake so'],
 '2. Dis-nous les plats que tu veux':['2. Tell us the dishes you want','2. أخبرنا بالأطباق التي تريدها','2. Faɗa mana abincin da kake so'],
 '3. Infos de livraison':['3. Delivery info','3. معلومات التوصيل','3. Bayanin kai kaya'],
-'🟢 Commander sur WhatsApp':['🟢 Order on WhatsApp','🟢 اطلب عبر واتساب','🟢 Yi oda ta WhatsApp'],
-'📞 Appeler ODA':['📞 Call ODA','📞 اتصل بـ ODA','📞 Kira ODA'],
-'💊 ODA Pharmacie':['💊 ODA Pharmacy','💊 صيدلية ODA','💊 Kantin magani ODA'],
+'Commander sur WhatsApp':['Order on WhatsApp','اطلب عبر واتساب','Yi oda ta WhatsApp'],
+'Appeler ODA':['Call ODA','اتصل بـ ODA','Kira ODA'],
+'ODA Pharmacie':['ODA Pharmacy','صيدلية ODA','Kantin magani ODA'],
 'Marre de faire la queue ?':['Tired of queuing?','سئمت من الانتظار في الطابور؟','Ka gaji da layi?'],
 "Envoie ton ordonnance : on achète tes médicaments et on livre discrètement à Agadez.":['Send your prescription: we buy your medicines and deliver discreetly in Agadez.','أرسل وصفتك الطبية: نشتري أدويتك ونوصلها بسرية في أغاديز.','Aika takardar likita: mu saya magungunan ka mu kai maka a asirce a Agadez.'],
 "Ajouter la photo de l'ordonnance":['Add prescription photo','أضف صورة الوصفة','Ƙara hoton takardar likita'],
 'Choisis dans ta galerie ou prends-la en photo':['Pick from gallery or take a photo','اختر من المعرض أو التقط صورة','Zaɓa daga gallery ko ɗauki hoto'],
-"💊 Pas d'ordonnance ? Écris la liste ici":['💊 No prescription? Write the list here','💊 لا وصفة؟ اكتب القائمة هنا','💊 Babu takarda? Rubuta jerin nan'],
-'🟢 Envoyer sur WhatsApp':['🟢 Send on WhatsApp','🟢 أرسل عبر واتساب','🟢 Aika ta WhatsApp'],
-'📞 Appeler la pharmacie':['📞 Call the pharmacy','📞 اتصل بالصيدلية','📞 Kira kantin magani'],
+"Pas d'ordonnance ? Écris la liste ici":['No prescription? Write the list here','لا وصفة؟ اكتب القائمة هنا','Babu takarda? Rubuta jerin nan'],
+'Envoyer sur WhatsApp':['Send on WhatsApp','أرسل عبر واتساب','Aika ta WhatsApp'],
+'Appeler la pharmacie':['Call the pharmacy','اتصل بالصيدلية','Kira kantin magani'],
 "Photo de l'ordonnance ou liste obligatoire":['Prescription photo or list required','صورة الوصفة أو القائمة مطلوبة','Ana buƙatar hoton takarda ko jeri'],
 'Active ta position':['Turn on your location','فعّل موقعك','Kunna wurinka'],
 "Pour que le livreur te trouve, ODA SHOP a besoin de ta position. Choisis « Autoriser » : tu ne le feras qu'une seule fois.":['So the courier can find you, ODA SHOP needs your location. Choose "Allow": you only do it once.','ليجدك الموصل، يحتاج ODA SHOP إلى موقعك. اختر «السماح»: مرة واحدة فقط.','Don mai kai kaya ya same ka, ODA SHOP na buƙatar wurinka. Zaɓi "Ba da izini": sau ɗaya kawai.'],
-'📍 Activer ma position':['📍 Enable my location','📍 تفعيل موقعي','📍 Kunna wurina'],
+'Activer ma position':['Enable my location','تفعيل موقعي','Kunna wurina'],
 'Plus tard':['Later','لاحقًا','Daga baya'],
 'Accueil':['Home','الرئيسية','Gida'],
 'Panier':['Cart','السلة','Kwando'],
 'Profil':['Profile','الملف','Bayani'],
-'Vidéos':['Videos','فيديو','Bidiyo'],'Vidéos ODA SHOP':['ODA SHOP Videos','فيديوهات ODA SHOP','Bidiyon ODA SHOP'],'✨ Bientôt disponible':['✨ Coming soon','✨ قريبًا','✨ Nan ba da jimawa ba'],'Découvre bientôt nos produits en vidéo : fais défiler, aime, partage et commande en un geste.':['Soon discover our products in video: scroll, like, share and order in one tap.','قريبًا ستكتشف منتجاتنا بالفيديو: مرّر وأعجب وشارك واطلب بلمسة واحدة.','Nan ba da jimawa za ka ga kayanmu a bidiyo: zazzaga, so, raba, ka yi oda da taɓa ɗaya.'],
+'Vidéos':['Videos','فيديو','Bidiyo'],'Vidéos ODA SHOP':['ODA SHOP Videos','فيديوهات ODA SHOP','Bidiyon ODA SHOP'],'Bientôt disponible':['Coming soon','قريبًا','Nan ba da jimawa ba'],'Découvre bientôt nos produits en vidéo : fais défiler, aime, partage et commande en un geste.':['Soon discover our products in video: scroll, like, share and order in one tap.','قريبًا ستكتشف منتجاتنا بالفيديو: مرّر وأعجب وشارك واطلب بلمسة واحدة.','Nan ba da jimawa za ka ga kayanmu a bidiyo: zazzaga, so, raba, ka yi oda da taɓa ɗaya.'],
 'Agadez · Niger':['Agadez · Niger','أغاديز · النيجر','Agadez · Nijar'],
 'Langue':['Language','اللغة','Harshe'],'Région':['Language','اللغة','Harshe'],
 'Bienvenue sur':['Welcome to','مرحبًا بك في','Barka da zuwa'],
@@ -2045,8 +2069,8 @@ const TR={
 "Tu as une marchandise à déposer. Donne-nous les détails, on s'en occupe.":['You have goods to drop off. Give us the details, we handle it.','لديك بضاعة لإيداعها. أعطنا التفاصيل ونحن نتكفل بها.','Kana da kaya da za a kai. Ba mu bayani, mu yi maka.'],
 "On t'a envoyé un colis ? Envoie-nous ta carte, on part le récupérer et on te livre.":['Someone sent you a parcel? Send us your card, we pick it up and deliver it.','أُرسل لك طرد؟ أرسل لنا بطاقتك، نستلمه ونوصله إليك.','An aiko maka kunshi? Aiko mana katinka, mu karɓo mu kai maka.'],
 'Ajouter des produits':['Add products','أضف منتجات','Ƙara kaya'],'Tout':['All','الكل','Duka'],'Vivriers':['Food','غذائية','Abinci'],'Pharmacie':['Pharmacy','صيدلية','Kantin magani'],'Gaz':['Gas','غاز','Gas'],'Pâtisserie':['Pastry','حلويات','Waina'],'Longrich':['Longrich','Longrich','Longrich'],'Produits pharmaceutiques':['Pharmaceutical products','منتجات صيدلانية','Kayan magani'],'Médicaments et produits de santé, livrés chez toi.':['Medicines and health products delivered to you.','أدوية ومنتجات صحية تصلك إلى بابك.','Ana kai maka magunguna har gida.'],'＋ Ajouter':['＋ Add','＋ أضف','＋ Ƙara'],'▶ PUBLICITÉ':['▶ ADVERTISEMENT','▶ إعلان','▶ TALLA'],'NOS NOUVEAUTÉS':['WHAT\'S NEW','جديدنا','SABBIN KAYAYYAKI'],'Découvre ce qui est nouveau chez ODA SHOP':['Discover what\'s new at ODA SHOP','اكتشف الجديد في ODA SHOP','Gano sabbin kayayyaki a ODA SHOP'],'Rien à ajouter pour le moment.':['Nothing to add for now.','لا يوجد ما يُضاف حاليًا.','Babu abin ƙarawa yanzu.'],'Mon panier':['My cart','سلتي','Kwandona'],'Total':['Total','المجموع','Jimla'],'Envoyer ou récupérer un colis.':['Send or pick up a parcel.','إرسال طرد أو استلامه.','Aika ko karɓar kunshi.'],'On fait tes courses au marché.':['We do your market shopping.','نتسوق لك من السوق.','Muna yi maka sayayya a kasuwa.'],'Bouteilles de gaz livrées chez toi.':['Gas bottles delivered to your door.','أسطوانات الغاز تصلك إلى بابك.','Ana kai maka kwalbar gas har gida.'],'Gâteaux frais livrés chez toi.':['Fresh cakes delivered to your door.','حلويات طازجة تصلك إلى بابك.','Ana kai maka waina sabuwa har gida.'],'Sonef, Rimbo, et autres. Dis-nous la compagnie et on fait le dépôt ou le retrait.':['Sonef, Rimbo, and others. Tell us the company and we do the drop-off or pick-up.','سونيف، ريمبو، وغيرهما. أخبرنا بالشركة ونقوم بالإيداع أو الاستلام.','Sonef, Rimbo, da sauransu. Faɗa mana kamfanin, mu kai ko mu karɓo.'],
-'📞 Appeler le service':['📞 Call the service','📞 اتصل بالخدمة','📞 Kira sabis'],'🟢 WhatsApp':['🟢 WhatsApp','🟢 واتساب','🟢 WhatsApp'],
-'📍 Autre ville':['📍 Other city','📍 مدينة أخرى','📍 Wani gari'],'Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],'commander ?':['order?','؟','?'],'Recherche ta ville dans la liste A-Z.':['Search your city in the A-Z list.','ابحث عن مدينتك في القائمة أ-ي.','Nemi garinka a jerin A-Z.'],'Aucune ville trouvée':['No city found','لم يتم العثور على مدينة','Ba a sami gari ba'],'@Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],
+'Appeler le service':['Call the service','اتصل بالخدمة','Kira sabis'],'WhatsApp':['WhatsApp','واتساب','WhatsApp'],
+'Autre ville':['Other city','مدينة أخرى','Wani gari'],'Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],'commander ?':['order?','؟','?'],'Recherche ta ville dans la liste A-Z.':['Search your city in the A-Z list.','ابحث عن مدينتك في القائمة أ-ي.','Nemi garinka a jerin A-Z.'],'Aucune ville trouvée':['No city found','لم يتم العثور على مدينة','Ba a sami gari ba'],'@Dans quelle ville veux-tu commander ?':['Which city do you want to order to?','إلى أي مدينة تريد الطلب؟','A wane gari kake son yin oda?'],
 'Électricien':['Electrician','كهربائي','Ma\'aikacin lantarki'],'Plombier':['Plumber','سباك','Mai famfo'],'Soudeur':['Welder','لحام','Maƙeri'],'Menuisier':['Carpenter','نجار','Kafinta'],'Peintre':['Painter','دهان','Mai fenti'],'Maçon':['Mason','بنّاء','Magini'],
 'Dépannage et installation électrique.':['Electrical repair and installation.','إصلاح وتركيب كهربائي.','Gyaran lantarki da shigarwa.'],"Fuite d'eau et débouchage.":['Water leaks and unclogging.','تسرب المياه وفتح المجاري.','Zubewar ruwa da buɗe bututu.'],'Portails, fenêtres et soudure.':['Gates, windows and welding.','أبواب حديدية ونوافذ ولحام.','Ƙofofi, tagogi da walda.'],'Portes, meubles et bois.':['Doors, furniture and wood.','أبواب وأثاث وخشب.','Ƙofofi, kujeru da itace.'],'Peinture et décoration maison.':['House painting and decoration.','دهان وديكور المنزل.','Fentin gida da kwalliya.'],'Construction et carrelage.':['Construction and tiling.','بناء وتبليط.','Gini da shimfiɗa tayel.'],
 'Gros camions':['Heavy trucks','شاحنات كبيرة','Manyan motoci'],'Motos à 3 roues avec caisse':['Three-wheel motorbikes with box','دراجات ثلاثية العجلات بصندوق','Babura masu ƙafa 3 da akwati'],"Citerne d'eau, sable, argile, engrais, ciment, vidange, benne.":['Water tanker, sand, clay, fertilizer, cement, sewage, tipper.','صهريج ماء، رمل، طين، أسمدة، إسمنت، صرف، قلاب.','Tankar ruwa, yashi, laka, taki, siminti, kwashe najasa, tipper.'],'Eau, engrais, ramassage de déchets, petits colis et ciment.':['Water, fertilizer, waste collection, small parcels and cement.','ماء، أسمدة، جمع النفايات، طرود صغيرة وإسمنت.','Ruwa, taki, kwashe shara, ƙananan kunshi da siminti.'],
@@ -2075,7 +2099,7 @@ const TR={
 '@Ex : Maquis Le Sahel, Pizza King':['E.g. Maquis Le Sahel, Pizza King','مثال: Maquis Le Sahel, Pizza King','Misali: Maquis Le Sahel, Pizza King'],
 '@Dans quelle ville es-tu ?':['Which city are you in?','في أي مدينة أنت؟','A wane gari kake?']
 };
-const PRE={'🛒 Ajouté au panier (':['🛒 Added to cart (','🛒 تمت الإضافة إلى السلة (','🛒 An saka a kwando (']};
+const PRE={'Ajouté au panier (':['Added to cart (','تمت الإضافة إلى السلة (','An saka a kwando (']};
 const LI={en:0,ar:1,ha:2};
 let LANG='fr';try{LANG=localStorage.getItem('oda_lang')||'fr'}catch(e){}
 const ORIG=new WeakMap();
@@ -2132,7 +2156,7 @@ if($('pubbtn'))$('pubbtn').onclick=()=>envoyerCommande('Bonjour ODA SHOP, je veu
 $('out').onclick=()=>{delL('oda_session');authOpen()};
 if(getL('oda_session')!=='1')authOpen();else initGeo();
 document.addEventListener('visibilitychange',()=>{if(!document.hidden&&getL('oda_session')==='1'&&!document.body.classList.contains('geo-on'))startGeo()});
-$('pin').addEventListener('click',e=>{e.preventDefault();toast('📍 Mise à jour de ta position...',1500);startGeo()});
+$('pin').addEventListener('click',e=>{e.preventDefault();toast('Mise à jour de ta position...',1500);startGeo()});
 
 // ===== NOURRITURE : le client écrit lui-même son restaurant et ses plats, ça part sur WhatsApp avec sa position =====
 $('fgo').onclick=()=>{
@@ -2143,7 +2167,7 @@ $('fgo').onclick=()=>{
 // ===== PHARMACIE : ordonnance (photo) ou liste, envoyée sur WhatsApp avec la position du client =====
 const NUM_PHARMA='22793849012'; // numéro de la pharmacie
 let pharmaPos=null;             // position lue à l'ouverture de l'écran (le partage de photo doit partir tout de suite)
-$('phfile').onchange=e=>{const f=e.target.files[0];$('phtxt').innerText=f?'✅ '+f.name:"Ajouter la photo de l'ordonnance"};
+$('phfile').onchange=e=>{const f=e.target.files[0];$('phtxt').innerText=f?''+f.name:"Ajouter la photo de l'ordonnance"};
 $('phgo').onclick=()=>{
   const f=$('phfile').files[0],l=$('phliste').value.trim();
   if(!f&&!l){toast("Ajoute la photo de l'ordonnance ou écris la liste");return}
@@ -2210,7 +2234,7 @@ function drawVilles(){const q=norm($('vq').value.trim());const cur=getL('oda_vil
   $('vls').innerHTML=VILLES_NE.slice().sort((a,b)=>a==='Agadez'?-1:b==='Agadez'?1:a.localeCompare(b,'fr')).filter(v=>norm(v).includes(q)).map(v=>'<button type="button" class="vit'+(v===cur?' on':'')+'" data-vil="'+esc(v)+'"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="#D9A21A" stroke-width="2" stroke-linecap="round"><path d="M12 22s7-6.5 7-12a7 7 0 0 0-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>'+esc(v)+'</button>').join('')||'<div class="vide" style="padding:24px">🔍<br>Aucune ville trouvée</div>'}
 $('goville').onclick=()=>{if(CIB){setL('oda_cible','');try{history.replaceState(null,'','#accueil')}catch(e){}location.reload()}else show('ville')};
 $('vq').addEventListener('input',drawVilles);
-$('vls').addEventListener('click',e=>{const b=e.target.closest('[data-vil]');if(!b)return;const v=b.dataset.vil;const home=getL('oda_ville')||'Agadez',nc=v===home?'':v;setL('oda_cible',nc);if(nc!==CIB){try{history.replaceState(null,'','#accueil')}catch(e){}location.reload();return}appliquer();show('accueil');toast('📍 '+v)});
+$('vls').addEventListener('click',e=>{const b=e.target.closest('[data-vil]');if(!b)return;const v=b.dataset.vil;const home=getL('oda_ville')||'Agadez',nc=v===home?'':v;setL('oda_cible',nc);if(nc!==CIB){try{history.replaceState(null,'','#accueil')}catch(e){}location.reload();return}appliquer();show('accueil');toast(''+v)});
 
 function show(v){
   VUES.forEach(x=>$('v-'+x).hidden=x!==v);
@@ -2242,6 +2266,7 @@ if(location.hash==='#inbox')allerNotif('inbox');
 try{navigator.serviceWorker.addEventListener('message',e=>{if(e.data&&e.data.go)allerNotif(e.data.go)})}catch(e){}
 if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))navigator.serviceWorker.register('sw.js').catch(()=>{});
 // ===== Notifications push : le client s'abonne, l'admin envoie les suggestions =====
+const IC=(()=>{const P={"dl": "<path d=\"M12 4v11\"/><path d=\"M7 11l5 5 5-5\"/><path d=\"M5 20h14\"/>", "pin": "<path d=\"M9 3h6l-1 6 3 3v2H7v-2l3-3z\"/><path d=\"M12 14v7\"/>", "trash": "<path d=\"M4 7h16\"/><path d=\"M9 7V4h6v3\"/><path d=\"M6 7l1 13h10l1-13\"/><path d=\"M10 11v6M14 11v6\"/>", "flag": "<path d=\"M5 21V4\"/><path d=\"M5 4h12l-2 4 2 4H5\"/>", "x": "<path d=\"M6 6l12 12M18 6L6 18\"/>", "gallery": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"3\"/><circle cx=\"9\" cy=\"10\" r=\"1.6\"/><path d=\"M4 18l5-5 4 4 3-3 4 4\"/>", "video": "<rect x=\"3\" y=\"6\" width=\"12\" height=\"12\" rx=\"3\"/><path d=\"M15 10l6-3v10l-6-3z\"/>", "bell": "<path d=\"M6 16v-5a6 6 0 0 1 12 0v5l2 2H4z\"/><path d=\"M10 21h4\"/>", "store": "<path d=\"M4 9l1.5-5h13L20 9\"/><path d=\"M4 9a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0A2.7 2.7 0 0 0 20 9\"/><path d=\"M5 12v8h14v-8\"/>", "pencil": "<path d=\"M4 20l1-4L16 5l3 3L8 19z\"/>", "plus": "<path d=\"M12 5v14M5 12h14\"/>", "eye": "<path d=\"M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z\"/><circle cx=\"12\" cy=\"12\" r=\"3\"/>", "send": "<path d=\"M21 3L10 14\"/><path d=\"M21 3l-7 18-4-7-7-4z\"/>", "logout": "<path d=\"M9 4H5v16h4\"/><path d=\"M16 8l4 4-4 4M20 12H9\"/>", "wallet": "<path d=\"M3 8a2 2 0 0 1 2-2h13v3\"/><rect x=\"3\" y=\"8\" width=\"18\" height=\"12\" rx=\"3\"/><circle cx=\"16.5\" cy=\"14\" r=\"1.2\"/>", "sync": "<path d=\"M20 11a8 8 0 0 0-14-4l-2 2\"/><path d=\"M4 4v5h5\"/><path d=\"M4 13a8 8 0 0 0 14 4l2-2\"/><path d=\"M20 20v-5h-5\"/>", "heart": "<path d=\"M12 20.5s-7.3-4.5-9.3-9C1.3 8.2 3.3 4.7 6.8 4.7c2 0 3.6 1 5.2 2.9 1.6-1.9 3.2-2.9 5.2-2.9 3.5 0 5.5 3.5 4.1 6.8-2 4.5-9.3 9-9.3 9z\"/>", "chat": "<path d=\"M12 3.5c-4.7 0-8.5 3.3-8.5 7.5 0 2.1 1 4 2.6 5.3L5.5 20.5l4-2c.8.2 1.6.3 2.5.3 4.7 0 8.5-3.3 8.5-7.5S16.7 3.5 12 3.5z\"/>", "share": "<path d=\"M14 4.5v4.2C8.6 9 5 12.3 4 18c2.2-2.6 5.1-3.8 10-3.9v4.3l7-7.2-7-6.7z\"/>", "user": "<circle cx=\"12\" cy=\"8\" r=\"4\"/><path d=\"M4 21c1-4.500 4-6.500 8-6.500s7 2 8 6.500\"/>", "check": "<path d=\"M5 12.5l4.5 4.5L19 7\"/>"};const o={};for(const k in P)o[k]=sz=>'<svg class="ic" viewBox="0 0 24 24" width="'+(sz||20)+'" height="'+(sz||20)+'" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+P[k]+'</svg>';return o})();
 const VAPID='BNMyZnbu-dyO8o9feTo0mttYXzAC-oTUS_bJ3lmUkyZsWGg_uTnKmtMz4Hs7FWiOglScDlWmtq-L3cdoCgwINvA';
 const u8=b=>{const p='='.repeat((4-b.length%4)%4),r=atob((b+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
 const pushOK=()=>'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window&&/^https?:/.test(location.protocol);
@@ -2250,12 +2275,19 @@ async function lierPush(){
     const reg=await navigator.serviceWorker.ready,sub=await reg.pushManager.getSubscription();if(!sub)return;
     const j=sub.toJSON();
     await fetch(DB_URL+'/functions/v1/push-notify',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'sub',t:t,endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth})})}catch(e){}}
+function proposerNotif(){
+  try{if(!getL('oda_ct')||!pushOK()||Notification.permission!=='default'||document.getElementById('pnag'))return;
+    const d=Number(getL('oda_pnag')||0);if(Date.now()-d<3*86400000)return;
+    const b=document.createElement('div');b.id='pnag';
+    b.innerHTML='<span>Active les notifications pour être prévenu des commentaires, j’aime et nouveaux followers.</span><button type="button" data-ok>Activer</button><button type="button" data-no aria-label="Plus tard">✕</button>';
+    b.onclick=async e=>{if(e.target.closest('[data-ok]')){b.remove();try{await activerNotif()}catch(x){}}else if(e.target.closest('[data-no]')){try{localStorage.setItem('oda_pnag',String(Date.now()))}catch(x){}b.remove()}};
+    setTimeout(()=>document.body.appendChild(b),2500)}catch(e){}}
 async function majNotifBtn(){
   const b=$('notif');if(!b)return;
   if(!pushOK()){b.hidden=true;return}
   b.hidden=false;
   let on=false;try{const r=await navigator.serviceWorker.ready;on=!!(await r.pushManager.getSubscription())&&Notification.permission==='granted'}catch(e){}
-  b.innerHTML='<span class="ico">🔔</span><b>Notifications</b><i class="sw'+(on?' on':'')+'"></i>';
+  b.innerHTML='<span class="ico">'+IC.bell(22)+'</span><b>Notifications</b><i class="sw'+(on?' on':'')+'"></i>';
   $('notifmsg').textContent=Notification.permission==='denied'?"Notifications bloquées : autorise-les dans les réglages du navigateur.":'';
 }
 async function activerNotif(){
@@ -2267,7 +2299,7 @@ async function activerNotif(){
     if(!sub)sub=await reg.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:u8(VAPID)});
     const j=sub.toJSON();
     await fetch(DB_URL+'/rest/v1/push_subs',{method:'POST',headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY,'Content-Type':'application/json',Prefer:'resolution=ignore-duplicates,return=minimal'},body:JSON.stringify({endpoint:j.endpoint,p256dh:j.keys.p256dh,auth:j.keys.auth,ville:localStorage.getItem('oda_ville')||null})});
-    $('notifmsg').textContent='✅ Tu recevras nos nouveautés.';
+    $('notifmsg').textContent='Tu recevras nos nouveautés.';
     try{localStorage.setItem('oda_push','1')}catch(e){}
     lierPush();
   }catch(e){$('notifmsg').textContent="Impossible d'activer pour le moment."}
@@ -2333,7 +2365,7 @@ document.documentElement.classList.remove('boot');
     d.innerHTML=ks.map(k=>'<button type="button" data-tsv="'+k+'">'+esc(SERVICES[k].e||'')+' Ouvrir '+esc(SERVICES[k].t)+'</button>').join('');
     body().appendChild(d);scroll();
   }
-  function wa(){const d=document.createElement('div');d.className='tfq';d.innerHTML='<button type="button" data-twa="1">🟢 Écrire à ODA SHOP</button>';body().appendChild(d);scroll()}
+  function wa(){const d=document.createElement('div');d.className='tfq';d.innerHTML='<button type="button" data-twa="1">Écrire à ODA SHOP</button>';body().appendChild(d);scroll()}
   function repondre(q){
     const n=norm(q);
     if(/\b(bonjour|salut|salam|bonsoir|hello|coucou)\b/.test(n)&&n.split(' ').length<=3){bot('Salam ! 🧚 Que cherches-tu aujourd’hui ?');chips(SUG);return}
@@ -2415,7 +2447,7 @@ document.documentElement.classList.remove('boot');
     if(ecoute){try{rec.stop()}catch(e){}return}
     let texte='',fini=false;erreur=false;annule=false;
     try{rec=new SR();let lg='fr';try{lg=localStorage.getItem('oda_lang')||'fr'}catch(x){}rec.lang=LMAP[lg]||'fr-FR';rec.interimResults=true;rec.maxAlternatives=1;rec.continuous=false}catch(e){bot('Impossible d’activer le micro pour le moment. Écris-moi ton message 🧚');return}
-    rec.onstart=()=>{ecoute=true;$('tft').textContent='Je t’écoute…';$('tfm').classList.add('on');$('tfi').placeholder='🎙️ Je t’écoute…'};
+    rec.onstart=()=>{ecoute=true;$('tft').textContent='Je t’écoute…';$('tfm').classList.add('on');$('tfi').placeholder='Je t’écoute…'};
     rec.onresult=e=>{texte='';for(let i=e.resultIndex;i<e.results.length;i++)texte+=e.results[i][0].transcript;$('tfi').value=texte;if(texte)$('tft').textContent=texte;if(e.results[e.results.length-1].isFinal)fini=true};
     rec.onerror=e=>{const c=e.error;erreur=true;fini=true;texte='';
       if(c==='not-allowed'||c==='service-not-allowed')bot('Le micro est bloqué. Autorise-le dans les réglages du navigateur, puis réessaie 🧚');
@@ -2454,10 +2486,11 @@ document.documentElement.classList.remove('boot');
   const devId=()=>{let d=getL('oda_did');if(!d){d=(crypto.randomUUID?crypto.randomUUID():String(Date.now())+Math.random().toString(36).slice(2));try{localStorage.setItem('oda_did',d)}catch(x){}}return d};
   const keyOf=v=>v.sc||(v.au?'u:'+v.au:'');
   const avatar=n=>'data:image/svg+xml;utf8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#f5b800"/><text x="50" y="68" font-size="54" font-family="Arial" font-weight="700" text-anchor="middle" fill="#161616">'+String((n||'?').trim().charAt(0)||'?').toUpperCase().replace(/[<>&]/g,'?')+'</text></svg>');
-  const prof=c=>{if(String(c).startsWith('u:')){const n=c.slice(2);const o=LV.find(v=>keyOf(v)===c&&v.ai),mien=ME&&ME.id&&LV.find(v=>keyOf(v)===c&&v.cid===ME.id)&&getL('oda_photo');return{n:n,h:slug(n),img:mien||(o&&o.ai)||avatar(n),bio:'',vendeur:0}}const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0}};
+  const prof=c=>{if(String(c).startsWith('u:')){const n=c.slice(2);const o=LV.find(v=>keyOf(v)===c&&v.ai),mien=ME&&ME.id&&LV.find(v=>keyOf(v)===c&&v.cid===ME.id)&&getL('oda_photo');return{n:n,h:slug(n),img:mien||(o&&o.ai)||avatar(n),bio:'',vendeur:0,cert:!!LV.find(v=>keyOf(v)===c&&v.cz)}}const v=selr(c);return v?{n:v.n,h:slug(v.n),img:v.img||odaImg(),bio:v.d||'',vendeur:1}:{n:'ODA SHOP',h:'@oda_shop',img:odaImg(),bio:'Achète, vends et commande à Agadez : produits neufs et d’occasion, alimentation, gaz, pharmacie, immobilier et plus encore. 🟡',vendeur:0,cert:1}};
   let LIKES={},BIO={},FOL=new Set(),ME={id:'',followers:0,following:0,videos:0},STAT={};
   let RANK=null;const maj=()=>{LV=VIDEOS.filter(v=>!v.sc||selActif(v.sc));if(RANK)LV.sort((a,b)=>(RANK[a.i]===undefined?-1:RANK[a.i])-(RANK[b.i]===undefined?-1:RANK[b.i]))};
   function ordreNeuf(){const seen=[...VUS],base=VIDEOS.filter(v=>!v.sc||selActif(v.sc)),nw=base.filter(v=>!VUS.has(v.i)),old=base.filter(v=>VUS.has(v.i)).sort((a,b)=>seen.indexOf(a.i)-seen.indexOf(b.i));RANK={};nw.concat(old).forEach((v,k)=>{RANK[v.i]=k})}
+  const BADGE='<svg class="cert" viewBox="0 0 24 24" width="15" height="15" aria-label="Compte certifié"><path fill="#20a4f3" d="M12 1.8l2.4 1.8 3-.2 1 2.8 2.6 1.6-.9 2.9 1 2.9-2.5 1.7-.9 2.9-3 .1L12 20.2l-2.5-1.8-3-.1-.9-2.9-2.500-1.700 1-2.900-.9-2.900 2.600-1.600 1-2.800 3 .2z"/><path d="M8 12.200l2.800 2.800 5.200-5.600" fill="none" stroke="#fff" stroke-width="2.200" stroke-linecap="round" stroke-linejoin="round"/></svg>';
   const lien=v=>v.sub?allItems().find(x=>x.code&&x.code===v.sub):null;
   document.addEventListener('loadedmetadata',e=>{const v=e.target;if(v&&v.tagName==='VIDEO'&&v.closest&&v.closest('.vs,.ved')&&v.videoWidth&&v.videoHeight)v.classList.toggle('fit',v.videoWidth/v.videoHeight>0.8)},true);
   function jouer(vd){vd.muted=muted;const p=vd.play();if(p&&p.catch)p.catch(()=>{if(!vd.muted){vd.muted=true;vd.play().catch(()=>{})}})}
@@ -2465,8 +2498,8 @@ document.documentElement.classList.remove('boot');
   const vids=()=>[...document.querySelectorAll('#vf video')];
   function slide(v,k){
     const lk=lien(v),pf=prof(keyOf(v)),poster=v.img?' poster="'+esc(v.img)+'"':'';
-    const btn=lk?'<button class="vcmd" type="button" data-cmd="'+esc(lk.i)+'"><span>🟢 Commander · '+esc(lk.n)+(lk.p>0?' · '+esc(fmt(lk.p)):'')+'</span></button>'
-      :'<button class="vcmd" type="button" data-vwa="'+k+'"><span>🟢 Écrire à ODA SHOP</span></button>';
+    const btn=lk?'<button class="vcmd" type="button" data-cmd="'+esc(lk.i)+'"><span>Commander · '+esc(lk.n)+(lk.p>0?' · '+esc(fmt(lk.p)):'')+'</span></button>'
+      :'<button class="vcmd" type="button" data-vwa="'+k+'"><span>Écrire à ODA SHOP</span></button>';
     const solo=!lk&&v.au&&!v.sc;
     return '<section class="vs'+(solo?' solo':'')+'" data-i="'+k+'" data-cid="'+esc(v.cid||'')+'"><video playsinline loop muted preload="none" webkit-playsinline'+poster+' data-src="'+esc(v.vid)+'"></video><div class="vsh"></div><div class="vplay">▶</div><div class="vseekt"></div><div class="vprog"><i></i></div>'+
       '<div class="vtop"><b>Vidéos ODA SHOP</b></div>'+
@@ -2476,7 +2509,7 @@ document.documentElement.classList.remove('boot');
       '<button type="button" data-vshare="'+k+'">'+ICO.share+'<small>Partager</small></button>'+
       (String(v.i).startsWith('db')?'<button type="button" data-vmore="'+k+'" aria-label="Plus d’options">'+ICO.dots+'<small>Plus</small></button>':'')+
       ''+'</div>'+
-      '<div class="vinfo"><b>'+esc(pf.n)+'</b>'+(v.d&&String(v.i).startsWith('db')&&v.d.startsWith(String(v.n).replace(/…$/,''))?'':'<h3>'+esc(v.n)+'</h3>')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
+      '<div class="vinfo"><b>'+esc(pf.n)+(pf.cert?BADGE:'')+'</b>'+(v.d&&String(v.i).startsWith('db')&&v.d.startsWith(String(v.n).replace(/…$/,''))?'':'<h3>'+esc(v.n)+'</h3>')+(v.d?'<p>'+esc(v.d)+'</p>':'')+'</div>'+
       (solo?'':btn)+'</section>';
   }
   function charger(sl,pre){const vd=sl&&sl.querySelector('video');if(vd&&!vd.getAttribute('src')&&vd.dataset.src){vd.preload=pre?'metadata':'auto';vd.src=vd.dataset.src}}
@@ -2485,7 +2518,7 @@ document.documentElement.classList.remove('boot');
     if(!v||!String(v.i).startsWith('db')||VUS.has(v.i))return;VUS.add(v.i);
     try{localStorage.setItem('oda_vseen',JSON.stringify([...VUS].slice(-500)))}catch(e){}
     try{const r=await fetch(DB_URL+'/rest/v1/rpc/compter_vue',{method:'POST',headers:{apikey:DB_KEY,Authorization:'Bearer '+DB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_id:String(v.i).slice(2),p_device:devId()})});
-      if(r.ok){const n=await r.json();v.vw=Number(n)||(v.vw+1);document.querySelectorAll('[data-vw="'+v.i+'"]').forEach(x=>x.textContent='👁 '+nbv(v.vw)+' vue'+(v.vw>1?'s':''))}}catch(e){VUS.delete(v.i)}}
+      if(r.ok){const n=await r.json();v.vw=Number(n)||(v.vw+1);document.querySelectorAll('[data-vw="'+v.i+'"]').forEach(x=>x.innerHTML=IC.eye(13)+' '+nbv(v.vw))}}catch(e){VUS.delete(v.i)}}
   function observer(){
     if(io)io.disconnect();
     io=new IntersectionObserver(es=>es.forEach(en=>{
@@ -2516,27 +2549,27 @@ document.documentElement.classList.remove('boot');
   function compte(){
     const pf=prof(cur),own=LV.filter(v=>keyOf(v)===cur).sort((a,b)=>(b.ep||0)-(a.ep||0)),mine=LV.filter(v=>likes.includes(v.i)),G=own;
     const cid=String(cur).startsWith('u:')?((own.find(v=>v.cid)||{}).cid||''):'',S=cid?(cid===ME.id?ME:(STAT[cid]||{})):null;
-    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+(v.ep?'<b class="pinb">📌 Épinglée</b>':'')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+    const grid=G.length?G.map(v=>'<button type="button" data-vgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+(v.ep?'<b class="pinb">'+IC.pin(12)+' Épinglée</b>':'')+'<em>'+IC.eye(13)+' '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
       :'<div class="vgn">'+'Aucune vidéo pour le moment.'+'</div>';
     $('vacc').innerHTML='<div class="vabar"><button type="button" data-vback aria-label="Retour">‹</button><b>'+esc(pf.n)+'</b></div>'+
-      '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+'</h2><small>Agadez</small>'+
+      '<div class="vah"><img src="'+esc(pf.img)+'" alt=""><h2>'+esc(pf.n)+(pf.cert?BADGE:'')+'</h2><small>Agadez</small>'+
       '<div class="vst">'+(S?'<div data-fl="followers" data-flid="'+esc(cid)+'"><b>'+(S.followers||0)+'</b><small>Followers</small></div><div data-fl="following" data-flid="'+esc(cid)+'"><b>'+(S.following||0)+'</b><small>Suivis</small></div><div><b>'+nbv(LIKES[cid]||0)+'</b><small>J’aime</small></div>':'')+'</div>'+
       ((cid&&BIO[cid])?'<p class="bio">'+esc(BIO[cid])+'</p>':'')+
-      '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'✓ Suivi':'＋ Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">🟢 Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
+      '<div class="vbt">'+(cid?(cid===ME.id?'':'<button class="y" type="button" data-vfol="'+esc(cid)+'">'+(FOL.has(cid)?'Suivi':'Suivre')+'</button>'):'<button class="g" type="button" data-vwa="-1">Écrire à ODA SHOP</button>')+'<button class="o" type="button" data-vshare="-1">Partager</button></div>'+
       '</div>'+
       '<div class="vtabs"><button type="button" data-vtab="v" class="on"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" style="vertical-align:-3px;margin-right:5px"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="M16.5 10.2 22 7v10l-5.5-3.2z"/></svg>Vidéos</button></div>'+
       '<div class="vgrid">'+grid+'</div>';
   }
   function formVendeur(){
     $('vsel').innerHTML='<div class="vabar"><button type="button" data-vsback aria-label="Retour">‹</button><b>Devenir vendeur</b></div>'+
-      '<div class="vsf"><h2>🏪 Demande de compte vendeur</h2><p>Remplis ces informations puis contacte ODA SHOP sur WhatsApp. Après vérification et abonnement, tes vidéos seront publiées sur ton profil.</p>'+
+      '<div class="vsf"><h2>Demande de compte vendeur</h2><p>Remplis ces informations puis contacte ODA SHOP sur WhatsApp. Après vérification et abonnement, tes vidéos seront publiées sur ton profil.</p>'+
       '<label>Nom de ta boutique ou ton nom *</label><input type="text" id="vs-nom" maxlength="60" value="'+esc(getL('oda_nom')||'')+'">'+
       '<label>Téléphone *</label><input type="tel" id="vs-tel" maxlength="20" inputmode="tel" value="'+esc(getL('oda_tel')||'')+'">'+
       '<label>Ville</label><input type="text" id="vs-ville" maxlength="40" value="'+esc(getL('oda_ville')||'Agadez')+'">'+
       '<label>Quartier *</label><input type="text" id="vs-quartier" maxlength="50">'+
       '<label>Ce que tu vends *</label><textarea id="vs-vend" maxlength="200" placeholder="Ex : habits, téléphones, riz…"></textarea>'+
       '<label class="ck"><input type="checkbox" id="vs-id"><span>Je vais envoyer sur WhatsApp la photo de ma <b>pièce d’identité</b> et ma photo de profil juste après ce message. *</span></label>'+
-      '<button class="go" type="button" id="vs-go" disabled>🟢 Contacter ODA SHOP</button>'+
+      '<button class="go" type="button" id="vs-go" disabled>Contacter ODA SHOP</button>'+
       '<div class="nt">La demande s’envoie uniquement par WhatsApp. L’abonnement vendeur te sera expliqué par ODA SHOP.</div></div>';
   }
   const okForm=()=>{const g=i=>($(i)&&$(i).value||'').trim();const ok=g('vs-nom')&&g('vs-tel').replace(/\D/g,'').length>=8&&g('vs-quartier')&&g('vs-vend')&&$('vs-id').checked;$('vs-go').disabled=!ok}
@@ -2546,17 +2579,17 @@ document.documentElement.classList.remove('boot');
     try{localStorage.setItem('oda_vdemande',JSON.stringify({t:Date.now()}))}catch(e){}
     const url='https://wa.me/'+NUM+'?text='+encodeURIComponent(msg);
     try{location.href=url}catch(e){}
-    setTimeout(()=>{if(document.hidden)return;let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='🟢 Ouvrir WhatsApp ›';document.body.appendChild(a)}a.href=url;a.style.display='block';setTimeout(()=>a.style.display='none',15000)},2500);
+    setTimeout(()=>{if(document.hidden)return;let a=$('wafb');if(!a){a=document.createElement('a');a.id='wafb';a.target='_blank';a.rel='noopener';a.textContent='Ouvrir WhatsApp ›';document.body.appendChild(a)}a.href=url;a.style.display='block';setTimeout(()=>a.style.display='none',15000)},2500);
     $('vsel').hidden=true;majPV();if(!$('vacc').hidden)compte();
   }
   function ouvrirCom(v){
     if(!v)return;let o=$('vcm');if(o)o.remove();o=document.createElement('div');o.id='vcm';const pid=String(v.i).slice(2);let moi='';
-    o.innerHTML='<div class="cs"><div class="ch"><span>Commentaires</span><button type="button" data-x="1" aria-label="Fermer">✕</button></div><div class="cl"><div class="cv">Chargement…</div></div><form class="cf"><input maxlength="300" placeholder="Ajouter un commentaire…" autocomplete="off"><button type="submit">Envoyer</button></form></div>';
+    o.innerHTML='<div class="cs"><div class="ch"><span>Commentaires</span><button type="button" data-x="1" aria-label="Fermer">'+IC.x(22)+'</button></div><div class="cl"><div class="cv">Chargement…</div></div><form class="cf"><input maxlength="300" placeholder="Ajouter un commentaire…" autocomplete="off"><button type="submit">Envoyer</button></form></div>';
     document.body.appendChild(o);
     const L=o.querySelector('.cl'),F=o.querySelector('form'),I=F.querySelector('input');
     const nb=n=>{v.nc=Math.max(0,n);document.querySelectorAll('[data-nc="'+v.i+'"]').forEach(x=>x.textContent=nbv(v.nc));o.querySelector('.ch span').textContent='Commentaires'+(v.nc?' ('+v.nc+')':'')};
     const ligne=c=>'<div class="ci" data-id="'+esc(c.id)+'"><b>'+esc(c.author)+' · '+new Date(c.created_at).toLocaleDateString('fr-FR')+(moi&&c.client_id===moi?' <i data-del="'+esc(c.id)+'">Supprimer</i>':'')+'</b>'+esc(c.body)+'</div>';
-    const vide=()=>{if(!L.querySelector('.ci'))L.innerHTML='<div class="cv">Aucun commentaire. Sois le premier 💬</div>'};
+    const vide=()=>{if(!L.querySelector('.ci'))L.innerHTML='<div class="cv">Aucun commentaire. Sois le premier.</div>'};
     capi({a:'comments',id:pid,t:tk()}).then(j=>{if(j.error){L.innerHTML='<div class="cv">'+esc(j.error)+'</div>';return}moi=j.moi||'';L.innerHTML=(j.comments||[]).map(ligne).join('');nb((j.comments||[]).length>v.nc?(j.comments||[]).length:v.nc);vide()});
     o.onclick=async e=>{if(e.target===o||e.target.closest('[data-x]')){o.remove();return}
       const d=e.target.closest('[data-del]');if(d){const j=await capi({a:'comment_del',t:tk(),id:d.dataset.del});if(j.error){toast(j.error,2200);return}d.closest('.ci').remove();nb(v.nc-1);vide()}};
@@ -2569,7 +2602,7 @@ document.documentElement.classList.remove('boot');
       moi=j.comment.client_id;I.value='';const cv=L.querySelector('.cv');if(cv)cv.remove();L.insertAdjacentHTML('afterbegin',ligne(j.comment));nb(v.nc+1);L.scrollTop=0;try{I.blur()}catch(x){}}}
   async function listeFol(kind,id){
     if(!id)return;let o=$('vcm');if(o)o.remove();o=document.createElement('div');o.id='vcm';
-    o.innerHTML='<div class="cs"><div class="ch"><span>'+(kind==='followers'?'Followers':'Suivis')+'</span><button type="button" data-x="1" aria-label="Fermer">✕</button></div><div class="cl"><div class="cv">Chargement…</div></div></div>';
+    o.innerHTML='<div class="cs"><div class="ch"><span>'+(kind==='followers'?'Followers':'Suivis')+'</span><button type="button" data-x="1" aria-label="Fermer">'+IC.x(22)+'</button></div><div class="cl"><div class="cv">Chargement…</div></div></div>';
     document.body.appendChild(o);const L=o.querySelector('.cl');
     o.onclick=e=>{if(e.target===o||e.target.closest('[data-x]')){o.remove();return}
       const r=e.target.closest('[data-un]');if(!r)return;const n=r.dataset.un;o.remove();
@@ -2587,16 +2620,16 @@ document.documentElement.classList.remove('boot');
   function menuVideo(v){
     if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
     const mien=!!(tk()&&v.cid&&ME&&v.cid===ME.id);
-    o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b><button type="button" data-act="dl">⬇️ Télécharger la vidéo</button>'+(mien?'<button type="button" data-act="pin">📌 '+(v.ep?'Désépingler':'Épingler')+' sur mon profil</button><button type="button" data-act="del" style="color:#d62828">🗑 Supprimer la vidéo</button>':'<button type="button" data-act="rep">🚩 Signaler cette vidéo</button>')+'<button type="button" class="x" data-act="">Annuler</button></div>';
+    o.innerHTML='<div class="vsg"><b>'+esc(v.n)+'</b><button type="button" data-act="dl">'+IC.dl(22)+'<span>Télécharger la vidéo</span></button>'+(mien?'<button type="button" data-act="pin">'+IC.pin(22)+'<span>'+(v.ep?'Désépingler':'Épingler')+' sur mon profil</span></button><button type="button" data-act="del" style="color:#d62828">'+IC.trash(22)+'<span>Supprimer la vidéo</span></button>':'<button type="button" data-act="rep">'+IC.flag(22)+'<span>Signaler cette vidéo</span></button>')+'<button type="button" class="x" data-act="">Annuler</button></div>';
     document.body.appendChild(o);
     o.onclick=e=>{const b=e.target.closest('[data-act]');if(!b&&e.target!==o)return;o.remove();if(!b)return;const a=b.dataset.act;
       if(a==='rep')signaler(v);
       if(a==='dl')telecharger(v);
       if(a==='del')window.__supVid(String(v.i).slice(2));
-      if(a==='pin')fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:String(v.i).slice(2)})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}v.ep=j.epingle?1:0;toast(j.epingle?'📌 Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200))}}
+      if(a==='pin')fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:String(v.i).slice(2)})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}v.ep=j.epingle?1:0;toast(j.epingle?'Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200))}}
   function signaler(v){
     if(!v)return;let o=$('vsig');if(o)o.remove();o=document.createElement('div');o.id='vsig';
-    o.innerHTML='<div class="vsg"><b>🚩 Signaler cette vidéo</b><p>Pourquoi ?</p>'+['Contenu inapproprié','Arnaque ou faux produit','Spam ou publicité','Autre'].map(m=>'<button type="button" data-m="'+m+'">'+m+'</button>').join('')+'<button type="button" class="x" data-m="">Annuler</button></div>';
+    o.innerHTML='<div class="vsg"><b>Signaler cette vidéo</b><p>Pourquoi ?</p>'+['Contenu inapproprié','Arnaque ou faux produit','Spam ou publicité','Autre'].map(m=>'<button type="button" data-m="'+m+'">'+m+'</button>').join('')+'<button type="button" class="x" data-m="">Annuler</button></div>';
     document.body.appendChild(o);
     o.onclick=async e=>{const b=e.target.closest('[data-m]');if(!b&&e.target!==o)return;o.remove();if(!b||!b.dataset.m)return;
       const d=devId();
@@ -2614,8 +2647,8 @@ document.documentElement.classList.remove('boot');
   $('vsel').addEventListener('click',e=>{if(e.target.closest('[data-vsback]')){$('vsel').hidden=true;return}if(e.target.closest('#vs-go')&&!$('vs-go').disabled)envoyerDemande()});
   function majPV(){let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
     const m=$('pvmsg'),b=$('pvend');if(!m||!b)return;
-    m.textContent=d?'✅ Demande envoyée à ODA SHOP le '+new Date(d.t).toLocaleDateString('fr-FR')+'. Réponse sur WhatsApp.':'';
-    b.innerHTML='<span class="ico">🏪</span><b>'+(d?'Renvoyer ma demande vendeur':'Devenir vendeur')+'</b><i class="chev">›</i>'}
+    m.textContent=d?'Demande envoyée à ODA SHOP le '+new Date(d.t).toLocaleDateString('fr-FR')+'. Réponse sur WhatsApp.':'';
+    b.innerHTML='<span class="ico">'+IC.store(22)+'</span><b>'+(d?'Renvoyer ma demande vendeur':'Devenir vendeur')+'</b><i class="chev">›</i>'}
   window.ouvrirVendeur=()=>{formVendeur();$('vsel').hidden=false;$('vsel').scrollTop=0;okForm()};
   const CAPI=DB_URL+'/functions/v1/client-api';
   const tk=()=>getL('oda_ct')||'';
@@ -2639,7 +2672,7 @@ document.documentElement.classList.remove('boot');
   }
   async function chargerMoi(){
     if(!tk()){FOL=new Set();ME={id:'',followers:0,following:0,videos:0};majBadges();return}
-    const j=await capi({a:'me',t:tk()});if(j.error)return;ME=j;bioDe(j.id);{const ph=getL('oda_photo');if(ph&&getL('oda_avup')!==ph.length+'')window.__avUp(ph)}FOL=new Set(j.ids||[]);majBadges();if(window.lierPush)lierPush();if(!$('v-profil').hidden)profilVue();majPset()}
+    const j=await capi({a:'me',t:tk()});if(j.error)return;ME=j;bioDe(j.id);{const ph=getL('oda_photo');if(ph&&getL('oda_avup')!==ph.length+'')window.__avUp(ph)}FOL=new Set(j.ids||[]);majBadges();if(window.lierPush)lierPush();if(window.proposerNotif)proposerNotif();if(!$('v-profil').hidden)profilVue();majPset()}
   let VT='all';
   function appliquerVT(){const f=$('vf');if(!f)return;let n=0;const tot=f.children.length;
     [...f.children].forEach(sl=>{const ok=VT==='all'||(sl.dataset.cid&&FOL.has(sl.dataset.cid));sl.style.display=ok?'':'none';if(ok)n++});
@@ -2665,7 +2698,7 @@ document.documentElement.classList.remove('boot');
     if(j.suivi)FOL.add(id);else FOL.delete(id);
     ME.following=FOL.size;STAT[id]=Object.assign(STAT[id]||{},{followers:j.followers,suivi:j.suivi});
     majBadges();if(!$('vacc').hidden)compte();if(!$('v-profil').hidden)profilVue();
-    toast(j.suivi?'Tu suis ce compte ✓':'Tu ne suis plus ce compte',1600)}
+    toast(j.suivi?'Tu suis ce compte':'Tu ne suis plus ce compte',1600)}
   window.__avUp=async function(d){if(!tk()||!d)return;const j=await capi({a:'photo',t:tk(),img:d});if(j.error||!j.url)return;
     try{const r=await fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'set_avatar',t:tk(),url:j.url})});const k=await r.json();if(r.ok&&k.ok){try{localStorage.setItem('oda_avup',d.length+'')}catch(e){}LV.forEach(v=>{if(v.cid&&v.cid===ME.id)v.ai=j.url});rendre(true)}}catch(e){}};
   async function bioDe(id){if(!id)return;try{const r=await fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'get',id:id})});const j=await r.json();if(r.ok&&typeof j.bio==='string'&&(BIO[id]!==j.bio||LIKES[id]!==j.likes)){BIO[id]=j.bio;LIKES[id]=Number(j.likes)||0;if(!$('vacc').hidden)compte();if(!$('v-profil').hidden)profilVue()}}catch(e){}}
@@ -2695,25 +2728,29 @@ document.documentElement.classList.remove('boot');
       '<div class="tags">'+['#agadez','#niger','#oda','#mode','#food','#humour','#musique','#sport','#beauté','#voyage'].map(t=>'<button type="button" data-tag="'+t+'">'+t+'</button>').join('')+'</div>'+m+
       '<div class="erow"><button class="chg2" type="button" data-pchange>↺ Changer</button><button class="go" type="button" id="pb-go">Publier</button></div></div></div>';
     if(pst==='send')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">⏳</div><h2>Publication en cours…</h2><p>Ne ferme pas cette page, l’allègement peut prendre un moment.</p><div class="pbar"><i id="pb-bi"></i></div><div class="vmsg" id="pb-msg" style="color:#555"></div></div>';
-    if(pst==='done')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">🎉</div><h2>Vidéo publiée !</h2><p>Elle est maintenant visible par tout le monde dans l’onglet Vidéos.</p><button class="go" type="button" id="pb-see">▶ Voir dans Vidéos</button><button class="lnk" type="button" data-pagain>Publier une autre vidéo</button></div>';
+    if(pst==='done')return '<div class="vsf pctr">'+dots(3)+'<div class="pbig-ico">'+IC.check(40)+'</div><h2>Vidéo publiée !</h2><p>Elle est maintenant visible par tout le monde dans l’onglet Vidéos.</p><button class="go" type="button" id="pb-see">▶ Voir dans Vidéos</button><button class="lnk" type="button" data-pagain>Publier une autre vidéo</button></div>';
     return '<div class="vcam"><video id="cam-v" autoplay muted playsinline></video><div class="vsh"></div>'+
-      '<button type="button" class="cx" data-vpback aria-label="Fermer">✕</button><button type="button" class="ctorch" data-ctorch aria-label="Lampe" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></button><div class="czm" id="cam-z" hidden></div><div class="ctm" id="cam-t" hidden></div>'+
+      '<button type="button" class="cx" data-vpback aria-label="Fermer">'+IC.x(22)+'</button><button type="button" class="ctorch" data-ctorch aria-label="Lampe" hidden><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></button><div class="czm" id="cam-z" hidden></div><div class="ctm" id="cam-t" hidden></div>'+
       '<div class="cmsg" id="pb-msg">'+esc(msg||'')+'</div>'+
-      '<div class="cbar"><label class="cgal" for="pb-f"><i>🖼️</i><small>Galerie</small></label><input type="file" id="pb-f" accept="video/*" hidden>'+
-      '<button type="button" class="crec" id="cam-rec" data-crec aria-label="Filmer"><i></i></button><label class="cgal" id="cam-fb" for="pb-c" hidden><i>🎥</i><small>Filmer</small></label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden><button type="button" class="cflip2" data-cflip aria-label="Changer de caméra"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><path d="M9.5 13.5a2.7 2.7 0 0 1 4.6-1.6M14.5 13.5a2.7 2.7 0 0 1-4.6 1.6"/><path d="M14.2 10.6v1.5h-1.5M9.8 16.4v-1.5h1.5"/></svg></button></div></div>';
+      '<div class="cbar"><label class="cgal" for="pb-f" aria-label="Galerie"><i>'+IC.gallery(26)+'</i></label><input type="file" id="pb-f" accept="video/*" hidden>'+
+      '<button type="button" class="crec" id="cam-rec" data-crec aria-label="Filmer"><i></i></button><label class="cgal" id="cam-fb" for="pb-c" hidden aria-label="Filmer"><i>'+IC.video(26)+'</i></label><input type="file" id="pb-c" accept="video/*" capture="environment" hidden><button type="button" class="cflip2" data-cflip aria-label="Changer de caméra"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><path d="M9.5 13.5a2.7 2.7 0 0 1 4.6-1.6M14.5 13.5a2.7 2.7 0 0 1-4.6 1.6"/><path d="M14.2 10.6v1.5h-1.5M9.8 16.4v-1.5h1.5"/></svg></button></div></div>';
   }
-  let CAM=null,REC=null,CH=[],CT=0,CTM=null,FM='user',CTRK=null,ZM=null,TON=false;
+  let CAM=null,REC=null,CH=[],CT=0,CTM=null,FM='user',CTRK=null,ZM=null,TON=false,NATIVE=false;
   function stopCam(){try{if(REC&&REC.state!=='inactive'){REC.onstop=null;REC.stop()}}catch(e){}REC=null;clearInterval(CTM);if(CAM){try{CAM.getTracks().forEach(t=>t.stop())}catch(e){}CAM=null}}
   async function startCam(){
     const v=$('cam-v');if(!v)return;
     if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia||!window.MediaRecorder){camKo();return}
-    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,width:{ideal:960},height:{ideal:1280}},audio:true});
+    try{CAM=await navigator.mediaDevices.getUserMedia({video:{facingMode:FM,width:{ideal:720},height:{ideal:1280},aspectRatio:{ideal:9/16}},audio:true});NATIVE=false;
       if(!$('cam-v')||pst!=='pick'){CAM.getTracks().forEach(t=>t.stop());CAM=null;return}
       v.srcObject=CAM;v.style.transform=FM==='user'?'scaleX(-1)':'none';v.play().catch(()=>{});
       CTRK=CAM.getVideoTracks()[0];
-      v.onloadedmetadata=async()=>{try{if(v.videoWidth>v.videoHeight){try{await CTRK.applyConstraints({width:{ideal:960},height:{ideal:1280}})}catch(_){}
-        await new Promise(r=>setTimeout(r,400))}
-        v.classList.toggle('cland',v.videoWidth>v.videoHeight)}catch(_){}};
+      const att=ms=>new Promise(r=>setTimeout(r,ms));
+      const ajuster=async()=>{try{if(!v.videoWidth||!CTRK)return;
+        if(v.videoWidth>v.videoHeight){const w=v.videoWidth,h=v.videoHeight;
+          for(const c of [{width:{exact:h},height:{exact:w}},{width:{ideal:h},height:{ideal:w},aspectRatio:{ideal:h/w}}]){try{await CTRK.applyConstraints(c);await att(500);if(v.videoWidth<=v.videoHeight)break}catch(_){}}}
+        const land=v.videoWidth>v.videoHeight;v.classList.toggle('cland',land);NATIVE=land;
+        const m=$('pb-msg');if(m)m.textContent=land?'Ton téléphone ne donne pas l’image verticale ici : touche le bouton rond pour ouvrir la caméra du téléphone.':''}catch(_){}};
+      v.onloadedmetadata=ajuster;setTimeout(ajuster,700);
       TON=false;ZM=null;let caps={};try{caps=CTRK.getCapabilities?CTRK.getCapabilities():{}}catch(_){}
       const tb=document.querySelector('.ctorch');if(tb&&caps.torch)tb.hidden=false;
       if(caps.zoom&&caps.zoom.max>caps.zoom.min){let cur=1;try{cur=(CTRK.getSettings().zoom)||caps.zoom.min}catch(_){}ZM={min:caps.zoom.min,max:caps.zoom.max,cur:cur};if(cur>caps.zoom.min+.01){try{CTRK.applyConstraints({advanced:[{zoom:caps.zoom.min}]});ZM.cur=caps.zoom.min}catch(_){}}}}
@@ -2791,7 +2828,7 @@ document.documentElement.classList.remove('boot');
     libPU();PF=f;PU=URL.createObjectURL(f);pst='edit';formPub();$('vpub').scrollTop=0});
   $('vpub').addEventListener('click',async e=>{const t=e.target;
     if(t.closest('[data-vpback]')){if(tk()&&pst==='edit'){resetPub();formPub();return}if(pst==='send')return;stopCam();$('vpub').hidden=true;resetPub();return}
-    if(t.closest('[data-crec]')){recCam();return}
+    if(t.closest('[data-crec]')){if(NATIVE&&!REC){const pc=$('pb-c');if(pc)pc.click();return}recCam();return}
     if(t.closest('[data-ctorch]')){torche();return}
     if(t.closest('[data-cflip]')){FM=FM==='user'?'environment':'user';formPub();return}
     let tg=t.closest('[data-tag]');if(tg){const d=$('pb-d');if(d){const x=tg.dataset.tag;if(!d.value.includes(x)){d.value=(d.value.trim()+' '+x+' ').trimStart().slice(0,200)}d.focus()}return}
@@ -2828,14 +2865,14 @@ document.documentElement.classList.remove('boot');
     let d=null;try{d=JSON.parse(localStorage.getItem('oda_vdemande')||'null')}catch(e){}
     const own=(MYV||[]).slice().sort((a,b)=>((LV.find(x=>x.i==='db'+b.id)||{}).ep||0)-((LV.find(x=>x.i==='db'+a.id)||{}).ep||0));
     const G=ptab==='l'?mine:own;
-    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>＋ Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);const ep=((LV.find(x=>x.i==='db'+m.id)||{}).ep)?1:0;return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video>'+(ep?'<b class="pinb" style="top:auto;bottom:52px">📌 Épinglée</b>':'')+'<em>👁 '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>👁 '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
-      :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le ❤️ dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Touche « Publier une vidéo » pour commencer.')+'</div>';
+    const grid=ptab==='v'?'<div class="ppubrow"><button type="button" data-ppub>'+IC.plus(18)+' Publier une vidéo</button></div>'+(own.length?'<div class="vgrid">'+own.map(m=>{const ix=LV.findIndex(v=>v.i==='db'+m.id);const ep=((LV.find(x=>x.i==='db'+m.id)||{}).ep)?1:0;return '<button type="button" '+(ix>=0?'data-pgo="'+ix+'"':'')+'><video muted playsinline preload="metadata" src="'+esc(m.video_url)+'#t=0.2"></video>'+(ep?'<b class="pinb" style="top:auto;bottom:52px">'+IC.pin(12)+' Épinglée</b>':'')+'<em>'+IC.eye(13)+' '+nbv((LV.find(x=>x.i==='db'+m.id)||{}).vw)+'</em><span>'+(m.status==='En stock'?'':'⏳ En attente · ')+esc(m.name)+'</span></button>'}).join('')+'</div>':'<div class="vgn">'+(tk()?'Tu n’as pas encore publié de vidéo.':'Crée un compte gratuit pour publier tes vidéos sur ODA SHOP.')+'</div>'):G.length?G.map(v=>'<button type="button" data-pgo="'+LV.indexOf(v)+'">'+(v.img?'<img src="'+esc(v.img)+'" alt="" loading="lazy">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.2"></video>')+'<em>'+IC.eye(13)+' '+nbv(v.vw)+'</em><span>'+esc(v.n)+'</span></button>').join('')
+      :'<div class="vgn">'+(ptab==='l'?'Tu n’as encore aimé aucune vidéo.<br>Touche le cœur dans l’onglet Vidéos.':'Tu n’as pas encore de vidéo publiée.<br>Touche « Publier une vidéo » pour commencer.')+'</div>';
     $('ptitle').textContent=nom;
     $('pfeed').innerHTML='<div class="vah">'+(f?'<img src="'+esc(f)+'" alt="">':'<div class="pav2">'+DEFP+'</div>')+'<h2>'+esc(nom)+'</h2><small>'+(tk()?esc(slug(nom))+' · ':'')+esc(ville)+'</small>'+
       '<div class="vst"><div data-fl="following" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.following||0):0)+'</b><small>Suivis</small></div><div data-fl="followers" data-flid="'+esc(ME.id||'')+'"><b>'+(tk()?(ME.followers||0):0)+'</b><small>Followers</small></div><div><b>'+nbv(tk()?(LIKES[ME.id]||0):0)+'</b><small>J’aime</small></div></div>'+
-      (tk()?(ME.id&&BIO[ME.id]?'<p class="bio">'+esc(BIO[ME.id])+'</p>':'')+(ME.id&&BIO[ME.id]?'':'<div class="vbt"><button class="o" type="button" data-pbio>✏️ Ajouter une bio</button></div>'):'')+
+      (tk()?(ME.id&&BIO[ME.id]?'<p class="bio">'+esc(BIO[ME.id])+'</p>':'')+(ME.id&&BIO[ME.id]?'':'<div class="vbt"><button class="o" type="button" data-pbio>'+IC.pencil(15)+' Ajouter une bio</button></div>'):'')+
       '</div>'+
-      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" style="vertical-align:-3px;margin-right:5px"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="M16.5 10.2 22 7v10l-5.5-3.2z"/></svg>Vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">❤️ J’aime</button></div>'+
+      '<div class="vtabs"><button type="button" data-ptab="v" class="'+(ptab==='v'?'on':'')+'"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" style="vertical-align:-3px;margin-right:5px"><rect x="2" y="6" width="13" height="12" rx="3"/><path d="M16.5 10.2 22 7v10l-5.5-3.2z"/></svg>Vidéos</button><button type="button" data-ptab="l" class="'+(ptab==='l'?'on':'')+'">'+IC.heart(17)+' J’aime</button></div>'+
       '<div class="pgs">'+(ptab==='v'?grid:'<div class="vgrid">'+grid+'</div>')+'</div>';
   }
   window.majProfil=()=>{maj();$('pset').hidden=true;profilVue();chargerMyV();chargerMoi().then(()=>majInbox())};
@@ -2856,9 +2893,9 @@ document.documentElement.classList.remove('boot');
     const thumb=v=>v?(v.img?'<img src="'+esc(v.img)+'" alt="">':'<video muted playsinline preload="metadata" src="'+esc(v.vid)+'#t=0.3"></video>'):'';
     const ago=d=>{const m=Math.max(0,Math.round((Date.now()-new Date(d).getTime())/60000));return m<1?'à l’instant':m<60?m+' min':m<1440?Math.floor(m/60)+' h':Math.floor(m/1440)+' j'};
     const vu=inbSeen();
-    const ban=()=>{if(typeof pushOK!=='function')return '';if(!pushOK())return '<div class="ibn">🔔 Pour être prévenu sur ton téléphone, ouvre ODA SHOP depuis le site installé sur ton écran d’accueil.</div>';
-      if(Notification.permission==='denied')return '<div class="ibn">🔔 Notifications bloquées : autorise-les dans les réglages du navigateur.</div>';
-      if(Notification.permission!=='granted')return '<div class="ibn"><span>🔔 Active les notifications pour être prévenu des commentaires, j’aime et nouveaux followers.</span><button type="button" data-notif>Activer</button></div>';return ''};
+    const ban=()=>{if(typeof pushOK!=='function')return '';if(!pushOK())return '<div class="ibn">'+IC.bell(18)+' Pour être prévenu sur ton téléphone, ouvre ODA SHOP depuis le site installé sur ton écran d’accueil.</div>';
+      if(Notification.permission==='denied')return '<div class="ibn">'+IC.bell(18)+' Notifications bloquées : autorise-les dans les réglages du navigateur.</div>';
+      if(Notification.permission!=='granted')return '<div class="ibn"><span>Active les notifications pour être prévenu des commentaires, j’aime et nouveaux followers.</span><button type="button" data-notif>Activer</button></div>';return ''};
     o.innerHTML='<div class="ibh"><button type="button" data-back aria-label="Retour">‹</button><b>Boîte de réception</b><span></span></div><div class="ibl"><div id="ibn">'+ban()+'</div>'+
       (INB.length?INB.map((c,n)=>{const v=LV.find(x=>x.i===c.vi),nw=new Date(c.created_at).getTime()>vu;
         return '<div class="ibi'+(nw?' nw':'')+'" data-n="'+n+'"><div class="iba">'+esc((c.author||'?')[0].toUpperCase())+'</div><div class="ibt" data-go="'+n+'"><b>'+esc(c.author)+'</b><span>a commenté : '+esc(c.body)+'</span><small>'+ago(c.created_at)+' · <u data-rep="'+n+'">Répondre</u></small></div><div class="ibv" data-go="'+n+'">'+thumb(v)+'</div><form class="ibr" hidden data-f="'+n+'"><input maxlength="300" placeholder="Répondre à '+esc(c.author)+'…" autocomplete="off"><button type="submit">Envoyer</button></form></div>'}).join(''):'<div class="ibe">Aucun message pour le moment.<br><small>Les commentaires laissés sur tes vidéos apparaissent ici.</small></div>')+'</div>';
@@ -2875,7 +2912,7 @@ document.documentElement.classList.remove('boot');
       const j=await capi({a:'comment',t:tk(),id:String(c.vi).slice(2),body:'@'+c.author+' '+t});
       I.disabled=false;sb.disabled=false;
       if(!j||j.error||!j.comment){toast((j&&j.error)||'Erreur, réessaie.',2600);return}
-      I.value='';f.hidden=true;try{I.blur()}catch(x){}toast('Réponse envoyée ✅',1800);const v=LV.find(x=>x.i===c.vi);if(v){v.nc=(v.nc||0)+1;document.querySelectorAll('[data-nc="'+v.i+'"]').forEach(x=>x.textContent=nbv(v.nc))}}}
+      I.value='';f.hidden=true;try{I.blur()}catch(x){}toast('Réponse envoyée',1800);const v=LV.find(x=>x.i===c.vi);if(v){v.nc=(v.nc||0)+1;document.querySelectorAll('[data-nc="'+v.i+'"]').forEach(x=>x.textContent=nbv(v.nc))}}}
   window.majInbox=majInbox;window.inboxGo=async()=>{await chargerMoi();await majInbox();ouvrirInbox()};
   $('v-profil').addEventListener('click',e=>{const t=e.target;let b;
     if(t.closest('#pgear')||t.closest('[data-pedit]')){majPset();$('pset').hidden=false;$('pset').scrollTop=0;return}
@@ -2884,7 +2921,7 @@ document.documentElement.classList.remove('boot');
     if(t.closest('#cout')){if(confirm('Se déconnecter de ton compte vidéo ?')){sTk('');MYV=null;chargerMoi();$('pset').hidden=true;profilVue()}return}
     if(t.closest('#psback')){$('pset').hidden=true;return}
     if(t.closest('[data-pbio]')){e.stopPropagation();modifierBio();return}
-    if(b=t.closest('[data-ppin]')){e.stopPropagation();e.preventDefault();fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:b.dataset.ppin})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}const x=LV.find(z=>z.i==='db'+b.dataset.ppin);if(x)x.ep=j.epingle?1:0;profilVue();toast(j.epingle?'📌 Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200));return}
+    if(b=t.closest('[data-ppin]')){e.stopPropagation();e.preventDefault();fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'pin',t:tk(),id:b.dataset.ppin})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2800);return}const x=LV.find(z=>z.i==='db'+b.dataset.ppin);if(x)x.ep=j.epingle?1:0;profilVue();toast(j.epingle?'Vidéo épinglée':'Vidéo désépinglée',1800);if(window.chargerBase)chargerBase()}).catch(()=>toast('Pas de connexion.',2200));return}
     if(b=t.closest('[data-pdel]')){e.stopPropagation();supprimerVideo(b.dataset.pdel);return}
     if(t.closest('[data-ppub]')){ouvrirPub();return}
     if(t.closest('[data-pvend]')){ouvrirVendeur();return}
@@ -2895,9 +2932,14 @@ document.documentElement.classList.remove('boot');
 
   window.majPV=majPV;majPV();
   if(tk())chargerMoi();
-  function modifierBio(){const v=prompt('Ta bio (150 caractères max) :',BIO[ME.id]||'');if(v===null)return;fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'set_bio',t:tk(),bio:v})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2600);return}BIO[ME.id]=j.bio;profilVue();majPset();toast('✅ Bio enregistrée',1800)}).catch(()=>toast('Pas de connexion.',2200))}
+  function modifierBio(){const v=prompt('Ta bio (150 caractères max) :',BIO[ME.id]||'');if(v===null)return;fetch(DB_URL+'/functions/v1/client-profile',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({a:'set_bio',t:tk(),bio:v})}).then(r=>r.json()).then(j=>{if(j.error){toast(j.error,2600);return}BIO[ME.id]=j.bio;profilVue();majPset();toast('Bio enregistrée',1800)}).catch(()=>toast('Pas de connexion.',2200))}
   if($('pbioset'))$('pbioset').onclick=modifierBio;
   if($('pvend'))$('pvend').onclick=()=>ouvrirVendeur();
+  const TAP={t:0,x:0,y:0,h:0};
+  function coeur(sl,x,y,on){const r=sl.getBoundingClientRect(),d=document.createElement('div');d.className='dbh'+(on?'':' off');
+    d.style.left=(x-r.left)+'px';d.style.top=(y-r.top)+'px';
+    d.innerHTML='<svg viewBox="0 0 24 24" width="96" height="96"><path d="M12 20.5s-7.3-4.5-9.3-9C1.3 8.2 3.3 4.7 6.8 4.7c2 0 3.6 1 5.2 2.9 1.6-1.9 3.2-2.9 5.2-2.9 3.5 0 5.5 3.5 4.1 6.8-2 4.5-9.3 9-9.3 9z" fill="'+(on?'#ff2d55':'#fff')+'"/></svg>';
+    sl.appendChild(d);setTimeout(()=>d.remove(),800)}
   $('v-video').addEventListener('click',e=>{
     const t=e.target;let b;
     if(b=t.closest('[data-fl]')){listeFol(b.dataset.fl,b.dataset.flid);return}
@@ -2914,7 +2956,10 @@ document.documentElement.classList.remove('boot');
     if(b=t.closest('[data-vmore]')){menuVideo(LV[+b.dataset.vmore]);return}
     if(b=t.closest('[data-vbuy]')){const v=LV[+b.dataset.vbuy];if(v)envoyerCommande('Bonjour ODA SHOP, je veux acheter ce produit vu dans une vidéo :\n\n🛍️ '+v.n+'\n💰 '+fmt(v.p)+'\n👤 Vendu par '+prof(keyOf(v)).h+(v.code?'\n🔖 Réf : '+v.code:'')+'\n\nNom : '+(getL('oda_nom')||'-')+'\nTéléphone : '+(getL('oda_tel')||'-')+'\nVille : '+(getL('oda_ville')||'-'));return}
     if(b=t.closest('[data-vwa]')){wa(LV[+b.dataset.vwa]);return}
-    const sl=t.closest('.vs');if(sl&&!t.closest('button')){const v=sl.querySelector('video');if(v.paused){v.play().catch(()=>{});sl.classList.remove('paused')}else{v.pause();sl.classList.add('paused')}}
+    const sl=t.closest('.vs');if(sl&&!t.closest('button,a,input,form')){const v=sl.querySelector('video'),now=Date.now();
+      if(now-TAP.t<320&&Math.hypot(e.clientX-TAP.x,e.clientY-TAP.y)<70){clearTimeout(TAP.h);TAP.t=0;const lb=sl.querySelector('[data-vlike]');if(lb){lb.click();coeur(sl,e.clientX,e.clientY,lb.classList.contains('on'))}return}
+      TAP.t=now;TAP.x=e.clientX;TAP.y=e.clientY;
+      TAP.h=setTimeout(()=>{if(v.paused){v.play().catch(()=>{});sl.classList.remove('paused')}else{v.pause();sl.classList.add('paused')}},300)}
   });
 })();
 </script>
