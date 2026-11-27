@@ -29,10 +29,17 @@ jobs:
             echo "PASS=$P" >> $GITHUB_ENV; echo "neuve=1" >> $GITHUB_OUTPUT
             mkdir cle && cp signing.keystore cle/ && echo "$P" > cle/mot-de-passe.txt && base64 -w0 signing.keystore > cle/keystore-base64.txt
           fi
-      - name: Construire
-        env: {BUBBLEWRAP_KEYSTORE_PASSWORD: '${{ env.PASS }}', BUBBLEWRAP_KEY_PASSWORD: '${{ env.PASS }}'}
+      - name: Vérifier les fichiers
         run: |
-          yes "" | bubblewrap build --skipPwaValidation || true
+          ls -la
+          test -f twa-manifest.json || (echo "ERREUR : twa-manifest.json manque à la racine du dépôt" && exit 1)
+      - name: Construire
+        env:
+          BUBBLEWRAP_KEYSTORE_PASSWORD: ${{ env.PASS }}
+          BUBBLEWRAP_KEY_PASSWORD: ${{ env.PASS }}
+        run: |
+          bubblewrap update --skipVersionUpgrade --manifest=./twa-manifest.json < /dev/null
+          bubblewrap build --skipPwaValidation --manifest=./twa-manifest.json < /dev/null
           ls -la *.apk
           cp app-release-signed.apk oda-shop.apk
       - name: Empreinte SHA-256
