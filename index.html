@@ -1312,6 +1312,12 @@ html[data-theme=dark] .vsg button .ic{color:#ddd}
 .rm{display:flex;align-items:center;justify-content:center}
 #offb{position:fixed;top:0;left:0;right:0;z-index:200;background:#161616;color:#f5b800;text-align:center;font-size:12.5px;font-weight:700;padding:calc(5px + env(safe-area-inset-top)) 10px 5px}#offb[hidden]{display:none}
 #pset .prow div{flex:1;text-align:left}#pset .prow small{display:block;color:#888;font-size:12.5px;font-weight:600}
+
+/* clavier : le panneau des commentaires reste au-dessus du clavier, sur tous les téléphones */
+#vcm{top:0;left:0;right:0;bottom:var(--kb,0px)}
+#vcm .cs{max-height:min(72vh,calc(var(--vvh,100dvh) - 24px));padding-bottom:env(safe-area-inset-bottom)}
+@supports (height:100dvh){#vcm .cs{max-height:min(72dvh,calc(var(--vvh,100dvh) - 24px))}}
+body.kbd #v-video .vnav,body.kbd .nav{transition:none}
 </style>
 </head>
 <body class="lock">
@@ -2306,6 +2312,11 @@ document.addEventListener('timeupdate',e=>{const v=e.target;if(!v||v.tagName!=='
       if(apk){location.href='oda-shop.apk';return}
       if(/iphone|ipad|ipod/i.test(navigator.userAgent)){toast('Touche Partager puis « Sur l’écran d’accueil »',4200);return}
       toast('Ouvre le menu du navigateur (⋮) puis « Installer l’application »',4200)}})})();
+/* hauteur réelle visible (clavier) */
+(function(){const vv=window.visualViewport;if(!vv)return;const R=document.documentElement;
+ const m=()=>{const kb=Math.max(0,Math.round(innerHeight-vv.height-vv.offsetTop));R.style.setProperty('--kb',kb+'px');R.style.setProperty('--vvh',Math.round(vv.height)+'px');document.body&&document.body.classList.toggle('kbd',kb>80)};
+ vv.addEventListener('resize',m);vv.addEventListener('scroll',m);m();
+ document.addEventListener('focusin',e=>{const t=e.target;if(t&&/^(INPUT|TEXTAREA)$/.test(t.tagName)&&t.closest('#vcm')){setTimeout(()=>{m();try{t.scrollIntoView({block:'nearest'})}catch(x){}},250)}})})();
 const VAPID='BNMyZnbu-dyO8o9feTo0mttYXzAC-oTUS_bJ3lmUkyZsWGg_uTnKmtMz4Hs7FWiOglScDlWmtq-L3cdoCgwINvA';
 const u8=b=>{const p='='.repeat((4-b.length%4)%4),r=atob((b+p).replace(/-/g,'+').replace(/_/g,'/'));return Uint8Array.from(r,c=>c.charCodeAt(0))};
 const pushOK=()=>'serviceWorker' in navigator&&'PushManager' in window&&'Notification' in window&&/^https?:/.test(location.protocol);
